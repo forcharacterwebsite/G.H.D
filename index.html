@@ -138,6 +138,8 @@ body.calm .ticker__t,body.calm .unk{animation:none}
 .card__pic{width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 0%);mix-blend-mode:multiply;transition:transform .5s}
 .card:hover .card__pic{transform:scale(1.04)}
 .card__img::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.05) 0 1px,transparent 1px 3px);pointer-events:none}
+.card__cr{position:absolute;left:10px;bottom:10px;z-index:1;font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;color:var(--fg);background:rgba(11,12,13,.82);padding:3px 7px}
+.card__hq{display:grid;place-items:center;font-family:var(--f-tech);font-weight:700;font-size:11px;color:var(--bg);background:var(--fg)!important;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
 .card__em{position:absolute;right:10px;bottom:10px;width:44px;height:44px;object-fit:contain;background:rgba(11,12,13,.82);padding:5px;z-index:1}
 .card__body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:4px;flex:1;border-top:3px solid var(--fc,var(--fg))}
 .card__fac{margin:0;color:var(--dim)}
@@ -185,6 +187,24 @@ body.calm .ticker__t,body.calm .unk{animation:none}
   ],
   "characters": [
     {
+      "id": "hanjeonghyeok",
+      "no": "000",
+      "name": "Han Jeonghyeok",
+      "nameKo": "한정혁",
+      "faction": "hq",
+      "rank": "총사령관",
+      "sex": "남",
+      "age": 29,
+      "height": "193cm",
+      "talent": "체술",
+      "quote": "각자의 신념은 달라도 좋다. 우리가 지켜야 할 것은 같으니까.",
+      "image": "characters/hanjeonghyeok/assets/card.jpg",
+      "imagePosition": "50% 0%",
+      "page": "characters/hanjeonghyeok/index.html",
+      "credit": "CM 노른자님",
+      "joined": "2026-11-09"
+    },
+    {
       "id": "kross",
       "no": "001",
       "name": "Kross L.",
@@ -216,6 +236,24 @@ body.calm .ticker__t,body.calm .unk{animation:none}
       "image": "characters/shenyu/assets/card.jpg",
       "imagePosition": "50% 0%",
       "page": "characters/shenyu/index.html",
+      "joined": "2026-11-09"
+    },
+    {
+      "id": "alexander",
+      "no": "003",
+      "name": "Alexander Locke",
+      "nameKo": "알렉산더 로크",
+      "faction": "libertas",
+      "rank": "단장",
+      "sex": "남",
+      "age": 29,
+      "height": "188cm",
+      "talent": "무기술",
+      "quote": "준비 됐어? 제대로 놀아보자고.",
+      "image": "characters/alexander/assets/card.jpg",
+      "imagePosition": "50% 0%",
+      "page": "characters/alexander/index.html",
+      "credit": "CM 냥냥니하오냥님",
       "joined": "2026-11-09"
     }
   ]
@@ -286,9 +324,12 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 let data={factions:[],characters:[]};
 try{data=JSON.parse($("#roster").textContent)}catch(e){console.error("명부 데이터 형식 오류:",e)}
 const F=Object.fromEntries(data.factions.map(f=>[f.id,f]));
+/* 진영이 없는 본부 직속 (총사령관 등) */
+F.hq={id:"hq",name:"본부 직속",en:"Headquarters",color:"#ececec",emblem:""};
 /* 단장은 항상 맨 앞, 그다음 번호 순 */
-const isLead=c=>c.rank==="단장";
-const chars=[...data.characters].sort((a,b)=>(isLead(b)-isLead(a))||String(a.no).localeCompare(String(b.no)));
+/* 직책 순서: 총사령관 → 단장 → 대원, 같은 직책끼리는 번호 순 */
+const RANK={"총사령관":0,"단장":1};const rk=c=>RANK[c.rank]??9;
+const chars=[...data.characters].sort((a,b)=>(rk(a)-rk(b))||String(a.no).localeCompare(String(b.no)));
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
@@ -307,7 +348,7 @@ $("#fgrid").innerHTML=data.factions.map((f,i)=>`<button class="fcard br" type="b
 $("#fgrid").querySelectorAll(".fcard").forEach(b=>b.onclick=()=>{setFilter(b.dataset.f);$("#roster-sec").scrollIntoView({behavior:RM?"auto":"smooth"})});
 
 const chips=$("#chips");
-chips.innerHTML=`<button class="chip" type="button" data-f="all">전체</button>`+data.factions.map(f=>`<button class="chip" type="button" data-f="${esc(f.id)}" style="--fc:${esc(f.color)}"><i></i>${esc(f.name)}</button>`).join("");
+chips.innerHTML=`<button class="chip" type="button" data-f="all">전체</button>`+(chars.some(c=>c.faction==="hq")?`<button class="chip" type="button" data-f="hq" style="--fc:#ececec"><i></i>본부 직속</button>`:"")+data.factions.map(f=>`<button class="chip" type="button" data-f="${esc(f.id)}" style="--fc:${esc(f.color)}"><i></i>${esc(f.name)}</button>`).join("");
 chips.querySelectorAll(".chip").forEach(b=>b.onclick=()=>setFilter(b.dataset.f));
 function setFilter(f){filter=f;chips.querySelectorAll(".chip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===f));render()}
 $("#q").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();render()});
@@ -316,7 +357,7 @@ function card(c){const f=F[c.faction]||{name:c.faction,en:c.faction,color:"#fff"
   const spec=[["Rank",c.rank],["Sex",c.sex],["Age",c.age!=null?c.age+"세":""],["Height",c.height],["Attr",c.attribute],["Talent",c.talent]].filter(s=>s[1]);
   return `<a class="card br" href="${esc(c.page)}#${fx?"full":"calm"}" style="--fc:${esc(f.color)}">
     <span class="mono card__top"><span>FILE <b>No.${esc(c.no)}</b></span><span>${esc(f.en)}</span></span>
-    <div class="card__img"><img class="card__pic" src="${esc(c.image)}" alt="${esc(c.nameKo)} 그림" loading="lazy" style="--pos:${esc(c.imagePosition||"50% 0%")}">${f.emblem?`<img class="card__em" src="${esc(f.emblem)}" alt="">`:""}</div>
+    <div class="card__img"><img class="card__pic" src="${esc(c.image)}" alt="${esc(c.nameKo)} 그림" loading="lazy" style="--pos:${esc(c.imagePosition||"50% 0%")}">${c.credit?`<span class="card__cr">${esc(c.credit)}</span>`:""}${f.emblem?`<img class="card__em" src="${esc(f.emblem)}" alt="">`:`<span class="card__em card__hq" aria-hidden="true">GHD</span>`}</div>
     <div class="card__body">
       <p class="mono card__fac">${esc(f.en)} &middot; ${esc(f.name)}</p>
       <p class="card__name">${esc(c.name)}</p>
