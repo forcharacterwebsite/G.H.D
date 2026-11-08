@@ -200,6 +200,23 @@ body.calm .ticker__t,body.calm .unk{animation:none}
       "imagePosition": "50% 0%",
       "page": "characters/kross/index.html",
       "joined": "2026-10-25"
+    },
+    {
+      "id": "shenyu",
+      "no": "002",
+      "name": "Shen Yu",
+      "nameKo": "션위",
+      "faction": "sapientia",
+      "rank": "단장",
+      "sex": "여",
+      "age": 29,
+      "height": "178cm",
+      "talent": "만물 조립",
+      "quote": "모든 물질에 대한 조합식을 찾아내는 것이 내가 바라는 지향점이야.",
+      "image": "characters/shenyu/assets/card.jpg",
+      "imagePosition": "50% 0%",
+      "page": "characters/shenyu/index.html",
+      "joined": "2026-11-09"
     }
   ]
 }
@@ -269,7 +286,9 @@ const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 let data={factions:[],characters:[]};
 try{data=JSON.parse($("#roster").textContent)}catch(e){console.error("명부 데이터 형식 오류:",e)}
 const F=Object.fromEntries(data.factions.map(f=>[f.id,f]));
-const chars=[...data.characters].sort((a,b)=>String(a.no).localeCompare(String(b.no)));
+/* 단장은 항상 맨 앞, 그다음 번호 순 */
+const isLead=c=>c.rank==="단장";
+const chars=[...data.characters].sort((a,b)=>(isLead(b)-isLead(a))||String(a.no).localeCompare(String(b.no)));
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 
@@ -294,7 +313,7 @@ function setFilter(f){filter=f;chips.querySelectorAll(".chip").forEach(b=>b.setA
 $("#q").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();render()});
 
 function card(c){const f=F[c.faction]||{name:c.faction,en:c.faction,color:"#fff"};
-  const spec=[["Sex",c.sex],["Age",c.age!=null?c.age+"세":""],["Height",c.height],["Attr",c.attribute],["Talent",c.talent]].filter(s=>s[1]);
+  const spec=[["Rank",c.rank],["Sex",c.sex],["Age",c.age!=null?c.age+"세":""],["Height",c.height],["Attr",c.attribute],["Talent",c.talent]].filter(s=>s[1]);
   return `<a class="card br" href="${esc(c.page)}#${fx?"full":"calm"}" style="--fc:${esc(f.color)}">
     <span class="mono card__top"><span>FILE <b>No.${esc(c.no)}</b></span><span>${esc(f.en)}</span></span>
     <div class="card__img"><img class="card__pic" src="${esc(c.image)}" alt="${esc(c.nameKo)} 그림" loading="lazy" style="--pos:${esc(c.imagePosition||"50% 0%")}">${f.emblem?`<img class="card__em" src="${esc(f.emblem)}" alt="">`:""}</div>
