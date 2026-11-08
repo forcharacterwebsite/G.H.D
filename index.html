@@ -66,16 +66,14 @@ button,input{font:inherit;color:inherit}
 .ghd__full{font-family:var(--f-tech);font-weight:600;font-size:clamp(16px,2.3vw,28px);letter-spacing:.3em;text-transform:uppercase;margin:16px 0 0;color:var(--dim)}
 .slogan{display:flex;align-items:center;gap:14px;margin:24px 0 0;font-weight:700;font-size:clamp(19px,2.2vw,26px)}
 .slogan::before{content:"";width:36px;height:2px;background:var(--fg);flex:none}
-.readout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:34px 0 0;background:var(--panel);border:1px solid var(--line);max-width:720px}
+.readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:34px 0 0;background:var(--panel);border:1px solid var(--line);max-width:480px}
 .readout div{padding:14px 16px;border-right:1px solid var(--line);min-width:0}
 .readout div:last-child{border-right:0}
 .readout dt{color:var(--dim);font-size:11px}
 .readout dd{margin:8px 0 0;font-family:var(--f-tech);font-weight:700;font-size:clamp(30px,4vw,46px);line-height:1;font-variant-numeric:tabular-nums}
 .readout dd small{display:block;font-family:var(--f-body);font-weight:500;font-size:14px;margin-top:6px;color:var(--dim);letter-spacing:0}
-#stLatest{font-size:clamp(22px,2.6vw,32px)}
 .unk{display:inline-grid;place-items:center;width:1.2em;height:1.2em;border:2px solid var(--fg);font-size:.8em;animation:unk 2.4s steps(1) infinite}
 @keyframes unk{0%,92%{opacity:1}94%{opacity:.2}96%{opacity:1}98%{opacity:.4}}
-@media (max-width:560px){.readout{grid-template-columns:repeat(2,minmax(0,1fr))}.readout div:nth-child(2){border-right:0}.readout div:last-child{grid-column:1/-1;border-top:1px solid var(--line)}}
 
 .logo{margin:0;background:var(--panel);border:1px solid var(--line);padding:12px;max-width:430px;width:100%;justify-self:center}
 .logo__bar,.logo figcaption{display:flex;justify-content:space-between;gap:10px;color:var(--dim);font-size:11px}
@@ -228,7 +226,6 @@ body.calm .ticker__t,body.calm .unk{animation:none}
         <dl class="readout mono br rise d4">
           <div><dt>등록 대원</dt><dd><span class="unk" aria-label="비공개">?</span></dd></div>
           <div><dt>진영</dt><dd id="stFactions">00</dd></div>
-          <div><dt>최근 입단</dt><dd id="stLatest">&mdash;</dd></div>
         </dl>
       </div>
       <figure class="logo br rise d3">
@@ -281,8 +278,6 @@ const fxBtn=$("#fx");const syncFx=()=>{fxBtn.setAttribute("aria-pressed",fx);doc
 fxBtn.onclick=()=>{fx=!fx;store.set("kross-gate",fx?"full":"calm");syncFx();render()};
 
 $("#stFactions").textContent=String(data.factions.length).padStart(2,"0");
-const latest=[...chars].sort((a,b)=>String(b.joined).localeCompare(String(a.joined)))[0];
-if(latest)$("#stLatest").innerHTML=`${esc(latest.joined.replaceAll("-","."))}<small>${esc(latest.nameKo)}</small>`;
 
 let filter="all",q="";
 $("#fgrid").innerHTML=data.factions.map((f,i)=>`<button class="fcard br" type="button" data-f="${esc(f.id)}" style="--fc:${esc(f.color||"#fff")}">
