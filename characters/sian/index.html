@@ -604,8 +604,10 @@ $$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().
 
 /* 누르면 그 자리에서 낱말이 떠오른다 */
 const QUOTES=[
-  ["오 나의 용골을 터뜨리라! 오 나를 바다로 가도록 하라!","랭보 〈취한 배〉"],
-  ["모든 사람은 자기 운명의 창시자다.","아피우스 클라우디우스"]
+  ["오 나의 용골을 터뜨리라! 오 나를 바다로 가도록 하라!"],
+  ["모든 사람은 자기 운명의 창시자다."]
+["겨울은 강철로 된 무지갠가 보다."]
+[닿을 수 없는 별에 닿기 위해!!]
 ];
 let qOrder=[],qi=0;
 function nextQ(){if(qi>=qOrder.length){qOrder=QUOTES.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0}return QUOTES[qOrder[qi++]]}
