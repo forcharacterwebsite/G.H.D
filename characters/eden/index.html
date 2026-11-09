@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>유예의 온실, 에덴 블레어</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="사피엔티아 대원 에덴 블레어 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;700;800&family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: 사피엔티아. 흐린 오후의 온실과 오래된 서점. 안개 낀 세이지빛 종이에 짙은 잉크, 눈동자의 진홍, 연둣빛 머리칼, 사피엔티아 청색은 작게. 섹션은 DAY 01~12 */
+:root{
+  --bg:#e8ebe4;--paper:#f6f7f2;--ink:#1d241f;--dim:#5f6a62;--line:rgba(29,36,31,.12);--line2:rgba(29,36,31,.26);
+  --red:#b3233a;--leaf:#6f9a5c;--lime:#cfe39a;--sap:#3a5fb0;--glass:rgba(255,255,255,.55);
+  --f-disp:"Hahmlet","Nanum Myeongjo","AppleMyungjo",serif;
+  --f-it:"Fraunces","Georgia",serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 15% -10%,rgba(255,255,255,.8),transparent 50%),radial-gradient(ellipse at 100% 40%,rgba(111,154,92,.12),transparent 45%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1180px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(232,235,228,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:21px;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-mono);font-size:12px;text-decoration:none;padding:6px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--ink);border-color:var(--red)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--ink);color:var(--paper)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none;overflow:hidden}
+.np i{display:block;height:100%;width:0;max-width:100%;background:linear-gradient(90deg,var(--leaf),var(--red))}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:18px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;cursor:pointer}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px);pointer-events:none}
+.hero__grid>*{pointer-events:auto}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--sap);font-weight:500}
+.gen{margin:22px 0 0;font-family:var(--f-disp);font-weight:700;font-size:clamp(16px,1.8vw,19px);color:var(--leaf);letter-spacing:.06em}
+.name{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(76px,11.5vw,150px);line-height:.92;margin:10px 0 0;white-space:nowrap;letter-spacing:-.02em}
+.name .w2{display:block;color:var(--red);padding-left:.6em}
+.name .ch{display:inline-block}
+.ko{font-family:var(--f-disp);font-weight:800;font-size:clamp(26px,3.2vw,38px);margin:16px 0 0}
+.quote{font-family:var(--f-disp);font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.6;margin:22px 0 0;max-width:22em}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:26px 0 0;max-width:600px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line2)}
+.dims div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:2px 0 0;font-family:var(--f-disp);font-weight:800;font-size:clamp(22px,2.6vw,28px);line-height:1.2}
+.hint{margin:16px 0 0;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.pane{position:relative;justify-self:center;width:100%;max-width:440px;margin:0;padding:14px;background:var(--glass);border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 60px rgba(29,36,31,.15),inset 0 0 0 1px var(--line);backdrop-filter:blur(4px)}
+.pane img{width:100%;border-radius:48% 48% 0 0/34% 34% 0 0}
+.pane figcaption{display:flex;justify-content:space-between;gap:10px;padding-top:8px;font-family:var(--f-it);font-style:italic;font-size:15px;color:var(--dim)}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.pane{max-width:340px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,100px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:end;margin-bottom:clamp(26px,4vw,40px)}
+.head__no{grid-row:span 2;position:relative;display:flex;flex-direction:column;justify-content:flex-end;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(46px,6vw,72px);line-height:.8;color:var(--leaf);transition:color .4s}
+.head__no small{font-family:var(--f-mono);font-style:normal;font-weight:500;font-size:10px;letter-spacing:.14em;color:var(--dim);margin-bottom:6px}
+.sec.live .head__no{color:var(--red)}
+.head__en{font-family:var(--f-it);font-style:italic;font-size:17px;color:var(--sap)}
+.head h2{font-family:var(--f-disp);font-weight:800;font-size:clamp(30px,4.6vw,54px);line-height:1.15;margin:0;min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--red);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:14px}
+
+/* 01 */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.card{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;background:#fff;padding:18px;align-self:start;border:1px solid var(--line2);box-shadow:6px 6px 0 rgba(111,154,92,.35)}
+.card img{width:110px;height:110px;object-fit:cover;border-radius:50% 50% 4px 4px}
+.card__n{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:30px;line-height:1.05;margin:0}
+.card__e{font-family:var(--f-disp);font-weight:700;font-size:16px;margin:4px 0 0;color:var(--red)}
+.card dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.card dt{color:var(--dim)}.card dd{margin:0;font-weight:500}
+.leafmark{position:absolute;right:12px;bottom:-14px;width:22px;height:46px;background:var(--leaf);border-radius:0 100% 0 100%;transform:rotate(18deg);opacity:.85}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--red);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:500}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.card{grid-template-columns:84px minmax(0,1fr)}.card img{width:84px;height:84px}.card__n{font-size:24px}}
+
+/* 02 */
+.look{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look .pane{max-width:none}
+.desc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.desc li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.desc i{width:32px;height:32px;border-radius:0 100% 0 100%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.desc b{display:block;font-size:16px;font-weight:500;line-height:1.45}
+.desc span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+.scent{margin:12px 0 0;padding:14px 16px;border-left:3px solid var(--leaf);background:var(--paper)}
+.scent b{font-family:var(--f-disp)}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look .pane{max-width:360px}}
+@media (max-width:520px){.desc{grid-template-columns:1fr}}
+
+/* 03 */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.key{padding:clamp(24px,3vw,36px) 20px;background:var(--paper);border:1px solid var(--line);text-align:center}
+.key b{display:block;font-family:var(--f-disp);font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.2}
+.key span{font-family:var(--f-it);font-style:italic;font-size:17px;color:var(--leaf)}
+@media (max-width:640px){.keys{grid-template-columns:1fr}}
+
+/* 04 */
+.lhs{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.6fr);gap:12px}
+.lhs__l{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:88px;line-height:.8;margin:0 0 14px;color:var(--leaf)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--red)}
+.lhs .panel:nth-child(3) .lhs__l{color:var(--sap)}
+.lhs ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.lhs li{padding:6px 12px;border:1px solid var(--line2);border-radius:20px;font-weight:500;font-size:15px;background:#fff}
+.lhs .q{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:64px;line-height:1;margin:0;color:var(--dim)}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:64px}}
+
+/* 05 */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:30px;background:var(--paper)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(56px,8vw,96px);line-height:.9;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:12px;margin-top:16px;background:rgba(29,36,31,.07)}
+.hp__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--leaf),var(--red));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line2)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(111,154,92,.25);stroke:var(--leaf);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--red)}
+.radar text{fill:var(--ink);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--red);font-size:10px;font-weight:500}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--red)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:15px;font-weight:700}
+.bar{height:8px;background:rgba(29,36,31,.07)}
+.bar i{display:block;height:100%;background:var(--leaf);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--red)}
+.bars b{text-align:right;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* 06 */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:flex;flex-direction:column;gap:6px;transition:border-color .3s,box-shadow .3s}
+.tk:hover{border-color:var(--leaf);box-shadow:5px 5px 0 rgba(111,154,92,.3)}
+.tk__type{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.tk h3{margin:0;font-family:var(--f-disp);font-weight:800;font-size:26px;line-height:1.25}
+.tk p:last-child{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2);background:#fff}
+.tk--def{border-top:3px solid var(--sap)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* 07 08 */
+.sk__top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.ab__name{font-family:var(--f-disp);font-weight:800;font-size:clamp(52px,7.6vw,100px);line-height:1;margin:0}
+.ab__en{font-family:var(--f-it);font-style:italic;font-size:clamp(18px,2.2vw,26px);margin:6px 0 0;color:var(--sap)}
+.ab__type{display:inline-block;margin-top:12px;padding:3px 10px;border:1px solid var(--red);color:var(--red)}
+.sk__sum{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.75}
+.sk__sum b{color:var(--red)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.flow li{padding:14px 16px;background:var(--paper);border:1px solid var(--line);font-size:15px;color:var(--dim);line-height:1.55}
+.flow li b{display:block;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:30px;line-height:1.1;color:var(--red)}
+.flow li.g b{color:var(--leaf)}
+.flow li span{display:block;color:var(--ink);font-weight:700;margin:2px 0}
+.demo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px;align-items:start}
+.foe{padding:16px;background:#fff;border:1px solid var(--line2)}
+.foe__top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.foe__top b{font-family:var(--f-disp);font-weight:800;font-size:20px}
+.foe__top span{font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.foe__top .debuff{color:var(--red);font-weight:500}
+.hpbar{position:relative;height:18px;margin-top:10px;background:rgba(29,36,31,.08);overflow:hidden}
+.hpbar .cur{position:absolute;left:0;top:0;bottom:0;background:var(--leaf);transition:width .6s}
+.hpbar .held{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(135deg,rgba(179,35,58,.55) 0 6px,rgba(179,35,58,.2) 6px 12px);transition:left .6s,width .6s}
+.hpnum{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.hpnum b{color:var(--ink);font-variant-numeric:tabular-nums}
+.hpnum .r{color:var(--red)}
+.looks{margin-top:10px;padding:8px 12px;border:1px dashed var(--line2);font-size:14px;color:var(--dim);min-height:2.6em}
+.looks b{color:var(--ink)}
+.turns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin:12px 0 0;padding:0;list-style:none}
+.turns li{padding:8px 10px;border:1px solid var(--line);background:#fff;font-size:13px;line-height:1.4;color:var(--dim)}
+.turns li b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;font-weight:500}
+.turns li.now{border-color:var(--red);color:var(--ink);box-shadow:inset 0 -3px 0 var(--red)}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:#fff;font-size:15px}
+.status.on{border-color:var(--red)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--ink);background:var(--paper);cursor:pointer;font-weight:700;font-size:15px;line-height:1.2}
+.btn:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.btn--main{background:var(--ink);color:var(--paper)}
+.btn--main:hover:not(:disabled){background:var(--red);border-color:var(--red)}
+.btn--red{background:var(--red);border-color:var(--red);color:#fff}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.how b{display:block;font-size:17px;margin-bottom:2px}
+.how b i{font-style:italic;font-family:var(--f-it);font-weight:700;color:var(--red);margin-right:8px}
+.how p{margin:0;color:var(--dim);font-size:14px}
+.how .no b{text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:2px}
+.orig{margin-top:12px;border:1px solid var(--line);background:var(--paper)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.room{position:relative;aspect-ratio:16/10;max-width:100%;background:linear-gradient(180deg,#f7f8f4,#e3e7df);border:1px solid var(--line2);overflow:hidden}
+.room canvas{position:absolute;inset:0;width:100%;height:100%}
+.room__lbl{position:absolute;left:10px;top:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);pointer-events:none}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.seg button{flex:1 1 auto;padding:9px 14px;border:1px solid var(--line2);background:#fff;cursor:pointer;font-size:15px;font-weight:700;text-align:left;line-height:1.35}
+.seg button small{display:block;font-size:12px;font-weight:400;color:var(--dim)}
+.seg button[aria-pressed="true"]{border-color:var(--red);box-shadow:inset 0 -3px 0 var(--red)}
+@media (max-width:900px){.sk__top,.demo{grid-template-columns:1fr}}
+@media (max-width:760px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+
+/* 09 */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
+.facts div{background:var(--paper);padding:14px 16px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.facts dd{margin:4px 0 0;font-family:var(--f-disp);font-weight:800;font-size:22px;line-height:1.3}
+.traits{columns:2 320px;column-gap:12px}
+.traits .panel{break-inside:avoid;margin-bottom:12px;transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.traits h3{margin:0 0 6px;font-family:var(--f-disp);font-weight:800;font-size:20px}
+.traits p:last-child{margin:0}
+.traits .crooked{transform:rotate(-2.2deg);cursor:pointer}
+.traits .crooked.fixed{transform:none}
+.taps{display:flex;gap:6px;margin-top:10px}
+.taps i{width:10px;height:10px;border-radius:50%;background:var(--line2);transition:background .1s,transform .1s}
+.taps i.on{background:var(--red);transform:scale(1.4)}
+
+/* 10 */
+.inv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.inv__n{font-family:var(--f-disp);font-weight:800;font-size:24px;margin:0}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+
+/* 11 12 */
+.link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--leaf);max-width:920px}
+.link__top{padding:18px;border-right:1px solid var(--line)}
+.link__nm{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:30px;line-height:1.1;margin:0}
+.link__ko{margin:2px 0 0;font-weight:700}
+.link__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.link__tags span{font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--leaf);color:var(--leaf)}
+.link__body{padding:18px}
+.link__body p{margin:0;color:var(--dim)}
+.open{margin-top:12px;max-width:920px;padding:14px 18px;border:1px dashed var(--line2);color:var(--dim)}
+@media (max-width:760px){.link{grid-template-columns:1fr}.link__top{border-right:0;border-bottom:1px solid var(--line)}}
+.single{max-width:560px;padding:clamp(22px,3vw,34px) clamp(20px,3vw,30px);background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--red);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.single__big{margin:0;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(56px,8vw,96px);line-height:.9;color:var(--red)}
+.single__txt{margin:0;color:var(--dim)}
+
+.outro{position:relative;padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(34px,5.6vw,72px);line-height:1.05;margin:0;color:var(--leaf)}
+.outro__q{font-family:var(--f-disp);font-weight:800;font-size:clamp(20px,2.6vw,30px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:24px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--paper);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
+
+/* FX */
+.holds{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.hold{position:absolute;left:0;top:0;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;border:1.5px solid var(--red);display:grid;place-items:center;transform:translate(var(--x),var(--y));animation:hold 1.1s ease-out forwards}
+.hold::before,.hold::after{content:"";position:absolute;top:18px;width:4px;height:18px;background:var(--red)}
+.hold::before{left:20px}.hold::after{right:20px}
+@keyframes hold{0%{opacity:0;scale:.5}15%{opacity:1;scale:1}70%{opacity:1;scale:1}100%{opacity:0;scale:1.5}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*80ms)}
+@keyframes rise{0%{opacity:0;transform:translateY(18px)}100%{opacity:1;transform:none}}
+.ch.fall{animation:fall .9s cubic-bezier(.3,1.3,.5,1) both;animation-delay:calc(var(--k)*70ms + .1s)}
+@keyframes fall{0%{opacity:0;transform:translateY(-60%) rotate(-8deg)}100%{opacity:1;transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num,.link__nm{overflow-wrap:normal;word-break:normal}
+body.calm .rise,body.calm .ch.fall{animation:none}
+@media (prefers-reduced-motion:reduce){.rise,.ch.fall,.hold,.traits .panel{animation:none;transition:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/sapientia.png" alt="" width="24" height="24">Eden Blair<span class="mono dim" style="font-size:11px;font-style:normal">&nbsp;/ Sapientia</span></a>
+    <nav class="nav__idx" aria-label="섹션">
+      <a href="#s01" title="신원">01</a><a href="#s02" title="외관">02</a><a href="#s03" title="성격">03</a><a href="#s04" title="L/H/S">04</a><a href="#s05" title="능력치">05</a><a href="#s06" title="기술">06</a><a href="#s07" title="특수 능력">07</a><a href="#s08" title="유예">08</a><a href="#s09" title="특징">09</a><a href="#s10" title="소지품">10</a><a href="#s11" title="선관">11</a><a href="#s12" title="지향 커플링">12</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero" id="hero">
+  <canvas id="leaves" aria-hidden="true"></canvas>
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.???</span><span>Sapientia // <b>Agent</b></span></p>
+      <p class="gen">[ 저녁이 되며 아침이 되니 ]</p>
+      <h1 class="name" aria-label="Eden Blair">Eden<span class="w2">Blair</span></h1>
+      <p class="ko">에덴 블레어</p>
+      <blockquote class="quote">&ldquo;당신이 직접 선택한 일이잖아요. 그렇죠?&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>24</dd></div>
+        <div><dt>Height</dt><dd>171cm</dd></div>
+        <div><dt>Weight</dt><dd>59kg</dd></div>
+      </dl>
+      <p class="hint" id="hint">떨어지는 잎사귀를 눌러 보세요. 잠시 멈췄다가 다시 떨어집니다.</p>
+    </div>
+    <figure class="pane">
+      <img src="assets/eden.jpg" alt="에덴 블레어 그림. 어깨 아래로 흐르는 연둣빛 긴 머리, 붉은 눈의 여성이 흰 장갑을 낀 손을 턱에 대고 옅게 웃고 있다. 검은 터틀넥 차림" width="1000" height="1000">
+      <figcaption><span>in the greenhouse</span><span>E. B.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>01</span><span class="head__en">Identity</span><h2>신원</h2></header>
+    <div class="ident">
+      <div class="card">
+        <img src="assets/face.jpg" alt="에덴 블레어 얼굴" width="110" height="110">
+        <div>
+          <p class="card__n">Eden Blair</p>
+          <p class="card__e">에덴 블레어</p>
+          <dl><dt>DIV</dt><dd>SAPIENTIA</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>24</dd></dl>
+        </div>
+        <span class="leafmark" aria-hidden="true"></span>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>에덴 블레어 / Eden Blair</td></tr>
+          <tr><th>1.2</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.3</th><td>Age</td><td>24세</td></tr>
+          <tr><th>1.4</th><td>Height / Weight</td><td>171cm / 59kg</td></tr>
+          <tr><th>1.5</th><td>Faction</td><td>사피엔티아 &middot; 대원</td></tr>
+          <tr><th>1.6</th><td>Attribute</td><td>특수</td></tr>
+          <tr><th>1.7</th><td>Special</td><td>허위종결</td></tr>
+          <tr><th>1.8</th><td>Ability</td><td>유예</td></tr>
+          <tr><th>1.9</th><td>Birthday</td><td>4월 8일 &middot; O형</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>02</span><span class="head__en">Appearance</span><h2>외관</h2></header>
+    <div class="look">
+      <figure class="pane"><img src="assets/card.jpg" alt="에덴 블레어 상반신 그림" width="560" height="700"><figcaption><span>portrait</span><span>E. B.</span></figcaption></figure>
+      <div>
+        <ul class="desc">
+          <li><i style="--c:#cfe39a"></i><div><span>2.1 HAIR</span><b>어깨 아래로 흐르는 연둣빛 긴 머리 (그림)</b></div></li>
+          <li><i style="--c:#c4203f"></i><div><span>2.2 EYES</span><b>붉은 눈 (그림)</b></div></li>
+          <li><i style="--c:#f7f7f4"></i><div><span>2.3 GLOVES</span><b>늘 끼고 있는 흰 장갑</b></div></li>
+          <li><i style="--c:#1d1d1f"></i><div><span>2.4 INNER</span><b>검은 터틀넥 (그림)</b></div></li>
+        </ul>
+        <p class="scent"><b>체향</b> &mdash; 깨끗한 린넨과 은은한 시더우드가 어우러진 향.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>03</span><span class="head__en">Personality</span><h2>성격</h2></header>
+    <div class="keys">
+      <div class="key"><b>다면적인</b><span>many-sided</span></div>
+      <div class="key"><b>유연한</b><span>flexible</span></div>
+      <div class="key"><b>상냥한</b><span>gentle</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>04</span><span class="head__en">Like / Hate / Scare</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>흐린 오후</li><li>오래된 서점</li><li>조용한 온실</li><li>요리</li><li>악기 연주</li><li>잎사귀 모양 책갈피</li><li>향수</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>호수</li><li>혼잡한 소음</li><li>갑작스런 변수</li><li>재촉</li></ul></div>
+      <div class="panel"><p class="lhs__l">S</p><p class="q">?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>05</span><span class="head__en">Stats</span><h2>능력치</h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 70, 방어력 65, 민첩성 65, 정확성 60, 정신력 60">
+        <g class="radar__grid"></g><polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon><g class="radar__dots"></g><g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li class="top"><span>5.1</span><span>공격력</span><span class="bar"><i data-w="70"></i></span><b>70</b></li>
+        <li><span>5.2</span><span>방어력</span><span class="bar"><i data-w="65"></i></span><b>65</b></li>
+        <li><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="65"></i></span><b>65</b></li>
+        <li><span>5.4</span><span>정확성</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li><span>5.5</span><span>정신력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 320 = 70 + 65 + 65 + 60 + 60 &middot; 고르게 나눈 가운데 공격력이 가장 높다</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>06</span><span class="head__en">Techniques</span><h2>기술</h2></header>
+    <div class="tech">
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>재개</h3><div class="chips"><em>특수</em></div><p>멈춰 둔 물리 현상을 재개하여 상대에게 터트린다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>미결구역</h3><div class="chips"><em>특수</em><em>광역</em></div><p>적 진영 전체에 결말 없는 현상들을 깔아 둔다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>동시집행</h3><div class="chips"><em>특수</em><em>연격</em></div><p>여러 개로 나눠 멈춰 둔 현상들을 같은 순간에 일제히 재개한다.</p></div>
+      <div class="panel tk tk--def"><p class="tk__type">DEF &middot; 방어 기술</p><h3>정지된 벽</h3><div class="chips"><em>반격</em></div><p>날아오는 공격을 멈춰 세운다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>07</span><span class="head__en">Special &mdash; 특수 능력</span><h2>허위종결</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">허위종결</p>
+        <p class="ab__en">False Ending</p>
+        <span class="mono ab__type">타격</span>
+      </div>
+      <p class="sk__sum">강하게 친 다음, 그 충격의 <b>60%를 멈춰 둔다</b>. 적에게는 공격이 <b>끝난 것처럼 보인다</b>. 멈춰 둔 피해는 <b>다음 턴에 한꺼번에</b> 들어간다.</p>
+    </div>
+    <ol class="flow">
+      <li><b>&times;1.8</b><span>타격</span>공격력의 1.8배 피해. 에덴의 공격력 70이면 126.</li>
+      <li><b>60%</b><span>유예</span>그중 60%(75.6)는 충격 전달을 멈춰 둔다. 지금 들어가는 건 40%(50.4)뿐.</li>
+      <li class="g"><b>&minus;20</b><span>판단저하</span>대상의 정신력 &minus;20. 에덴의 턴이 다시 돌아올 때까지.</li>
+      <li><b>다음 턴</b><span>한꺼번에</span>다음 턴, 그때의 공격 피해에 멈춰 둔 피해가 더해져 한 번에 터진다. 공격하지 않아도 무조건 터진다.</li>
+    </ol>
+    <div class="demo">
+      <div class="panel" id="spPanel">
+        <p class="idx">7.1 &mdash; 끝난 줄 알았던 공격</p>
+        <div class="foe" id="foe">
+          <div class="foe__top"><b>적군 (예시)</b><span id="mind">정신력 60</span></div>
+          <div class="hpbar"><i class="cur" id="cur" style="width:100%"></i><i class="held" id="held" style="left:100%;width:0"></i></div>
+          <div class="hpnum"><span>체력 <b id="hpv">300</b> / 300</span><span class="r" id="heldv"></span></div>
+          <div class="looks" id="looks">적이 보는 것: <b>아직 아무 일도 없다</b></div>
+        </div>
+        <ol class="turns" id="turns"><li><b>이번 턴</b>허위종결</li><li><b>다음 턴</b>멈춘 피해가 터진다</li></ol>
+        <p class="status" id="spMsg" aria-live="polite">허위종결을 눌러 보자. 빗금 친 부분이 멈춰 둔 피해다.</p>
+        <div class="ctrl">
+          <button class="btn btn--main" id="spGo" type="button">허위종결</button>
+          <button class="btn btn--red" id="spAtk" type="button" disabled>다음 턴: 공격한다 (+40)</button>
+          <button class="btn" id="spRest" type="button" disabled>다음 턴: 공격 안 한다</button>
+          <button class="btn" id="spReset" type="button">처음으로</button>
+        </div>
+        <p class="note">적의 체력 300, 정신력 60, 다음 턴 공격 피해 40은 예시다.</p>
+      </div>
+      <div class="how">
+        <div><b><i>a.</i>1.8배로 친다</b><p>공격력 70 &times; 1.8 = 126.</p></div>
+        <div><b><i>b.</i>60%는 멈춰 둔다</b><p>50.4만 들어가고 75.6은 멈춰 있다. 적은 공격이 끝났다고 생각한다.</p></div>
+        <div><b><i>c.</i>판단이 흐려진다</b><p>[판단저하]로 정신력 &minus;20. 에덴의 턴이 다시 올 때까지.</p></div>
+        <div><b><i>d.</i>다음 턴에 터진다</b><p>다음 턴 공격 피해에 75.6이 더해져 한 번에. 공격을 안 해도 75.6은 반드시 터진다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>대상에게 1턴간 [판단저하] 효과를 부여하고 공격력 x1.8배 타격 피해를 입힌다. 공격 후 찰나의 충격 전달을 멈춰 피해량의 60%를 유예한다. 적에게는 공격이 끝난 것처럼 보이며 다음 턴이 자신에게 돌아왔을 때, 그 공격 피해에 유예된 피해가 합산되어 한 번에 들어간다. 공격 시행 여부와 상관없이 유예한 공격은 궁극기 시행 후 다음 턴에 무조건 재개된다. [판단저하] 상태의 상대는 정신력 20 감소. 이는 시전자의 턴이 돌아올 때까지 유지된다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>08</span><span class="head__en">Ability &mdash; 능력</span><h2>유예</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">유예</p>
+        <p class="ab__en">Suspension</p>
+        <span class="mono ab__type">능력</span>
+      </div>
+      <p class="sk__sum">이미 일어나고 있는 물리 현상을 <b>잠시 멈춰 두었다가</b>, 원하는 때에 <b>다시 진행</b>시킨다. 날아가는 물체, 떨어지는 잔해, 충격의 전달처럼 <b>아직 진행 중인 것</b>만, 그리고 <b>알아차렸을 때</b>만 가능하다.</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 떨어지는 화분을 멈춰 보자</p>
+        <div class="room"><canvas id="cv" role="img" aria-label="선반에서 떨어지는 화분. 유예하면 공중에 멈춘다"></canvas><span class="room__lbl" id="roomLbl">GREENHOUSE</span></div>
+        <div class="seg" role="group" aria-label="에덴이 보고 있는지">
+          <button type="button" data-see="1" aria-pressed="true">보고 있음<small>떨어지는 걸 알아차린다</small></button>
+          <button type="button" data-see="0" aria-pressed="false">보고 있지 않음<small>떨어지는 걸 모른다</small></button>
+        </div>
+        <p class="status" id="tMsg" aria-live="polite">화분 떨어뜨리기를 누른 뒤, 떨어지는 중에 유예를 눌러 보자.</p>
+        <div class="ctrl">
+          <button class="btn" id="tDrop" type="button">화분 떨어뜨리기</button>
+          <button class="btn btn--red" id="tHold" type="button" disabled>유예</button>
+          <button class="btn btn--main" id="tGo" type="button" disabled>재개</button>
+        </div>
+      </div>
+      <div class="how">
+        <div><b><i>a.</i>진행 중인 것만</b><p>날아가는 물체, 떨어지는 잔해, 충격의 전달. 이미 끝난 일은 멈출 수 없다.</p></div>
+        <div><b><i>b.</i>알아차려야 한다</b><p>생각이든 관찰이든, 그 사물을 인지했을 때만 발동한다.</p></div>
+        <div class="no"><b><i>&times;</i>되돌리기</b><p>과거를 되돌릴 수는 없다.</p></div>
+        <div class="no"><b><i>&times;</i>없애기</b><p>현상을 완전히 없앨 수는 없다. 멈춘 것은 언젠가 다시 진행된다.</p></div>
+        <div class="no"><b><i>&times;</i>나이 멈추기</b><p>생명체의 신체 나이를 정지시킬 수는 없다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>이미 발생한 물리적 현상의 진행을 일시적으로 보류하고, 원하는 시점에 다시 진행시키는 능력. 날아가는 물체, 낙하하는 잔해, 충격의 전달 등 아직 진행 중인 물리적 현상에만 가능하고 어떠한 사물을 생각이든 관찰이든 인지했을 때만 발동되는 능력이다. 과거를 되돌리거나 현상을 완전히 소멸시킬 수 없으며 생명체의 신체 나이를 정지시키는 것도 불가능하다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>09</span><span class="head__en">Traits</span><h2>특징</h2></header>
+    <dl class="facts">
+      <div><dt>Birthday</dt><dd>4월 8일</dd></div>
+      <div><dt>Blood</dt><dd>O형</dd></div>
+      <div><dt>Family</dt><dd>오빠 한 명</dd></div>
+    </dl>
+    <div class="traits">
+      <div class="panel"><p class="idx">9.1</p><h3>요리는 연금술</h3><p>요리에 서툴다. 재료는 그럴듯하게 준비해도 요리의 목적을 잊고 연금술을 하는 경우가 잦다.</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>톡, 톡톡</h3><p>생각에 잠기면 손가락으로 책상이나 컵의 표면을 가볍게 두드린다. 박자를 아무 노래에나 맞춰 두드리기에, 주변 사람들 말로는 무슨 노래인지 맞히는 재미가 있다고.</p><div class="taps" id="taps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="panel"><p class="idx">9.3</p><h3>사소한 것까지 기억한다</h3><p>타인이 무심코 말한 취향이나 사소한 일화를 잘 기억한다. 본인은 별일 아니라는 듯 굴지만, 상대가 잊고 있던 말까지 기억해 내곤 한다.</p></div>
+      <div class="panel crooked" id="crooked" tabindex="0"><p class="idx">9.4 &mdash; 눌러 보세요</p><h3>비뚤어진 것을 바로잡는다</h3><p>저도 모르게 비뚤어진 종이나 어긋난 물건을 바로잡을 때가 있다. 미술관에서 삐뚤어지게 걸린 그림을 볼 때가 가장 힘들다고.</p></div>
+      <div class="panel"><p class="idx">9.5</p><h3>흰 장갑</h3><p>늘 흰 장갑을 끼고, 무언가를 만질 때도 장갑 낀 손을 쓴다. 장갑에 관해 물으면 대답을 피하지는 않지만 굳이 설명을 덧붙이지도 않는다.</p></div>
+      <div class="panel"><p class="idx">9.6</p><h3>잎사귀 책갈피</h3><p>잎사귀 모양 책갈피를 고르는 취미가 있다. 실제 잎을 눌러 만든 책갈피도 좋아한다. 마음에 드는 잎을 발견하면 책을 읽을 생각이 없어도 일단 챙긴다.</p></div>
+      <div class="panel"><p class="idx">9.7</p><h3>귀엽지 않아요?</h3><p>모양이 특이한 돌멩이나 유난히 동그란 도토리 같은 것을 가져와 자랑할 때가 있다. 왜 가져왔느냐고 물으면 귀엽지 않냐는 답이 온다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>10</span><span class="head__en">Inventory</span><h2>소지품</h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">장갑 여유분</p><p class="mono dim" style="margin:0">spare gloves</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">잎사귀 모양 책갈피</p><p class="mono dim" style="margin:0">leaf bookmark</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>11</span><span class="head__en">Links</span><h2>선관</h2></header>
+    <article class="link">
+      <div class="link__top">
+        <p class="link__nm">Cecil Blair</p>
+        <p class="link__ko">세실 블레어</p>
+        <div class="link__tags"><span>가족관</span><span>오빠</span></div>
+      </div>
+      <div class="link__body"><p>에덴의 위로 오빠가 한 명 있다. 가족관으로 이어진 사이.</p></div>
+    </article>
+    <p class="open">그 외 선관은 갠밴 와주세요.</p>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>DAY</small>12</span><span class="head__en">Coupling</span><h2>지향 커플링</h2></header>
+    <div class="single"><p class="single__big">CL</p><p class="single__txt">지향 커플링</p></div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">And there was evening, and there was morning</p>
+    <p class="outro__q">[ 부디 입단하여 걷는 흔적에는 꽃이 피길. ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 러닝 기간 동안 잘 부탁드립니다~</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>EDEN BLAIR &middot; Sapientia Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON";$("#hint").hidden=calm;startLeaves()}
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm()};
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+const FIT=".name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num,.link__nm";
+function fit(){$$(FIT).forEach(e=>{if(e.classList.contains("outro__m"))return;e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<80){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* 이름: 잎처럼 내려앉는다 */
+if(!calm){let k=0;const n=$(".name");[n,...n.querySelectorAll("span")].forEach(el=>[...el.childNodes].forEach(c=>{if(c.nodeType===3&&c.textContent.length){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement("span");s.className="ch fall";s.style.setProperty("--k",k++);s.textContent=ch;s.setAttribute("aria-hidden","true");f.appendChild(s)});c.replaceWith(f)}}))}
+
+/* 표지: 떨어지는 잎사귀. 누르면 그 근처 잎이 멈췄다가 다시 떨어진다 */
+const hero=$("#hero"),lc=$("#leaves"),lx=lc.getContext("2d");let LW=0,LH=0,lRun=false,lVis=true,leaves=[],lastT=performance.now();
+function lsize(){const r=hero.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);LW=r.width;LH=r.height;lc.width=Math.round(LW*d);lc.height=Math.round(LH*d);lx.setTransform(d,0,0,d,0,0);
+  if(!leaves.length)leaves=Array.from({length:22},(_,i)=>({x:Math.random()*LW,y:Math.random()*LH,s:8+Math.random()*10,v:18+Math.random()*26,sw:Math.random()*6,r:Math.random()*6,c:i%5===0?"#b3233a":i%2?"#6f9a5c":"#a9c77d",held:0}));ldraw()}
+function ldraw(){lx.clearRect(0,0,LW,LH);const now=performance.now();leaves.forEach(l=>{lx.save();lx.translate(l.x,l.y);lx.rotate(l.r);lx.globalAlpha=.75;lx.fillStyle=l.c;lx.beginPath();lx.ellipse(0,0,l.s,l.s*.45,0,0,Math.PI*2);lx.fill();
+  lx.strokeStyle="rgba(255,255,255,.5)";lx.lineWidth=1;lx.beginPath();lx.moveTo(-l.s,0);lx.lineTo(l.s,0);lx.stroke();
+  if(l.held>now){lx.globalAlpha=1;lx.strokeStyle="#b3233a";lx.lineWidth=1.2;lx.setLineDash([3,3]);lx.beginPath();lx.arc(0,0,l.s+6,0,Math.PI*2);lx.stroke()}lx.restore()})}
+function lloop(now){const dt=Math.min(.05,(now-lastT)/1000);lastT=now;
+  leaves.forEach(l=>{if(l.held>now)return;l.y+=l.v*dt;l.x+=Math.sin(now/900+l.sw)*12*dt;l.r+=dt*.8;if(l.y>LH+20){l.y=-20;l.x=Math.random()*LW}});
+  ldraw();if(!calm&&lVis)requestAnimationFrame(lloop);else lRun=false}
+function startLeaves(){if(calm){ldraw();return}if(!lRun&&lVis){lRun=true;lastT=performance.now();requestAnimationFrame(lloop)}}
+new ResizeObserver(lsize).observe(hero);
+new IntersectionObserver(es=>es.forEach(e=>{lVis=e.isIntersecting;if(lVis)startLeaves()})).observe(hero);
+applyCalm();
+
+/* 누르면 그 자리에 '유예' 표시, 표지에서는 근처 잎이 멈춘다 */
+const holds=document.createElement("div");holds.className="holds";holds.setAttribute("aria-hidden","true");document.body.appendChild(holds);
+addEventListener("pointerdown",e=>{if(calm||RM||e.target.closest("input,button,a,#cv"))return;const h=document.createElement("span");h.className="hold";h.style.cssText=`--x:${e.clientX}px;--y:${e.clientY}px`;holds.appendChild(h);setTimeout(()=>h.remove(),1200);
+  const r=hero.getBoundingClientRect();if(e.clientY<r.bottom){const x=e.clientX-r.left,y=e.clientY-r.top,now=performance.now();leaves.forEach(l=>{if(Math.hypot(l.x-x,l.y-y)<140)l.held=now+1600})}});
+
+const RV=".panel,.flow li,.how>div,.key,.desc li,.card,.head,.single,.link";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero")||el.closest(".traits"))return;if(el.getBoundingClientRect().top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));rio.observe(el)});
+
+/* ---------- 능력치 ---------- */
+const S=[["공격력",70],["방어력",65],["민첩성",65],["정확성",60],["정신력",60]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx2,ly]=pt(i,122),an=Math.abs(lx2)<5?"middle":lx2>0?"start":"end";
+  const t=el("text",{x:lx2,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx2,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 허위종결 ---------- */
+const MAX=300,ATK=70,NEXT=40,dmg=ATK*1.8,now40=+(dmg*.4).toFixed(1),held=+(dmg*.6).toFixed(1);
+let hp=MAX,heldV=0,stage=0;
+const f1=v=>Number.isInteger(v)?v:v.toFixed(1);
+function draw(){$("#hpv").textContent=f1(hp);$("#cur").style.width=hp/MAX*100+"%";
+  $("#held").style.left=(hp-heldV)/MAX*100+"%";$("#held").style.width=heldV/MAX*100+"%";$("#heldv").textContent=heldV?`멈춰 둔 피해 ${f1(heldV)}`:"";
+  $("#mind").innerHTML=stage===1?'<span class="debuff">[판단저하] 정신력 60 → 40</span>':"정신력 60";
+  $$("#turns li").forEach((li,i)=>li.classList.toggle("now",stage===i+1));
+  $("#spGo").disabled=stage!==0;$("#spAtk").disabled=stage!==1;$("#spRest").disabled=stage!==1}
+function sm(t,on){const p=$("#spMsg");p.innerHTML=t;p.classList.toggle("on",!!on)}
+function looks(t){$("#looks").innerHTML="적이 보는 것: <b>"+t+"</b>"}
+function reset(){hp=MAX;heldV=0;stage=0;draw();looks("아직 아무 일도 없다");sm("허위종결을 눌러 보자. 빗금 친 부분이 멈춰 둔 피해다.")}
+$("#spGo").onclick=()=>{stage=1;hp=+(MAX-now40).toFixed(1);heldV=held;draw();fx($("#foe"),"shake");looks(`공격을 맞았다. 피해 ${f1(now40)}. 이제 끝났다.`);
+  sm(`공격력 70 &times; 1.8 = <b>126</b>. 그중 <b>${f1(now40)}</b>만 들어가고 <b>${f1(held)}</b>은 멈춰 두었다. 적의 정신력은 60 → 40.`,1)};
+function burst(extra){stage=2;const tot=+(heldV+extra).toFixed(1);hp=Math.max(0,+(hp-tot).toFixed(1));heldV=0;draw();fx($("#foe"),"shake");
+  looks(`끝난 줄 알았던 공격이 한꺼번에 터졌다. 피해 ${f1(tot)}!`);
+  sm(extra?`다음 턴. 공격 피해 ${extra} + 멈춰 둔 ${f1(held)} = <b>${f1(tot)}</b>이 한 번에. 에덴의 턴이 돌아와 판단저하도 풀렸다.`:`다음 턴. 공격하지 않았지만 멈춰 둔 <b>${f1(held)}</b>은 무조건 터진다. 판단저하도 풀렸다.`,1)}
+$("#spAtk").onclick=()=>burst(NEXT);$("#spRest").onclick=()=>burst(0);
+$("#spReset").onclick=reset;reset();
+
+/* ---------- 유예 ---------- */
+const room=$(".room"),cv=$("#cv"),cx=cv.getContext("2d");
+let W=0,H=0,see=true,pot=null,state="idle",run=false,last=performance.now();
+function size(){const r=room.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cx.setTransform(d,0,0,d,0,0);draw2()}
+new ResizeObserver(size).observe(room);
+/* 화분 그리기: 테라코타 화분, 흙, 잎맥 있는 잎, 붉은 꽃봉오리 */
+function leaf(x,y,ang,len,w,c1,c2){cx.save();cx.translate(x,y);cx.rotate(ang);
+  const g=cx.createLinearGradient(0,-w,0,w);g.addColorStop(0,c1);g.addColorStop(1,c2);cx.fillStyle=g;
+  cx.beginPath();cx.moveTo(0,0);cx.bezierCurveTo(len*.3,-w,len*.75,-w*.9,len,0);cx.bezierCurveTo(len*.75,w*.9,len*.3,w,0,0);cx.fill();
+  cx.strokeStyle="rgba(255,255,255,.45)";cx.lineWidth=1;cx.beginPath();cx.moveTo(1,0);cx.quadraticCurveTo(len*.5,-1.5,len*.95,0);cx.stroke();
+  cx.strokeStyle="rgba(255,255,255,.22)";for(let i=1;i<4;i++){const t=i/4;cx.beginPath();cx.moveTo(len*t,0);cx.lineTo(len*t+len*.12,-w*.55*(1-t*.4));cx.moveTo(len*t,0);cx.lineTo(len*t+len*.12,w*.55*(1-t*.4));cx.stroke()}
+  cx.restore()}
+function plant(k){[[-1.95,30,8],[-1.45,36,9],[-2.45,28,7.5],[-1.05,27,7],[-2.85,22,6]].forEach(([a,l,w],i)=>{
+    cx.strokeStyle="#4f7a3e";cx.lineWidth=1.6;cx.beginPath();cx.moveTo(0,-20*k);cx.quadraticCurveTo(Math.cos(a)*l*.25*k,-20*k+Math.sin(a)*l*.35*k,Math.cos(a)*l*.45*k,-20*k+Math.sin(a)*l*.45*k);cx.stroke();
+    leaf(Math.cos(a)*l*.45*k,-20*k+Math.sin(a)*l*.45*k,a,l*.8*k,w*k,i%2?"#9cc47a":"#86b464",i%2?"#5d8a48":"#4f7a3e")});
+  cx.fillStyle="#b3233a";cx.beginPath();cx.ellipse(4*k,-50*k,3.4*k,5*k,.3,0,7);cx.fill();cx.fillStyle="#d9586f";cx.beginPath();cx.ellipse(3*k,-51.5*k,1.4*k,2.4*k,.3,0,7);cx.fill()}
+function potBody(k){
+  const g=cx.createLinearGradient(-18*k,0,18*k,0);g.addColorStop(0,"#d48a5c");g.addColorStop(.35,"#c4734a");g.addColorStop(.8,"#9c5232");g.addColorStop(1,"#83432a");
+  cx.fillStyle=g;cx.beginPath();cx.moveTo(-16*k,-15*k);cx.lineTo(16*k,-15*k);cx.quadraticCurveTo(14*k,4*k,11.5*k,18*k);cx.quadraticCurveTo(0,20.5*k,-11.5*k,18*k);cx.quadraticCurveTo(-14*k,4*k,-16*k,-15*k);cx.fill();
+  cx.fillStyle="rgba(255,255,255,.18)";cx.beginPath();cx.moveTo(-11*k,-13*k);cx.lineTo(-7*k,-13*k);cx.lineTo(-6*k,15*k);cx.lineTo(-9*k,15*k);cx.fill();
+  cx.strokeStyle="rgba(0,0,0,.12)";cx.lineWidth=1;cx.beginPath();cx.moveTo(-14.5*k,-2*k);cx.quadraticCurveTo(0,0,14.5*k,-2*k);cx.stroke();
+  const r=cx.createLinearGradient(-21*k,0,21*k,0);r.addColorStop(0,"#e09a6c");r.addColorStop(.5,"#cd7d52");r.addColorStop(1,"#94502f");
+  cx.fillStyle=r;cx.beginPath();cx.roundRect?cx.roundRect(-20*k,-24*k,40*k,9.5*k,3*k):cx.rect(-20*k,-24*k,40*k,9.5*k);cx.fill();
+  cx.fillStyle="#3e2a1d";cx.beginPath();cx.ellipse(0,-23.5*k,16.5*k,3.4*k,0,0,7);cx.fill();
+  cx.fillStyle="rgba(255,255,255,.25)";cx.fillRect(-18*k,-23*k,36*k,1.4*k)}
+/* 에덴: 얼굴이 담긴 동그란 프레임. 보고 있음은 붉은 테, 보고 있지 않음은 흑백 */
+const faceImg=new Image();faceImg.onload=()=>{if(W)draw2()};faceImg.src="assets/eden.jpg";
+function drawEden(x,y,k,see){
+  const r=44*k,cy=y-96*k;
+  cx.save();cx.beginPath();cx.arc(x,cy,r,0,Math.PI*2);cx.clip();
+  if(faceImg.complete&&faceImg.naturalWidth)cx.drawImage(faceImg,215,150,560,560,x-r,cy-r,r*2,r*2);else{cx.fillStyle="#e6efd2";cx.fillRect(x-r,cy-r,r*2,r*2)}
+  if(!see){cx.globalCompositeOperation="saturation";cx.fillStyle="#808080";cx.fillRect(x-r,cy-r,r*2,r*2);cx.globalCompositeOperation="source-over";cx.fillStyle="rgba(232,235,228,.5)";cx.fillRect(x-r,cy-r,r*2,r*2)}
+  cx.restore();
+  cx.strokeStyle=see?"#b3233a":"#9aa39b";cx.lineWidth=3*k;cx.beginPath();cx.arc(x,cy,r+3*k,0,Math.PI*2);cx.stroke();
+  if(see){cx.strokeStyle="rgba(179,35,58,.35)";cx.lineWidth=1.2*k;cx.setLineDash([3*k,4*k]);cx.beginPath();cx.arc(x,cy,r+10*k,0,Math.PI*2);cx.stroke();cx.setLineDash([])}
+  cx.font=`700 ${Math.max(12,Math.round(14*k))}px `+getComputedStyle(document.body).fontFamily;cx.textAlign="center";cx.fillStyle=see?"#b3233a":"#5f6a62";cx.fillText(see?"보고 있음":"보고 있지 않음",x,cy+r+30*k);
+}
+function draw2(){cx.clearRect(0,0,W,H);
+  const k=Math.max(.8,Math.min(1.25,W/560)),floor=H*.86,shelfY=H*.3;
+  /* 온실 유리창과 빛 */
+  cx.strokeStyle="rgba(29,36,31,.07)";cx.lineWidth=2;for(let i=1;i<6;i++){cx.beginPath();cx.moveTo(W*i/6,0);cx.lineTo(W*i/6,floor);cx.stroke()}
+  cx.beginPath();cx.moveTo(0,H*.16);cx.lineTo(W,H*.16);cx.moveTo(0,H*.55);cx.lineTo(W,H*.55);cx.stroke();
+  const lg=cx.createLinearGradient(0,0,W*.4,H);lg.addColorStop(0,"rgba(255,255,255,.55)");lg.addColorStop(1,"rgba(255,255,255,0)");cx.fillStyle=lg;cx.beginPath();cx.moveTo(W*.3,0);cx.lineTo(W*.48,0);cx.lineTo(W*.7,floor);cx.lineTo(W*.45,floor);cx.fill();
+  /* 바닥 */
+  const fg=cx.createLinearGradient(0,floor,0,H);fg.addColorStop(0,"#cfc8ba");fg.addColorStop(1,"#bdb5a5");cx.fillStyle=fg;cx.fillRect(0,floor,W,H-floor);
+  cx.strokeStyle="rgba(0,0,0,.06)";for(let x=-H;x<W;x+=46){cx.beginPath();cx.moveTo(x,floor);cx.lineTo(x+(H-floor)*1.6,H);cx.stroke()}
+  /* 선반 */
+  const sx=W*.56,sw=W*.38;cx.fillStyle="rgba(0,0,0,.08)";cx.fillRect(sx+4,shelfY+10,sw,8);
+  const sg=cx.createLinearGradient(0,shelfY,0,shelfY+10);sg.addColorStop(0,"#a98760");sg.addColorStop(1,"#7a5d3e");cx.fillStyle=sg;cx.fillRect(sx,shelfY,sw,10);
+  cx.fillStyle="#5f472f";[sx+sw*.15,sx+sw*.85].forEach(bx=>{cx.beginPath();cx.moveTo(bx-3,shelfY+10);cx.lineTo(bx+3,shelfY+10);cx.lineTo(bx+3,shelfY+34);cx.lineTo(bx-14,shelfY+10);cx.fill()});
+  /* 에덴 */
+  const fk=Math.max(.5,Math.min(1.2,H/340)),ex=W*.17,ey=floor;drawEden(ex,ey,fk,see);
+  /* 화분 */
+  const base={x:sx+sw*.55,y:shelfY-18*k};const p=pot&&pot.x!=null?pot:{x:base.x,y:base.y,r:0};
+  if(state==="broken"){
+    cx.fillStyle="rgba(62,42,29,.85)";cx.beginPath();cx.ellipse(p.x+4,floor+3,30*k,6*k,0,0,7);cx.fill();
+    [[-26,-2,.4,"#c4734a"],[-12,1,-.8,"#9c5232"],[8,-1,1.2,"#d48a5c"],[22,2,-.3,"#83432a"],[-3,4,.2,"#cd7d52"],[33,0,.9,"#c4734a"]].forEach(([dx,dy,r,c],i)=>{cx.save();cx.translate(p.x+dx*k,floor+dy*k);cx.rotate(r);cx.fillStyle=c;cx.beginPath();cx.moveTo(-7*k,-3*k);cx.lineTo(6*k,-5*k);cx.lineTo(8*k,3*k);cx.lineTo(-5*k,4*k);cx.closePath();cx.fill();cx.fillStyle="rgba(255,255,255,.15)";cx.fillRect(-6*k,-3*k,10*k,1.2*k);cx.restore()});
+    cx.save();cx.translate(p.x-6*k,floor-4*k);cx.rotate(1.25);plant(k*.95);cx.restore();return}
+  const h=Math.max(0,floor-(p.y+18*k)),sh=Math.max(.15,1-h/(floor-shelfY+40));
+  if(p.y>shelfY-10*k){cx.fillStyle=`rgba(0,0,0,${.18*sh})`;cx.beginPath();cx.ellipse(p.x,floor+2,24*k*sh+6,5*sh+1,0,0,7);cx.fill()}
+  if(state==="falling"&&pot&&pot.vy>60){for(let i=3;i>0;i--)pot&&(()=>{const gy=p.y-pot.vy*.018*i;pot&&cxPot(p.x,gy,p.r-.04*i,k,.12*(4-i))})()}
+  if(state==="held"){const t=performance.now()/1000;cx.save();cx.translate(p.x,p.y-12*k);
+    const glow=cx.createRadialGradient(0,0,4,0,0,52*k);glow.addColorStop(0,"rgba(179,35,58,.16)");glow.addColorStop(1,"rgba(179,35,58,0)");cx.fillStyle=glow;cx.beginPath();cx.arc(0,0,52*k,0,7);cx.fill();
+    cx.strokeStyle="#b3233a";cx.lineWidth=1.4;cx.setLineDash([5,5]);cx.beginPath();cx.arc(0,0,44*k,0,7);cx.stroke();cx.setLineDash([]);
+    cx.lineWidth=1;cx.strokeStyle="rgba(179,35,58,.45)";for(let i=0;i<3;i++){const a=i*2.1;cx.beginPath();cx.arc(0,0,50*k,a,a+.5);cx.stroke()}
+    cx.fillStyle="#b3233a";cx.fillRect(-6,-62*k,4,13);cx.fillRect(2,-62*k,4,13);cx.restore()}
+  cxPot(p.x,p.y,p.r,k,1)}
+function cxPot(x,y,r,k,a){pot_draw(x,y,r,k,a)}
+function pot_draw(x,y,r,k,a){cx.save();cx.globalAlpha=a;cx.translate(x,y);cx.rotate(r);plant(k);potBody(k);cx.restore()}
+function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;
+  if(state==="falling"){pot.vy+=900*dt;pot.y+=pot.vy*dt;pot.r+=dt*1.6;if(pot.y>=H*.86-18*Math.max(.8,Math.min(1.25,W/560))){state="broken";tm("쨍그랑. 화분이 바닥에 떨어져 깨졌다. 이미 끝난 일이라 멈출 수도, 되돌릴 수도 없다.");btns()}}
+  draw2();if(state==="falling"||state==="held")requestAnimationFrame(loop);else run=false}
+function start(){if(!run){run=true;last=performance.now();requestAnimationFrame(loop)}}
+function tm(t,on){const p=$("#tMsg");p.textContent=t;p.classList.toggle("on",!!on)}
+function btns(){$("#tHold").disabled=state!=="falling";$("#tGo").disabled=state!=="held";$("#tDrop").textContent=state==="idle"?"화분 떨어뜨리기":"처음부터";$("#roomLbl").textContent=state==="held"?"GREENHOUSE // 유예 중":"GREENHOUSE"}
+$("#tDrop").onclick=()=>{if(state!=="idle"){state="idle";pot=null;draw2();btns();tm("화분 떨어뜨리기를 누른 뒤, 떨어지는 중에 유예를 눌러 보자.");return}
+  {const k=Math.max(.8,Math.min(1.25,W/560));pot={x:W*.56+W*.38*.55,y:H*.3-18*k,vy:calm?60:-60,r:0}};state="falling";btns();
+  if(calm){pot.y=H*.56;pot.r=.3;draw2();tm("화분이 떨어지고 있다. 지금 유예를 누를 수 있다.",1)}else{tm("화분이 선반에서 떨어진다!",1);start()}};
+$("#tHold").onclick=()=>{
+  if(!see){tm("에덴이 보고 있지 않아 화분이 떨어지는 걸 알아차리지 못했다. 인지하지 못한 현상은 유예할 수 없다.");return}
+  state="held";btns();draw2();if(!calm)start();tm("유예. 떨어지던 화분이 공중에 멈췄다. 사라진 것이 아니라 잠시 미뤄 둔 것이다.",1)};
+$("#tGo").onclick=()=>{state="falling";btns();tm("재개. 멈춰 있던 화분이 하던 낙하를 그대로 이어 간다.",1);if(calm){pot.y=H*.86;state="broken";btns();draw2();tm("재개. 멈춰 있던 화분이 낙하를 이어 가 바닥에 떨어졌다.")}else start()};
+$$("[data-see]").forEach(b=>b.onclick=()=>{see=b.dataset.see==="1";$$("[data-see]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw2();
+  tm(see?"에덴이 보고 있다. 화분이 떨어지면 알아차릴 수 있다.":"에덴이 보고 있지 않다. 화분이 떨어져도 알아차리지 못한다.")});
+btns();
+
+/* 특징: 두드리기 박자, 비뚤어진 카드 */
+const taps=$$("#taps i");let tp=0;
+setInterval(()=>{if(calm||document.hidden)return;const pat=[1,0,1,1,0,1,0,0,1,0,1,0];taps.forEach(t=>t.classList.remove("on"));if(pat[tp%pat.length])taps[tp%taps.length].classList.add("on");tp++},260);
+const cr=$("#crooked");const fixIt=()=>{cr.classList.add("fixed");cr.querySelector(".idx").textContent="9.4 — 바로잡았다"};
+cr.addEventListener("click",fixIt);cr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();fixIt()}});
+})();
+</script>
+
+</body>
+</html>
