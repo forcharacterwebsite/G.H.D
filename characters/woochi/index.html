@@ -6,6 +6,7 @@
 <title>JEON WOOCHI // G.H.D</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="비르투스 대원 전우치 프로필">
+<script>try{var g=localStorage.getItem("kross-gate");if(!/#calm$/.test(location.hash)&&g!=="calm"&&!matchMedia("(prefers-reduced-motion: reduce)").matches||/#full$/.test(location.hash))document.documentElement.classList.add("js")}catch(e){document.documentElement.classList.add("js")}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -46,7 +47,8 @@ button,input{font:inherit;color:inherit}
 .nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 10px}
 .nav__home:hover{background:var(--fg);color:var(--bg)}
 @media (max-width:640px){.nav__name span{display:none}}
-@media (max-width:480px){.nav__name{font-size:19px;gap:8px}.nav .in{gap:10px}}
+.nav__name{flex:none}.nav__idx{flex:1 1 0}
+@media (max-width:480px){.nav__name{font-size:18px;gap:8px}.nav__name img{width:22px;height:22px}.nav .in{gap:10px}}
 
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
@@ -55,7 +57,7 @@ button,input{font:inherit;color:inherit}
 .tag b{color:var(--vir);font-weight:500}
 .motto{display:inline-block;margin:22px 0 0;padding:4px 12px;border:1px solid var(--amb);color:var(--amb);font-family:var(--f-mono);font-size:13px;letter-spacing:.08em}
 .name{font-family:var(--f-disp);font-weight:900;font-size:clamp(64px,9.4vw,156px);white-space:nowrap;line-height:.8;margin:16px 0 0;text-transform:uppercase;letter-spacing:-.005em}
-.name span{display:block;color:var(--vir)}
+.name .w2{display:block;color:var(--vir)}
 .ko{font-weight:700;font-size:clamp(28px,3.4vw,40px);margin:18px 0 0}
 .rank{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:7px 14px 7px 10px;border:1px solid var(--line2);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em}
 .rank img{width:22px;height:22px}
@@ -286,6 +288,58 @@ body.calm .disc{animation:none}
 .foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
 .foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
 @media (prefers-reduced-motion:reduce){.eq i,.disc{animation:none}.hp__bar i,.bar i,.radar__shape{transition:none}}
+
+/* ===== FX: 효과 (효과 줄이기 설정 시 모두 꺼짐) ===== */
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:rgba(240,225,218,.06);pointer-events:none}
+.np i{display:block;height:100%;width:0;max-width:calc(100% - 6px);background:linear-gradient(90deg,var(--vir2),var(--vir),var(--amb));position:relative}
+.np i::after{content:"";position:absolute;right:-5px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--amb);box-shadow:0 0 12px var(--amb)}
+.rips{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.rip{position:absolute;left:0;top:0;width:0;height:0}
+.rip i{position:absolute;left:-40px;top:-40px;width:80px;height:80px;border-radius:50%;border:2px solid var(--amb);opacity:0;animation:rip .9s ease-out forwards}
+.rip i:nth-child(2){animation-delay:.12s;border-color:var(--vir)}
+.rip i:nth-child(3){animation-delay:.24s}
+@keyframes rip{0%{transform:scale(.1);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.fly{position:absolute;z-index:4;font-size:var(--s,24px);line-height:1;color:var(--c,var(--amb));pointer-events:none;animation:fly var(--t,3s) ease-out forwards;text-shadow:0 0 14px rgba(242,182,50,.45)}
+@keyframes fly{0%{transform:translate(0,10px) rotate(0) scale(.6);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx),var(--dy,-220px)) rotate(var(--rot)) scale(1);opacity:0}}
+.js .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .rv.shown{opacity:1;transform:none}
+.head__no{position:relative;transition:background .4s}
+.head__no::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1px solid var(--vir);opacity:0;pointer-events:none}
+.sec.live .head__no{background:rgba(192,38,42,.14)}
+.sec.live .head__no::after{animation:ping 1.8s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.7);opacity:0}}
+.sleeve{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.sleeve:hover .disc{animation-duration:2.2s}
+.name .ch{display:inline-block;animation:hop .8s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--k)*55ms + .15s)}
+.name:hover .ch{animation:bob .6s ease-in-out;animation-delay:calc(var(--k)*40ms)}
+@keyframes hop{0%{transform:translateY(45%);opacity:0}100%{transform:none;opacity:1}}
+@keyframes bob{50%{transform:translateY(-12%)}}
+.tk,.trait,.inv .panel{transition:border-color .3s,box-shadow .3s}
+.tk:hover,.trait:hover,.inv .panel:hover{border-color:var(--vir);box-shadow:inset 0 -3px 0 var(--vir)}
+#s07 .panel{position:relative;overflow:hidden}
+.sweep{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(242,182,50,.2) 45%,rgba(228,71,63,.16) 55%,transparent 70%);transform:translateX(-110%)}
+.sweep.go{animation:sweep 1.1s ease-out}
+@keyframes sweep{to{transform:translateX(110%)}}
+#enemies .unit{transition:filter .6s,opacity .6s}
+#enemies.hush .unit{filter:saturate(.25) brightness(.75)}
+#enemies.hush .unit b{filter:none}
+.unit.bump b{animation:bump .55s}
+@keyframes bump{40%{transform:scale(1.35)}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+.hit{animation:hit .7s}
+@keyframes hit{0%{box-shadow:inset 0 0 0 200px rgba(228,71,63,.45)}100%{box-shadow:inset 0 0 0 200px rgba(228,71,63,0)}}
+.solo__out b.pop{animation:pop2 .6s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop2{0%{transform:scale(.3)}100%{transform:scale(1)}}
+.stage__mute{position:absolute;right:10px;bottom:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--dim);opacity:0;pointer-events:none}
+.stage__mute.on{animation:mute 1.6s}
+@keyframes mute{10%,70%{opacity:1}100%{opacity:0}}
+.wave path{animation:wv 1.4s linear infinite}
+@keyframes wv{to{transform:translateX(-60px)}}
+body.calm .rv{opacity:1!important;transform:none!important;transition:none!important}
+body.calm .name .ch,body.calm .wave path,body.calm .sec.live .head__no::after{animation:none}
+body.calm .sleeve{transform:none}
+@media (prefers-reduced-motion:reduce){.name .ch,.wave path,.sec.live .head__no::after,.rip i,.fly{animation:none}.rv{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -298,6 +352,7 @@ body.calm .disc{animation:none}
     </nav>
     <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
   </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
 </header>
 
 <main id="top">
@@ -306,7 +361,7 @@ body.calm .disc{animation:none}
     <div>
       <p class="mono tag"><span>FILE No.006</span><span>Virtus // <b>Agent</b></span></p>
       <p class="motto">[ 평화의 뮤지션! ]</p>
-      <h1 class="name">Jeon<span>Woochi</span></h1>
+      <h1 class="name" aria-label="Jeon Woochi">Jeon<span class="w2">Woochi</span></h1>
       <p class="ko">전우치</p>
       <p class="rank"><img src="../../assets/factions/virtus.png" alt="" width="22" height="22">비르투스 대원</p>
       <blockquote class="quote">&ldquo;오늘 만든 곡, 들어보겠나?&rdquo;</blockquote>
@@ -318,7 +373,7 @@ body.calm .disc{animation:none}
         <div><dt>Weight</dt><dd>표준</dd></div>
       </dl>
     </div>
-    <div class="sleeve">
+    <div class="sleeve" id="sleeve">
       <span class="disc" aria-hidden="true"></span>
       <figure class="sheet">
         <img src="assets/woochi.jpg" alt="전우치 전신 그림. 노란 헤드폰을 쓴 검은 단발머리 청년이 호박색 눈으로 미소 지으며 통기타를 연주한다. 검은 재킷 아래로 흰 소매가 보이고 가슴에 붉은 방패 배지를 달았다" width="800" height="1280">
@@ -461,6 +516,7 @@ body.calm .disc{animation:none}
         <details class="orig"><summary>신청서 원문 보기</summary><p>예로부터 음악은 아군의 사기를 올리는데 큰 도움을 주곤 했다. 해당 공간의 불필요한 소리는 줄이고 자신의 노래는 키운다. 아군의 공격력이 1.3배가 되고, 적군의 피해량이 0.8배가 된다. 해당 효과는 다음 자신의 턴이 종료될때까지 유지된다. 만약 아군 진영중 자신 혼자만 남은 상태라면, 사기를 올려줄 수 있는 동료가 남아있지 않다면 특수능력을 사용한 턴에 피해량 다이스를 굴려 나온 데미지의 2.5배를 지정 한명에게 가한다.</p></details>
       </div>
       <div class="panel">
+        <span class="sweep" id="sweep" aria-hidden="true"></span>
         <p class="idx">7.1 &mdash; 발동해 보기</p>
         <div class="seg" role="group" aria-label="상황 고르기"><button type="button" id="mTeam" aria-pressed="true">동료가 남아 있다</button><button type="button" id="mSolo" aria-pressed="false">혼자 남았다</button></div>
         <ol class="timeline" id="tl">
@@ -507,7 +563,7 @@ body.calm .disc{animation:none}
       </div>
       <div class="panel">
         <p class="idx">8.1 &mdash; 직접 조율해 보기</p>
-        <div class="stage"><canvas id="cv" role="img" aria-label="우치 주변의 소리 근원지와 음파 그림"></canvas><span class="stage__lbl">WOOCHI'S EAR // 음파 시야</span></div>
+        <div class="stage"><canvas id="cv" role="img" aria-label="우치 주변의 소리 근원지와 음파 그림"></canvas><span class="stage__lbl">WOOCHI'S EAR // 음파 시야</span><span class="stage__mute" id="mute">&middot; &middot; &middot; 무음</span></div>
         <div class="pick" role="group" aria-label="소리 근원지 고르기" id="pick"></div>
         <div class="amp" id="ampRow"><label for="amp">진폭</label><input type="range" id="amp" min="0" max="200" step="10" value="100"><output id="ampV" for="amp">100%</output></div>
         <p class="status" id="tp" aria-live="polite">근원지를 고르고 진폭을 움직여 보자.</p>
@@ -567,7 +623,7 @@ body.calm .disc{animation:none}
 
 <section class="outro">
   <div class="in">
-    <svg class="wave" viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q 15 0 30 14 T 60 14 T 90 14 T 120 14 T 150 14 T 180 14 T 210 14 T 240 14 T 270 14 T 300 14 T 330 14 T 360 14 T 390 14 T 420 14 T 450 14 T 480 14 T 510 14 T 540 14 T 570 14 T 600 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <svg class="wave" viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q 15 0 30 14 T 60 14 T 90 14 T 120 14 T 150 14 T 180 14 T 210 14 T 240 14 T 270 14 T 300 14 T 330 14 T 360 14 T 390 14 T 420 14 T 450 14 T 480 14 T 510 14 T 540 14 T 570 14 T 600 14 T 630 14 T 660 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
     <p class="outro__m" style="margin-top:28px">For a better world</p>
     <p class="outro__q">[ 글쎄. 더 나은 세상을 만들 수 있다면 그것만으로 된 것 아니겠나? ]</p>
     <p class="outro__o">오너 한마디 &mdash; 잘 부탁드립니다!</p>
@@ -585,7 +641,7 @@ let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
 const h=/^#(full|calm)$/.exec(location.hash);if(h){pref=h[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
 const calm=RM||pref==="calm";if(calm)document.body.classList.add("calm");
 const links=$$(".nav__idx a");
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
 $$("section.sec").forEach(s=>io.observe(s));
 
 /* ---------- stats ---------- */
@@ -615,20 +671,28 @@ function fmt(v){return Number.isInteger(v)?v:v.toFixed(1)}
 function drawSp(){
   const on=step>=1&&step<=3&&!solo;
   $("#allies").innerHTML=ALLY.map(([ic,n,s,me])=>{const out=solo&&!me;const v=on&&!out?BASE*1.3:BASE;
-    return `<div class="unit${me?" me":""}${out?" out":""}${on&&!out?" up":""}"><i>${ic}</i><span>${n}<small>${out?"전투 불능":s}</small></span><b>${out?"–":fmt(v)}</b></div>`}).join("");
+    return `<div class="unit${me?" me":""}${out?" out":""}${on&&!out?" up":""}"><i>${ic}</i><span>${n}<small>${out?"전투 불능":s}</small></span><b data-k="${n}" data-v="${out?"–":v}"></b></div>`}).join("");
   $("#enemies").innerHTML=ENEMY.map(([ic,n,s],k)=>{const hit=solo&&step===1&&k===0;const v=on?BASE*.8:BASE;
-    return `<div class="unit${on?" down":""}"><i>${ic}</i><span>${n}<small>${hit?"지정 대상":s}</small></span><b>${fmt(v)}</b></div>`}).join("");
+    return `<div class="unit${on?" down":""}"><i>${ic}</i><span>${n}<small>${hit?"지정 대상":s}</small></span><b data-k="${n}" data-v="${v}"></b></div>`}).join("");
   $$("#tl li").forEach((li,i)=>li.classList.toggle("now",!solo&&step===i+1||solo&&step===1&&i===0));
   $("#spNext").disabled=solo||step===0||step>=4;
   $("#spCast").disabled=step>=1&&step<=3;
   $("#solo").classList.toggle("show",solo);
+  tweenNums();$("#enemies").classList.toggle("hush",on);
   const d=+$("#dice").value;$("#dv").textContent=d;$("#dmg").textContent=solo&&step===1?fmt(d*2.5):"–";
 }
+const prevV={};
+function tweenNums(){$$("#allies b,#enemies b").forEach(b=>{const k=b.dataset.k,v=b.dataset.v;
+  if(v==="–"){b.textContent="–";prevV[k]=null;return}
+  const to=+v,from=prevV[k]==null?to:prevV[k];prevV[k]=to;
+  if(calm||from===to){b.textContent=fmt(to);return}
+  const u=b.parentElement;u.classList.remove("bump");void u.offsetWidth;u.classList.add("bump");
+  const s0=performance.now(),f=n=>{const q=Math.min(1,(n-s0)/650),e=1-Math.pow(1-q,3);b.textContent=fmt(Math.round((from+(to-from)*e)*10)/10);if(q<1)requestAnimationFrame(f)};requestAnimationFrame(f)})}
 const msg=(t,on)=>{const p=$("#sp");p.textContent=t;p.classList.toggle("on",!!on)};
 function setMode(s){solo=s;step=0;$("#mTeam").setAttribute("aria-pressed",!s);$("#mSolo").setAttribute("aria-pressed",s);
   msg(s?"동료가 모두 쓰러지고 우치만 남은 상황. 연주하면 노래가 한 명을 향한 공격이 된다.":"연주를 시작하면 아군과 적군의 수치가 바뀐다.");drawSp()}
 $("#mTeam").onclick=()=>setMode(false);$("#mSolo").onclick=()=>setMode(true);
-$("#spCast").onclick=()=>{step=1;drawSp();
+$("#spCast").onclick=()=>{step=1;drawSp();castFx();
   if(solo){const d=+$("#dice").value;msg(`사기를 올려 줄 동료가 없다. 다이스 ${d}의 2.5배인 ${fmt(d*2.5)}을(를) 적군 가에게 가한다.`,1)}
   else msg("불필요한 소리는 줄고 노래는 커진다. 아군 공격력 ×1.3, 적군 피해량 ×0.8.",1)};
 $("#spNext").onclick=()=>{step++;drawSp();
@@ -712,7 +776,7 @@ $$("#pick button").forEach(b=>b.onclick=()=>{sel=b.dataset.id;focus=false;const 
 $("#amp").oninput=e=>{const s=src(sel);s.amp=+e.target.value;sync();
   if(s.amp===0)tp(s.id==="wall"?"벽의 진폭이 0이 되었다. 이제 무엇을 부딪쳐도, 부숴도 아무 소리가 나지 않는다.":`${s.name}의 진폭이 0이 되었다. 소리가 사라졌다.`,1);
   else tp(`${s.name}의 진폭 ${s.amp}%. 1시간이 지나면 100%로 돌아간다.`,1)};
-$("#knock").onclick=()=>{const w=src("wall");const first=!w.heard;w.heard=true;
+$("#knock").onclick=()=>{const w=src("wall");const first=!w.heard;w.heard=true;knockFx(w.amp);
   if(!calm){const t=(performance.now()-t0)/1000;[0,.18,.36].forEach(d=>setTimeout(()=>emit(w,(performance.now()-t0)/1000),d*1000))}
   if(w.amp===0)tp("벽을 세게 쳤지만 아무 소리도 나지 않는다. 진폭이 0이기 때문이다.",1);
   else tp(first?"벽에서 소리가 났다. 이제 벽의 음파가 보이니 진폭을 조절할 수 있다.":"벽에서 소리가 난다.",1);
@@ -722,6 +786,52 @@ $("#focus").onclick=()=>{focus=!focus;sync();const s=src(sel);
 $("#share").onclick=()=>{share=!share;sync();tp(share?"우치가 보는 음파를 동료에게도 보여 주고 있다.":"음파는 다시 우치에게만 보인다.",share)};
 $("#hour").onclick=()=>{SRC.forEach(s=>s.amp=100);focus=false;sync();tp("1시간이 지나 조절했던 진폭이 모두 원래대로 돌아왔다.")};
 sync();
+
+/* ---------- 효과 ---------- */
+const NOTES=["♪","♫","♩","♬"];
+function fly(box,x,y,o={}){if(calm)return;const e=document.createElement("span");e.className="fly";e.setAttribute("aria-hidden","true");
+  e.textContent=NOTES[Math.random()*NOTES.length|0];
+  e.style.cssText=`left:${x}px;top:${y}px;--s:${o.s||18+Math.random()*16}px;--dx:${(Math.random()-.5)*(o.spread||120)}px;--dy:${o.dy||-(140+Math.random()*120)}px;--rot:${(Math.random()-.5)*60}deg;--t:${o.t||2.6+Math.random()}s;--c:${o.c||(Math.random()<.6?"var(--amb)":"var(--vir)")}`;
+  box.appendChild(e);setTimeout(()=>e.remove(),4200)}
+function relPos(box,el){const a=box.getBoundingClientRect(),b=el.getBoundingClientRect();return[b.left-a.left+b.width/2,b.top-a.top+b.height/2]}
+function castFx(){if(calm)return;const box=$("#s07 .panel");
+  const sw=$("#sweep");sw.classList.remove("go");void sw.offsetWidth;sw.classList.add("go");
+  if(solo){box.classList.remove("shake");void box.offsetWidth;box.classList.add("shake");
+    const tg=$("#enemies .unit");tg.classList.remove("hit");void tg.offsetWidth;tg.classList.add("hit");
+    const o=$("#dmg");o.classList.remove("pop");void o.offsetWidth;o.classList.add("pop");
+    const [x,y]=relPos(box,tg);for(let i=0;i<5;i++)setTimeout(()=>fly(box,x-20,y,{c:"var(--vir)",spread:80,dy:-90}),i*80)}
+  else{const me=$("#allies .unit.me");const [x,y]=relPos(box,me);for(let i=0;i<9;i++)setTimeout(()=>fly(box,x-10,y,{spread:260}),i*110)}}
+function knockFx(amp){const st=$(".stage");if(calm)return;
+  if(amp>0){st.classList.remove("shake");void st.offsetWidth;st.classList.add("shake")}
+  else{const m=$("#mute");m.classList.remove("on");void m.offsetWidth;m.classList.add("on")}}
+
+/* 재생 막대처럼 움직이는 스크롤 진행 */
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+if(!calm){
+  /* 이름 글자가 박자에 맞춰 튀어 오른다 */
+  let k=0;const wrap=el=>[...el.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();[...n.textContent].forEach(c=>{const s=document.createElement("span");s.className="ch";s.style.setProperty("--k",k++);s.textContent=c;s.setAttribute("aria-hidden","true");f.appendChild(s)});n.replaceWith(f)}else wrap(n)});
+  wrap($(".name"));
+
+  /* 스크롤하면 내용이 차례로 올라온다 */
+  const RV=".head,.panel,.rules>div,.parts li,.bars li,.facts>div,.link,.idcard,.look__pics .sheet,.ab__name,.ab__ko,.ab__one,.keys,.lhs .panel";
+  const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("shown");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+  $$(RV).forEach(el=>{if(el.closest(".hero"))return;const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));el.classList.add("rv");rio.observe(el)});
+
+  /* 누른 자리에서 음파가 퍼진다 */
+  const rips=document.createElement("div");rips.className="rips";rips.setAttribute("aria-hidden","true");document.body.appendChild(rips);
+  addEventListener("pointerdown",e=>{if(e.target.closest("input,canvas"))return;const r=document.createElement("span");r.className="rip";r.style.transform=`translate(${e.clientX}px,${e.clientY}px)`;r.innerHTML="<i></i><i></i><i></i>";rips.appendChild(r);setTimeout(()=>r.remove(),1300)});
+
+  /* 표지: 기타에서 음표가 떠오르고, 그림이 포인터를 따라 기운다 */
+  const sl=$("#sleeve");let heroOn=true;
+  new IntersectionObserver(es=>es.forEach(e=>heroOn=e.isIntersecting)).observe(sl);
+  setInterval(()=>{if(!heroOn||document.hidden)return;const w=sl.clientWidth,h=sl.clientHeight;fly(sl,w*(.25+Math.random()*.4),h*(.3+Math.random()*.2))},900);
+  if(matchMedia("(hover:hover)").matches){
+    sl.addEventListener("pointermove",e=>{const r=sl.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sl.style.setProperty("--ry",x*12+"deg");sl.style.setProperty("--rx",-y*10+"deg")});
+    sl.addEventListener("pointerleave",()=>{sl.style.setProperty("--ry","0deg");sl.style.setProperty("--rx","0deg")});
+  }
+}
 })();
 </script>
 </body>
