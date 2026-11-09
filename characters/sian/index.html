@@ -604,18 +604,8 @@ $$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().
 
 /* 누르면 그 자리에서 낱말이 떠오른다 */
 const QUOTES=[
-  ["여신이여, 분노를 노래하소서","호메로스 《일리아스》"],
-  ["사느냐 죽느냐, 그것이 문제로다","셰익스피어 《햄릿》"],
-  ["온 세상은 무대, 모든 남녀는 배우일 뿐","셰익스피어 《뜻대로 하세요》"],
-  ["나 보기가 역겨워 가실 때에는","김소월 〈진달래꽃〉"],
-  ["님은 갔습니다","한용운 〈님의 침묵〉"],
-  ["최고의 시절이었고, 최악의 시절이었다","디킨스 《두 도시 이야기》"],
-  ["인간은 노력하는 한 방황한다","괴테 《파우스트》"],
-  ["여기 들어오는 자, 모든 희망을 버려라","단테 《신곡》"],
-  ["초원의 빛이여, 꽃의 영광이여","워즈워스 〈영생불멸의 노래〉"],
-  ["아름다움은 진리, 진리는 아름다움","키츠 〈그리스 항아리에 부치는 노래〉"],
-  ["펜은 칼보다 강하다","불워리턴 《리슐리외》"],
-  ["진실한 사랑의 길은 결코 순탄하지 않았다","셰익스피어 《한여름 밤의 꿈》"]
+  ["오 나의 용골을 터뜨리라! 오 나를 바다로 가도록 하라!","랭보 〈취한 배〉"],
+  ["모든 사람은 자기 운명의 창시자다.","아피우스 클라우디우스"]
 ];
 let qOrder=[],qi=0;
 function nextQ(){if(qi>=qOrder.length){qOrder=QUOTES.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0}return QUOTES[qOrder[qi++]]}
@@ -660,7 +650,7 @@ $$("[data-m]").forEach(b=>b.onclick=()=>{mode=b.dataset.m;rounds=0;used=false;dr
   sm({team:"동료가 곁에 있다. 낭송하면 아군 모두가 강해진다.",solo:"동료가 모두 쓰러지고 시안만 남았다. 낭송하면 힘이 시안 한 명에게 실린다.",fail:"발동에 실패하는 경우. 오히려 시안이 약해진다."}[mode])});
 $("#spCast").onclick=()=>{rounds=2;used=true;const pg=$("#page");
   if(mode==="fail"){page("<small>EPIC // 서사시</small>&hellip;잉크가 번졌다");fx(pg,"inked");fx($("#spPanel"),"shake");sm("발동에 실패했다. 2라운드 동안 시안의 공격력이 <b>60 → 42</b> (×0.7).",1)}
-  else{page("<small>EPIC // 서사시</small>&ldquo;여신이여, 분노를 노래하소서!&rdquo;");fx(pg,"gold");const r=pg.getBoundingClientRect();float(r.left+r.width/2,r.top+20,QUOTES[0]);
+  else{page("<small>EPIC // 서사시</small>&ldquo;여신이여, 분노를 노래하소서!&rdquo;");fx(pg,"gold");const r=pg.getBoundingClientRect();float(r.left+r.width/2,r.top+20,["여신이여, 분노를 노래하소서!",""]);
     sm(mode==="team"?"이번 전투가 서사시가 되었다. 2라운드 동안 아군 모두 공격력 ×1.2, 정확성 +15.":"홀로 남은 영웅의 노래. 2라운드 동안 시안의 공격력 ×1.7 (60 → 102), 정확성 +10 (70 → 80).",1)}
   drawP()};
 $("#spNext").onclick=()=>{rounds--;drawP();sm(rounds>0?"한 라운드가 지났다. 효과는 1라운드 더 남아 있다.":"두 라운드가 모두 지나 수치가 원래대로 돌아왔다.",rounds>0);if(!rounds)page("<small>EPIC // 서사시</small>이야기는 다음 장으로")};
