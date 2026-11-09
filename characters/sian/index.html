@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>제 1장, 홍시안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="사피엔티아 대원 홍시안 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=Cormorant+Garamond:ital,wght@1,600;1,700&family=Gowun+Batang:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: 사피엔티아. 한 권의 시집처럼 짠 페이지. 장(章) 번호 I~XI, 맑은 분홍빛 종이에 짙은 잉크, 사피엔티아 청색과 시안의 머리색(장미), 눈동자색(금빛 별) */
+:root{
+  --bg:#f7f3f5;--paper:#fffdfd;--ink:#1e1b2c;--dim:#6b6579;--line:rgba(30,27,44,.12);--line2:rgba(30,27,44,.26);
+  --sap:#2f56b0;--rose:#c95482;--rose2:#f2b8cc;--gold:#b48a1c;--glow:#efe27a;--night:#151a33;
+  --f-disp:"Nanum Myeongjo","AppleMyungjo","Batang",serif;
+  --f-it:"Cormorant Garamond","Times New Roman",serif;
+  --f-body:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:repeating-linear-gradient(0deg,transparent 0 33px,rgba(47,86,176,.045) 33px 34px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1180px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(247,243,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-weight:800;font-size:19px;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;gap:0;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:16px;text-decoration:none;padding:4px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--ink);border-color:var(--rose)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--ink);color:var(--paper)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.np i{display:block;height:100%;width:0;max-width:calc(100% - 8px);background:var(--ink);position:relative}
+.np i::after{content:"";position:absolute;right:-6px;top:-5px;width:12px;height:12px;border-radius:50% 0 50% 50%;background:var(--rose);transform:rotate(-45deg)}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:16px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--sap);font-weight:500}
+.chap{margin:22px 0 0;font-family:var(--f-it);font-style:italic;font-weight:600;font-size:clamp(18px,2vw,22px);color:var(--rose)}
+.name{font-family:var(--f-disp);font-weight:800;font-size:clamp(64px,11vw,148px);line-height:1;margin:8px 0 0;letter-spacing:-.02em;white-space:nowrap}
+.name .cap{color:var(--rose)}
+.name .ch{display:inline-block}
+.en{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:clamp(24px,3vw,36px);margin:6px 0 0;color:var(--sap)}
+.quote{position:relative;font-family:var(--f-disp);font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.6;margin:26px 0 0;max-width:22em;padding-left:22px;border-left:3px solid var(--rose2);min-height:3.2em}
+.quote .cur{display:inline-block;width:2px;height:1em;background:var(--rose);vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:620px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line2)}
+.dims div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:2px 0 0;font-family:var(--f-disp);font-weight:800;font-size:clamp(20px,2.4vw,26px);line-height:1.2}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.plate{position:relative;justify-self:center;width:100%;max-width:420px;margin:0;background:var(--paper);padding:16px 16px 12px;border:1px solid var(--line2);box-shadow:8px 8px 0 var(--rose2),0 24px 50px rgba(30,27,44,.12);transform:rotate(-1.2deg)}
+.plate::before{content:"";position:absolute;inset:7px;border:1px solid var(--line);pointer-events:none}
+.plate img{width:100%;position:relative}
+.plate figcaption{position:relative;display:flex;justify-content:space-between;gap:10px;padding-top:8px;font-family:var(--f-it);font-style:italic;font-weight:600;font-size:15px;color:var(--dim)}
+.spark{position:absolute;width:var(--s);height:var(--s);left:var(--x);top:var(--y);pointer-events:none;background:var(--glow);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:tw 2.8s ease-in-out infinite;animation-delay:var(--d);filter:drop-shadow(0 0 4px var(--gold))}
+@keyframes tw{0%,100%{opacity:.2;transform:scale(.5) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(45deg)}}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.plate{max-width:340px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,100px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:end;margin-bottom:clamp(26px,4vw,40px)}
+.head__no{grid-row:span 2;position:relative;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(56px,8vw,96px);line-height:.8;color:var(--rose);min-width:1.3em;transition:color .4s}
+.head__no::after{content:"";position:absolute;left:4px;top:-14px;width:14px;height:0;background:var(--rose);clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%);transition:height .4s}
+.sec.live .head__no::after{height:40px}
+.head__en{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:17px;color:var(--sap)}
+.head h2{font-family:var(--f-disp);font-weight:800;font-size:clamp(30px,4.6vw,54px);line-height:1.15;margin:0;min-width:0}
+.panel{background:var(--paper);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--sap);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:14px}
+
+/* I identity */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.card{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;background:var(--paper);border:1px solid var(--line2);padding:18px;align-self:start;box-shadow:6px 6px 0 var(--rose2)}
+.card img{width:110px;height:110px;object-fit:cover;border:1px solid var(--line)}
+.card__n{font-family:var(--f-disp);font-weight:800;font-size:30px;line-height:1.1;margin:0}
+.card__e{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:18px;color:var(--sap);margin:0}
+.card dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.card dt{color:var(--dim)}.card dd{margin:0;font-weight:500}
+.card__sig{grid-column:1/-1;margin:0;padding-top:10px;border-top:1px dashed var(--line2);font-family:var(--f-it);font-style:italic;font-size:15px;color:var(--dim)}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--rose);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:700}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.card{grid-template-columns:84px minmax(0,1fr)}.card img{width:84px;height:84px}.card__n{font-size:24px}}
+
+/* II appearance */
+.look{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look .plate{transform:none;box-shadow:6px 6px 0 var(--rose2)}
+.desc{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.desc li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;align-items:center;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.desc i{width:36px;height:36px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.desc b{display:block;font-size:18px}
+.desc span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+.credit{margin:14px 0 0;display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px dashed var(--line2)}
+.credit b{font-family:var(--f-disp);font-size:20px}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look .plate{max-width:360px}}
+
+/* III */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.key{padding:clamp(22px,3vw,34px) 20px;background:var(--paper);border:1px solid var(--line);text-align:center}
+.key b{display:block;font-family:var(--f-disp);font-weight:800;font-size:clamp(30px,4vw,44px);line-height:1.2}
+.key span{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:18px;color:var(--rose)}
+@media (max-width:640px){.keys{grid-template-columns:1fr}}
+
+/* IV */
+.lhs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lhs__l{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:96px;line-height:.8;margin:0 0 14px;color:var(--sap)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--rose)}
+.lhs .panel:nth-child(3) .lhs__l{color:var(--line2)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-weight:700;font-size:19px}
+.lhs li:first-child{border-top:0}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:72px}}
+
+/* V stats */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:30px;background:var(--paper)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-disp);font-weight:800;font-size:clamp(52px,8vw,88px);line-height:.9;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:12px;margin-top:16px;background:rgba(30,27,44,.07)}
+.hp__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sap),var(--rose));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line2)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(201,84,130,.2);stroke:var(--rose);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--sap)}
+.radar text{fill:var(--ink);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--rose);font-size:10px;font-weight:500}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--rose)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:15px;font-weight:700}
+.bar{height:8px;background:rgba(30,27,44,.07)}
+.bar i{display:block;height:100%;background:var(--sap);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--rose)}
+.bars b{text-align:right;font-family:var(--f-disp);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* VI techniques */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:flex;flex-direction:column;gap:6px;transition:border-color .3s,box-shadow .3s}
+.tk:hover{border-color:var(--rose);box-shadow:5px 5px 0 var(--rose2)}
+.tk__type{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.tk h3{margin:0;font-family:var(--f-disp);font-weight:800;font-size:24px;line-height:1.3}
+.tk__q{margin:0;font-family:var(--f-it);font-style:italic;font-size:17px;color:var(--sap);line-height:1.5}
+.tk__q::before{content:"\201C"}.tk__q::after{content:"\201D"}
+.tk p:last-child{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2)}
+.tk--def{border-top:3px solid var(--sap)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* VII, VIII abilities */
+.sk__top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.ab__name{font-family:var(--f-disp);font-weight:800;font-size:clamp(48px,7vw,92px);line-height:1;margin:0}
+.ab__en{font-family:var(--f-it);font-style:italic;font-weight:600;font-size:clamp(20px,2.4vw,28px);margin:4px 0 0;color:var(--sap)}
+.ab__type{display:inline-block;margin-top:12px;padding:3px 10px;border:1px solid var(--rose);color:var(--rose)}
+.sk__sum{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.75}
+.sk__sum b{color:var(--rose)}
+.sk__cry{display:block;margin-bottom:8px;font-family:var(--f-disp);font-weight:800;color:var(--sap)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.flow li{position:relative;padding:14px 16px 14px 60px;background:var(--paper);border:1px solid var(--line);font-size:15px;color:var(--dim);line-height:1.55}
+.flow li b{position:absolute;left:14px;top:12px;font-family:var(--f-it);font-style:italic;font-size:30px;line-height:1;color:var(--rose)}
+.flow li span{display:block;color:var(--ink);font-weight:700;font-size:16px;margin-bottom:2px}
+.flow li strong{color:var(--rose)}
+.demo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:12px;align-items:start}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.seg button{flex:1 1 auto;padding:9px 14px;border:1px solid var(--line2);background:var(--paper);cursor:pointer;font-weight:700;font-size:15px;text-align:left;line-height:1.35}
+.seg button small{display:block;font-weight:400;font-size:12px;color:var(--dim)}
+.seg button[aria-pressed="true"]{border-color:var(--rose);box-shadow:inset 0 -3px 0 var(--rose);background:#fff}
+.page{position:relative;overflow:hidden;min-height:120px;padding:16px 18px;background:#fff;border:1px solid var(--line2);font-family:var(--f-disp);font-weight:700;font-size:clamp(18px,2.2vw,22px);line-height:1.6;text-align:center;display:grid;place-items:center}
+.page small{display:block;font-family:var(--f-mono);font-weight:400;font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.page.gold{animation:gold 1.2s}
+@keyframes gold{0%{box-shadow:inset 0 0 0 200px rgba(239,226,122,.55)}100%{box-shadow:inset 0 0 0 200px rgba(239,226,122,0)}}
+.blot{position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:var(--ink);opacity:0;transform:translate(-50%,-50%);pointer-events:none}
+.page.inked .blot{animation:blot 1.4s ease-out forwards}
+@keyframes blot{0%{opacity:.6;width:10px;height:10px}100%{opacity:0;width:360px;height:360px}}
+.party{display:grid;gap:6px;margin-top:12px}
+.mem{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:9px 12px;background:var(--paper);border:1px solid var(--line);transition:opacity .4s,border-color .4s}
+.mem i{width:34px;height:34px;display:grid;place-items:center;font-style:normal;font-family:var(--f-disp);font-weight:800;border:1px solid var(--line2);background:#fff}
+.mem.me i{background:var(--rose);border-color:var(--rose);color:#fff}
+.mem span{font-weight:700;font-size:15px;line-height:1.3}
+.mem span small{display:block;font-family:var(--f-mono);font-weight:400;font-size:10px;color:var(--dim)}
+.mem b{min-width:5.2em;text-align:right;font-family:var(--f-mono);font-weight:500;font-size:13px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.mem b em{font-style:normal;font-family:var(--f-disp);font-weight:800;font-size:20px;color:var(--ink);margin-left:4px}
+.mem.up{border-color:var(--sap)}.mem.up b em{color:var(--sap)}
+.mem.down{border-color:var(--rose)}.mem.down b em{color:var(--rose)}
+.mem.out{opacity:.35}
+.pips{display:flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.pips i{width:16px;height:16px;border:1px solid var(--line2);transform:rotate(45deg)}
+.pips i.on{background:var(--gold);border-color:var(--gold)}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:#fff;font-size:15px}
+.status.on{border-color:var(--rose)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border:1px solid var(--ink);background:var(--paper);cursor:pointer;font-weight:700;font-size:15px;line-height:1.2}
+.btn:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.btn--main{background:var(--ink);color:var(--paper)}
+.btn--main:hover:not(:disabled){background:var(--rose);border-color:var(--rose)}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+.how b{display:block;font-size:18px;margin-bottom:2px}
+.how b i{font-style:italic;font-family:var(--f-it);color:var(--rose);margin-right:8px;font-size:20px}
+.how p{margin:0;color:var(--dim);font-size:15px}
+.orig{margin-top:12px;border:1px solid var(--line);background:var(--paper)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:15px}
+.sky{position:relative;aspect-ratio:16/10;max-width:100%;background:radial-gradient(ellipse at 30% 0%,#26305c,var(--night) 70%);overflow:hidden;border:1px solid var(--line2)}
+.sky canvas{position:absolute;inset:0;width:100%;height:100%}
+.sky__lbl{position:absolute;left:10px;top:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.55);pointer-events:none}
+.will{display:grid;grid-template-columns:auto minmax(0,1fr) 3em;gap:12px;align-items:center;margin-top:12px;font-size:15px}
+.will input{width:100%;accent-color:var(--rose)}
+.will output{font-weight:700;text-align:right}
+@media (max-width:900px){.sk__top,.demo{grid-template-columns:1fr}}
+@media (max-width:640px){.flow{grid-template-columns:1fr}}
+
+/* IX */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
+.facts div{background:var(--paper);padding:14px 16px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.facts dd{margin:4px 0 0;font-family:var(--f-disp);font-weight:800;font-size:26px;line-height:1.2}
+.speech{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.speech div{padding:16px 18px;background:var(--paper);border:1px solid var(--line)}
+.speech span{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.speech b{display:block;font-family:var(--f-disp);font-weight:800;font-size:22px;margin-top:2px}
+@media (max-width:760px){.facts,.speech{grid-template-columns:1fr}}
+
+/* X */
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inv__n{font-family:var(--f-disp);font-weight:800;font-size:24px;margin:0}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+
+/* XI */
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:860px}
+.links .panel p:last-child{margin:0}
+.links b{font-family:var(--f-disp);font-weight:800;font-size:28px}
+@media (max-width:640px){.links{grid-template-columns:1fr}}
+.cp{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding:clamp(22px,3vw,34px) clamp(20px,3vw,30px);background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--rose);max-width:560px}
+.cp__big{margin:0;font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(64px,9vw,110px);line-height:.9;color:var(--rose)}
+.cp__txt{margin:0;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--dim)}
+
+.outro{padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-it);font-style:italic;font-weight:700;font-size:clamp(34px,5.6vw,72px);line-height:1.05;margin:0;color:var(--rose)}
+.outro__q{font-family:var(--f-disp);font-weight:800;font-size:clamp(20px,2.6vw,30px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:24px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--paper);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--ink)}
+
+/* FX */
+.words{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.word{position:absolute;left:0;top:0;display:block;max-width:min(260px,calc(100vw - 16px));font-family:var(--f-disp);font-weight:800;font-size:13px;line-height:1.4;color:var(--c);text-shadow:0 0 6px var(--bg),0 0 2px var(--bg);animation:word 2.2s cubic-bezier(.2,.8,.3,1) forwards}
+.word q{display:block;font-family:var(--f-disp);font-weight:800;font-size:16px;line-height:1.45;color:var(--ink);quotes:"\201C" "\201D"}
+.word small{display:block;margin-top:2px;font-family:var(--f-it);font-style:italic;font-weight:600;font-size:14px;color:var(--c)}
+@keyframes word{0%{transform:translate(var(--x0),calc(var(--y0) + 14px));opacity:0}12%{transform:translate(var(--x0),var(--y0));opacity:1}75%{opacity:1}100%{transform:translate(var(--x1),var(--y1));opacity:0}}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{0%{opacity:0;transform:translateY(22px)}100%{opacity:1;transform:none}}
+.ch.ink{animation:inkin .9s ease-out both;animation-delay:calc(var(--k)*120ms + .1s)}
+@keyframes inkin{0%{opacity:0;filter:blur(8px);transform:translateY(10px)}100%{opacity:1;filter:none;transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+.name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num{overflow-wrap:normal;word-break:normal}
+body.calm .spark,body.calm .quote .cur,body.calm .rise,body.calm .ch.ink{animation:none}
+@media (prefers-reduced-motion:reduce){.spark,.quote .cur,.rise,.ch.ink,.word,.page.gold,.page.inked .blot{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/sapientia.png" alt="" width="24" height="24">홍시안<span class="mono dim" style="font-size:11px">&nbsp;/ Sapientia</span></a>
+    <nav class="nav__idx" aria-label="장">
+      <a href="#s01" title="신원">I</a><a href="#s02" title="외관">II</a><a href="#s03" title="성격">III</a><a href="#s04" title="L/H/S">IV</a><a href="#s05" title="능력치">V</a><a href="#s06" title="기술">VI</a><a href="#s07" title="특수 능력">VII</a><a href="#s08" title="발현 능력">VIII</a><a href="#s09" title="특징">IX</a><a href="#s10" title="소지품">X</a><a href="#s11" title="선관">XI</a><a href="#s12" title="지향 커플링">XII</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.008</span><span>Sapientia // <b>Agent</b></span></p>
+      <p class="chap">[ 제 1장, 이야기의 시작 ]</p>
+      <h1 class="name" aria-label="홍시안"><span class="cap">홍</span>시안</h1>
+      <p class="en">Hong Sian</p>
+      <blockquote class="quote" id="quote" data-text="&ldquo;모든 일이 글과 말로 해결된다면 참 좋을 텐데 말이에요.&rdquo;">&ldquo;모든 일이 글과 말로 해결된다면 참 좋을 텐데 말이에요.&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>22</dd></div>
+        <div><dt>Height</dt><dd>166cm</dd></div>
+        <div><dt>Weight</dt><dd>표준</dd></div>
+      </dl>
+    </div>
+    <figure class="plate" id="plate">
+      <img src="assets/sian.jpg" alt="홍시안 그림. 연분홍 긴 머리에 한쪽을 땋았고, 노란 눈에 볼이 발그레하다. 검은 지정복을 입고 서 있다" width="720" height="720">
+      <figcaption><span>Plate I.</span><span>나나곰제과점</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no">I</span><span class="head__en">Identity</span><h2>신원</h2></header>
+    <div class="ident">
+      <div class="card">
+        <img src="assets/face.jpg" alt="홍시안 얼굴" width="110" height="110">
+        <div>
+          <p class="card__n">홍시안</p>
+          <p class="card__e">Hong Sian</p>
+          <dl><dt>DIV</dt><dd>SAPIENTIA</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>22</dd></dl>
+        </div>
+        <p class="card__sig">주어진 모든 일에 열심히 임하겠습니다!</p>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>홍시안 / Hong Sian</td></tr>
+          <tr><th>1.2</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.3</th><td>Age</td><td>22세</td></tr>
+          <tr><th>1.4</th><td>Height / Weight</td><td>166cm / 표준 체중</td></tr>
+          <tr><th>1.5</th><td>Faction</td><td>사피엔티아 &middot; 대원</td></tr>
+          <tr><th>1.6</th><td>Attribute</td><td>특수</td></tr>
+          <tr><th>1.7</th><td>Special</td><td>일리아스</td></tr>
+          <tr><th>1.8</th><td>Talent</td><td>낭송</td></tr>
+          <tr><th>1.9</th><td>Birthday</td><td>12월 10일 &middot; A형</td></tr>
+          <tr><th>1.10</th><td>Coupling</td><td>CL</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no">II</span><span class="head__en">Appearance</span><h2>외관</h2></header>
+    <div class="look">
+      <figure class="plate"><img src="assets/card.jpg" alt="홍시안 전신 그림" width="560" height="700"><figcaption><span>Plate II.</span><span>나나곰제과점</span></figcaption></figure>
+      <div>
+        <ul class="desc">
+          <li><i style="--c:#f6c9d6"></i><div><span>2.1 HAIR</span><b>연분홍 장발</b></div></li>
+          <li><i style="--c:#e7e25a"></i><div><span>2.2 EYES</span><b>처진 눈매, 노란 눈, 안광</b></div></li>
+          <li><i style="--c:#f3b4a8"></i><div><span>2.3 CHEEKS</span><b>홍조가 있다</b></div></li>
+          <li><i style="--c:#1d1d22"></i><div><span>2.4 UNIFORM</span><b>지정복 착용</b></div></li>
+        </ul>
+        <p class="credit"><span class="mono dim">Image</span><b>나나곰제과점</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no">III</span><span class="head__en">Personality</span><h2>성격</h2></header>
+    <div class="keys">
+      <div class="key"><b>온화한</b><span>gentle</span></div>
+      <div class="key"><b>낙천적</b><span>optimistic</span></div>
+      <div class="key"><b>유한</b><span>soft-hearted</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no">IV</span><span class="head__en">Like / Hate / Scare</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>독서</li><li>실내</li><li>잔잔한 음악</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>단 음식</li><li>조류</li><li>전투</li></ul></div>
+      <div class="panel"><p class="lhs__l">S</p><ul><li>&ndash;</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no">V</span><span class="head__en">Stats</span><h2>능력치</h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 60, 방어력 50, 민첩성 50, 정확성 70, 정신력 80">
+        <g class="radar__grid"></g><polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon><g class="radar__dots"></g><g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>공격력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li><span>5.2</span><span>방어력</span><span class="bar"><i data-w="50"></i></span><b>50</b></li>
+        <li><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="50"></i></span><b>50</b></li>
+        <li><span>5.4</span><span>정확성</span><span class="bar"><i data-w="70"></i></span><b>70</b></li>
+        <li class="top"><span>5.5</span><span>정신력</span><span class="bar"><i data-w="80"></i></span><b>80</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 310 = 60 + 50 + 50 + 70 + 80 &middot; 가장 높은 능력치는 정신력</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no">VI</span><span class="head__en">Techniques</span><h2>기술</h2></header>
+    <div class="tech">
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>쉽게 씌어진 시</h3><div class="chips"><em>타격</em></div><p class="tk__q">시인이란 슬픈 천명인 줄 알면서도 한 줄 시를 적어 볼까.</p><p>거대한 만년필을 소환하여 지정 대상을 직접 타격한다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>소네트 116</h3><div class="chips"><em>사격</em><em>필중</em></div><p class="tk__q">그것은 영원히 고정된 지표입니다. 폭풍을 바라보지만 결코 흔들리지 않습니다.</p><p>공중에 화살 하나를 소환하여 지정 대상 1인에게 명중시킨다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>초원의 빛</h3><div class="chips"><em>에너지</em><em>회복</em></div><p class="tk__q">우리는 슬퍼하지 않고, 오히려 남은 것들 속에서 힘을 얻으리라.</p><p>지정 대상 1인에게 강한 빛을 비추어 화상과 같은 피해를 입힌다. 타격에 성공하면 본인을 제외하고 체력이 가장 낮은 아군에게 따스한 빛을 보내 체력을 일부 회복시킨다.</p></div>
+      <div class="panel tk tk--def"><p class="tk__type">DEF &middot; 방어 기술</p><h3>비에도 지지 않고</h3><div class="chips"><em>경감</em></div><p class="tk__q">비에도 지지 않고, 바람에도 지지 않고.</p><p>적에게 피격당할 때 받는 피해를 일정량 줄인다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no">VII</span><span class="head__en">Special &mdash; 특수 능력</span><h2>일리아스</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">일리아스</p>
+        <p class="ab__en">Iliad</p>
+        <span class="mono ab__type">특수</span>
+      </div>
+      <p class="sk__sum"><span class="sk__cry">&ldquo;여신이여, 분노를 노래하소서!&rdquo;</span>이번 전투를 <b>한 편의 서사시</b>로 정한다. 영웅의 일대기에는 승리만 기록되어야 하니까. <b>2라운드 동안</b> 아군이 강해진다.</p>
+    </div>
+    <ol class="flow">
+      <li><b>i</b><span>동료가 있을 때</span>아군 모두 공격력 <strong>&times;1.2</strong>, 정확성 <strong>+15</strong></li>
+      <li><b>ii</b><span>혼자 남았을 때</span>시안 자신의 공격력 <strong>&times;1.7</strong>, 정확성 <strong>+10</strong></li>
+      <li><b>iii</b><span>발동에 실패하면</span>2라운드 동안 시안 자신의 공격력 <strong>&times;0.7</strong></li>
+    </ol>
+    <div class="demo">
+      <div class="panel" id="spPanel">
+        <p class="idx">7.1 &mdash; 상황을 골라 낭송해 보자</p>
+        <div class="seg" role="group" aria-label="상황">
+          <button type="button" data-m="team" aria-pressed="true">동료가 있을 때<small>아군 전체 강화</small></button>
+          <button type="button" data-m="solo" aria-pressed="false">혼자 남았을 때<small>자신만 크게 강화</small></button>
+          <button type="button" data-m="fail" aria-pressed="false">발동 실패<small>자신이 약해진다</small></button>
+        </div>
+        <div class="page" id="page"><span class="blot" aria-hidden="true"></span><div id="pageTxt"><small>EPIC // 서사시</small>아직 쓰이지 않은 페이지</div></div>
+        <div class="party" id="party"></div>
+        <div class="pips" id="pips"><span>남은 라운드</span><i></i><i></i></div>
+        <p class="status" id="spMsg" aria-live="polite">낭송하기를 누르면 이번 전투가 서사시가 된다.</p>
+        <div class="ctrl"><button class="btn btn--main" id="spCast" type="button">낭송하기</button><button class="btn" id="spNext" type="button" disabled>라운드 넘기기</button><button class="btn" id="spReset" type="button">처음으로</button></div>
+        <p class="note">시안의 수치는 실제 능력치(공격력 60, 정확성 70)이고, 아군 A와 B의 수치는 예시다.</p>
+      </div>
+      <div class="how">
+        <div><b><i>a.</i>2라운드</b><p>효과는 향후 두 라운드 동안 이어진다.</p></div>
+        <div><b><i>b.</i>곱하기와 더하기</b><p>공격력은 배수로 곱하고, 정확성은 숫자를 더한다.</p></div>
+        <div><b><i>c.</i>혼자일수록 강하게</b><p>사기를 북돋울 동료가 없으면 그 힘이 모두 시안 자신에게 실린다.</p></div>
+        <div><b><i>d.</i>실패하면 대가</b><p>발동에 실패하면 2라운드 동안 자신의 공격력이 떨어진다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>여신이여, 분노를 노래하소서! 해당 전투를 하나의 서사시로 지정합니다. 영웅의 일대기에는 승리만이 기록되어야 하는 법입니다. 향후 두 번의 라운드 동안 아군의 공격력을 1.2배로 상승시키고, 정확성을 15 증가시킵니다. 만약 특수 능력을 사용할 당시 동료가 남아있지 않다면 자신의 공격력이 x1.7배 증가, 정확성이 10 증가합니다. 특수 능력 발동에 실패할 시 향후 두 라운드 동안 자신의 공격력이 x0.7배가 됩니다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no">VIII</span><span class="head__en">Talent &mdash; 발현 능력</span><h2>낭송</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">낭송</p>
+        <p class="ab__en">Recitation</p>
+        <span class="mono ab__type">발현 능력</span>
+      </div>
+      <p class="sk__sum">문학 구절을 소리 내어 읊으면, <b>그 구절 속 장면이 실제로 벌어진다</b>. 공격할 마음으로 읊으면 공격이 되고, 그렇지 않으면 가벼운 변화만 생긴다.</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 신청서 속 예시: 윤동주 &lsquo;별 헤는 밤&rsquo;의 한 구절을 읊는다</p>
+        <div class="sky" id="sky"><canvas id="cv" role="img" aria-label="밤하늘. 구절을 읊으면 별 반짝임이나 유성이 나타난다"></canvas><span class="sky__lbl">별 헤는 밤</span></div>
+        <div class="seg" role="group" aria-label="읊는 마음" style="margin-top:12px;margin-bottom:0">
+          <button type="button" data-r="calm" aria-pressed="true">그냥 읊는다<small>반짝이는 빛이 생긴다</small></button>
+          <button type="button" data-r="atk" aria-pressed="false">공격할 마음으로<small>유성이 떨어진다</small></button>
+          <button type="button" data-r="blank" aria-pressed="false">장면을 못 그리면<small>아무 일도 없다</small></button>
+        </div>
+        <div class="will"><label for="will">의지의 세기</label><input type="range" id="will" min="1" max="3" step="1" value="2"><output id="willV" for="will">보통</output></div>
+        <p class="status" id="tMsg" aria-live="polite">상황을 누르면 시안이 구절을 읊는다.</p>
+        <div class="ctrl"><button class="btn btn--main" id="tGo" type="button">다시 읊기</button></div>
+      </div>
+      <div class="how">
+        <div><b><i>a.</i>마음에 따라 달라진다</b><p>공격하려는 의지가 있으면 공격기가, 없으면 가벼운 상황 변화가 일어난다.</p></div>
+        <div><b><i>b.</i>장면을 그려야 한다</b><p>구절로 벌어질 일을 머릿속에 정확히 그려야 발동한다.</p></div>
+        <div><b><i>c.</i>의지가 강할수록</b><p>효과는 의지가 얼마나 강한지에 비례한다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no">IX</span><span class="head__en">Traits</span><h2>특징</h2></header>
+    <dl class="facts">
+      <div><dt>Birthday</dt><dd>12월 10일</dd></div>
+      <div><dt>Blood</dt><dd>A형</dd></div>
+      <div><dt>Speech</dt><dd>존댓말</dd></div>
+    </dl>
+    <div class="speech">
+      <div><span>1ST PERSON</span><b>저</b></div>
+      <div><span>2ND PERSON</span><b>당신 / 이름+씨</b></div>
+      <div><span>RARELY</span><b>아주 가끔 애칭</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no">X</span><span class="head__en">Inventory</span><h2>소지품</h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">수첩</p><p class="mono dim" style="margin:0">notebook</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">깃펜</p><p class="mono dim" style="margin:0">quill pen</p></div>
+      <div class="panel"><p class="idx">10.3</p><p class="inv__n">선글라스</p><p class="mono dim" style="margin:0">sunglasses</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no">XI</span><span class="head__en">Links</span><h2>선관</h2></header>
+    <div class="links">
+      <div class="panel"><p class="idx">11.1 &mdash; 선관</p><p>개인 밴드로 문의</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <div class="in">
+    <header class="head"><span class="head__no">XII</span><span class="head__en">Coupling</span><h2>지향 커플링</h2></header>
+    <div class="cp">
+      <p class="cp__big">CL</p>
+      <p class="cp__txt">지향 커플링</p>
+    </div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">To be continued&hellip;</p>
+    <p class="outro__q">[ 주어진 모든 일에 열심히 임하겠습니다! ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 야호! 잘 부탁드립니다.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>HONG SIAN &middot; Sapientia Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON"}
+applyCalm();
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm()};
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+
+/* 목차 표시, 진행 막대 */
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+/* 제목에 맞춰 글자 크기 */
+const FIT=".name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num";
+function fit(){$$(FIT).forEach(e=>{e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<60){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* 표지: 이름이 잉크처럼 번져 나오고, 대사가 한 글자씩 써진다 */
+if(!calm){let k=0;$$(".name").forEach(n=>[...n.querySelectorAll("*")].concat(n).forEach(el=>[...el.childNodes].forEach(c=>{if(c.nodeType===3&&c.textContent.trim()){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement("span");s.className="ch ink";s.style.setProperty("--k",k++);s.textContent=ch;s.setAttribute("aria-hidden","true");f.appendChild(s)});c.replaceWith(f)}})));
+  const q=$("#quote"),full=q.textContent;q.setAttribute("aria-label",full);q.textContent="";const cur=document.createElement("span");cur.className="cur";cur.setAttribute("aria-hidden","true");const txt=document.createElement("span");txt.setAttribute("aria-hidden","true");q.append(txt,cur);
+  let i=0;setTimeout(function type(){txt.textContent=full.slice(0,++i);if(i<full.length)setTimeout(type,55)},700)}
+const plate=$("#plate");plate.insertAdjacentHTML("beforeend",Array.from({length:7},(_,i)=>`<span class="spark" aria-hidden="true" style="--x:${[6,88,92,4,78,50,18][i]}%;--y:${[10,6,58,70,92,-3,96][i]}%;--s:${[16,12,20,12,14,10,16][i]}px;--d:${i*-.4}s"></span>`).join(""));
+
+/* 장 단위로 떠오르기: 보이는 상태에서 시작하고, 화면 아래에 있던 것만 움직인다 */
+const RV=".panel,.flow li,.how>div,.key,.desc li,.facts>div,.speech>div,.card,.head";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));rio.observe(el)});
+
+/* 누르면 그 자리에서 낱말이 떠오른다 */
+const QUOTES=[
+  ["여신이여, 분노를 노래하소서","호메로스 《일리아스》"],
+  ["사느냐 죽느냐, 그것이 문제로다","셰익스피어 《햄릿》"],
+  ["온 세상은 무대, 모든 남녀는 배우일 뿐","셰익스피어 《뜻대로 하세요》"],
+  ["나 보기가 역겨워 가실 때에는","김소월 〈진달래꽃〉"],
+  ["님은 갔습니다","한용운 〈님의 침묵〉"],
+  ["최고의 시절이었고, 최악의 시절이었다","디킨스 《두 도시 이야기》"],
+  ["인간은 노력하는 한 방황한다","괴테 《파우스트》"],
+  ["여기 들어오는 자, 모든 희망을 버려라","단테 《신곡》"],
+  ["초원의 빛이여, 꽃의 영광이여","워즈워스 〈영생불멸의 노래〉"],
+  ["아름다움은 진리, 진리는 아름다움","키츠 〈그리스 항아리에 부치는 노래〉"],
+  ["펜은 칼보다 강하다","불워리턴 《리슐리외》"],
+  ["진실한 사랑의 길은 결코 순탄하지 않았다","셰익스피어 《한여름 밤의 꿈》"]
+];
+let qOrder=[],qi=0;
+function nextQ(){if(qi>=qOrder.length){qOrder=QUOTES.map((_,i)=>i).sort(()=>Math.random()-.5);qi=0}return QUOTES[qOrder[qi++]]}
+const words=document.createElement("div");words.className="words";words.setAttribute("aria-hidden","true");document.body.appendChild(words);
+function float(x,y,q){if(calm||RM)return;const [t,src]=q||nextQ();const s=document.createElement("span");s.className="word";
+  s.textContent=t;
+  s.style.setProperty("--c",["var(--rose)","var(--sap)","var(--gold)"][qi%3]);words.appendChild(s);
+  const w=s.offsetWidth,h=s.offsetHeight,x0=Math.min(Math.max(x-w/2,8),innerWidth-w-8),y0=Math.max(y-h-10,8);
+  s.style.setProperty("--x0",x0+"px");s.style.setProperty("--y0",y0+"px");s.style.setProperty("--x1",x0+"px");s.style.setProperty("--y1",Math.max(y0-50,0)+"px");s.style.setProperty("--r","0deg");
+  setTimeout(()=>s.remove(),2300)}
+addEventListener("pointerdown",e=>{if(e.target.closest("input,#sky,button"))return;float(e.clientX,e.clientY)});
+
+/* ---------- 능력치 ---------- */
+const S=[["공격력",60],["방어력",50],["민첩성",50],["정확성",70],["정신력",80]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx,ly]=pt(i,122),an=Math.abs(lx)<5?"middle":lx>0?"start":"end";
+  const t=el("text",{x:lx,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 일리아스 ---------- */
+const PARTY=[["시","홍시안","본인",60,70,1],["A","아군 A","예시",50,50],["B","아군 B","예시",50,50]];
+let mode="team",rounds=0,used=false;const prev={};
+function eff(m,me){if(rounds<=0)return[1,0];if(m==="team")return[1.2,15];if(m==="solo")return me?[1.7,10]:[1,0];return me?[.7,0]:[1,0]}
+const r1=v=>Math.round(v*10)/10;
+function tween(b,key,to){const from=prev[key]==null?to:prev[key];prev[key]=to;const em=b.querySelector("em");if(calm||from===to){em.textContent=to;return}
+  const t0=performance.now(),f=n=>{const q=Math.min(1,(n-t0)/650),e=1-Math.pow(1-q,3);em.textContent=r1(from+(to-from)*e);if(q<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+function drawP(){
+  $("#party").innerHTML=PARTY.map(([ic,n,s,a,c,me])=>{const out=mode==="solo"&&!me;const [m,p]=out?[1,0]:eff(mode,me);const cls=m>1||p>0?" up":m<1?" down":"";
+    return `<div class="mem${me?" me":""}${out?" out":""}${cls}"><i>${ic}</i><span>${n}<small>${out?"전투 불능":s}</small></span><b data-k="${n}a" data-v="${r1(a*m)}">공격<em></em></b><b data-k="${n}c" data-v="${c+p}">정확<em></em></b></div>`}).join("");
+  $$("#party b").forEach(b=>tween(b,b.dataset.k,+b.dataset.v));
+  $$("#pips i").forEach((p,i)=>p.classList.toggle("on",i<rounds));
+  $("#spNext").disabled=rounds<=0;$("#spCast").disabled=rounds>0;
+  $$("[data-m]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===mode))}
+function sm(t,on){const p=$("#spMsg");p.innerHTML=t;p.classList.toggle("on",!!on)}
+function page(html){$("#pageTxt").innerHTML=html}
+$$("[data-m]").forEach(b=>b.onclick=()=>{mode=b.dataset.m;rounds=0;used=false;drawP();page("<small>EPIC // 서사시</small>아직 쓰이지 않은 페이지");
+  sm({team:"동료가 곁에 있다. 낭송하면 아군 모두가 강해진다.",solo:"동료가 모두 쓰러지고 시안만 남았다. 낭송하면 힘이 시안 한 명에게 실린다.",fail:"발동에 실패하는 경우. 오히려 시안이 약해진다."}[mode])});
+$("#spCast").onclick=()=>{rounds=2;used=true;const pg=$("#page");
+  if(mode==="fail"){page("<small>EPIC // 서사시</small>&hellip;잉크가 번졌다");fx(pg,"inked");fx($("#spPanel"),"shake");sm("발동에 실패했다. 2라운드 동안 시안의 공격력이 <b>60 → 42</b> (×0.7).",1)}
+  else{page("<small>EPIC // 서사시</small>&ldquo;여신이여, 분노를 노래하소서!&rdquo;");fx(pg,"gold");const r=pg.getBoundingClientRect();float(r.left+r.width/2,r.top+20,QUOTES[0]);
+    sm(mode==="team"?"이번 전투가 서사시가 되었다. 2라운드 동안 아군 모두 공격력 ×1.2, 정확성 +15.":"홀로 남은 영웅의 노래. 2라운드 동안 시안의 공격력 ×1.7 (60 → 102), 정확성 +10 (70 → 80).",1)}
+  drawP()};
+$("#spNext").onclick=()=>{rounds--;drawP();sm(rounds>0?"한 라운드가 지났다. 효과는 1라운드 더 남아 있다.":"두 라운드가 모두 지나 수치가 원래대로 돌아왔다.",rounds>0);if(!rounds)page("<small>EPIC // 서사시</small>이야기는 다음 장으로")};
+$("#spReset").onclick=()=>{rounds=0;drawP();page("<small>EPIC // 서사시</small>아직 쓰이지 않은 페이지");sm("낭송하기를 누르면 이번 전투가 서사시가 된다.")};
+drawP();
+
+/* ---------- 낭송 ---------- */
+const sky=$("#sky"),cv=$("#cv"),cx=cv.getContext("2d");
+let W=0,H=0,rmode="calm",will=2,parts=[],mets=[],booms=[],bg=[],run=false,t0=0,shown=false;
+const WILL=["","약하게","보통","강하게"],WILLN=["","약함","보통","강함"];
+function size(){const r=sky.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cx.setTransform(d,0,0,d,0,0);
+  bg=Array.from({length:60},(_,i)=>[((i*73)%100)/100*W,((i*37)%61)/100*H,(i%3)*.5+.5]);draw(performance.now())}
+new ResizeObserver(size).observe(sky);
+const ME=()=>[W*.16,H*.8],EN=()=>[W*.8,H*.78];
+function fig(x,y,label,col){cx.fillStyle=col;cx.beginPath();cx.arc(x,y-14,8,0,7);cx.fill();cx.fillRect(x-6,y-6,12,16);cx.font="12px "+getComputedStyle(document.body).fontFamily;cx.textAlign="center";cx.fillStyle="rgba(255,255,255,.8)";cx.fillText(label,x,y+26)}
+function star(x,y,r,a){cx.save();cx.globalAlpha=a;cx.fillStyle="#efe27a";cx.beginPath();for(let i=0;i<8;i++){const an=i*Math.PI/4,rr=i%2?r*.3:r;cx.lineTo(x+Math.cos(an)*rr,y+Math.sin(an)*rr)}cx.closePath();cx.fill();cx.restore()}
+function draw(now){
+  cx.clearRect(0,0,W,H);
+  bg.forEach(([x,y,s],i)=>{cx.fillStyle=`rgba(255,255,255,${.25+.25*Math.sin(now/600+i)})`;cx.fillRect(x,y,s,s)});
+  const [mx,my]=ME(),[ex,ey]=EN();fig(mx,my,"시안","#f2b8cc");fig(ex,ey,"적 (예시)","#8d93b5");
+  parts=parts.filter(p=>now-p.b<p.l);parts.forEach(p=>{const q=(now-p.b)/p.l;star(p.x,p.y-q*20,p.r*(1-Math.abs(q-.5)),1-q)});
+  mets=mets.filter(m=>now<m.b+m.l||!m.hit);
+  mets.forEach(m=>{if(now<m.b)return;const q=Math.min(1,(now-m.b)/m.l),x=m.x0+(m.x1-m.x0)*q,y=m.y0+(m.y1-m.y0)*q;
+    const g=cx.createLinearGradient(x,y,x-(m.x1-m.x0)*.25,y-(m.y1-m.y0)*.25);g.addColorStop(0,"#fff6b0");g.addColorStop(1,"rgba(239,226,122,0)");
+    cx.strokeStyle=g;cx.lineWidth=m.w;cx.lineCap="round";cx.beginPath();cx.moveTo(x,y);cx.lineTo(x-(m.x1-m.x0)*.25,y-(m.y1-m.y0)*.25);cx.stroke();
+    if(q>=1&&!m.hit){m.hit=true;booms.push({x:m.x1,y:m.y1,b:now,r:m.w*6})}});
+  booms=booms.filter(o=>now-o.b<600);booms.forEach(o=>{const q=(now-o.b)/600;cx.strokeStyle=`rgba(255,246,176,${1-q})`;cx.lineWidth=2;cx.beginPath();cx.arc(o.x,o.y,o.r*q+4,0,7);cx.stroke();cx.fillStyle=`rgba(255,210,120,${.5*(1-q)})`;cx.beginPath();cx.arc(o.x,o.y,o.r*q*.6,0,7);cx.fill()});
+  if(rmode==="blank"&&now-t0<2400){cx.fillStyle="rgba(255,255,255,.75)";cx.font="20px "+getComputedStyle(document.body).fontFamily;cx.textAlign="center";cx.fillText(". . . ?",mx+40,my-50)}
+}
+function loop(now){draw(now);if(parts.length||mets.some(m=>!m.hit)||booms.length||now-t0<2600)requestAnimationFrame(loop);else{run=false;draw(now)}}
+function tm(t,on){const p=$("#tMsg");p.textContent=t;p.classList.toggle("on",!!on)}
+function recite(){
+  const now=performance.now();t0=now;parts=[];mets=[];booms=[];const [mx,my]=ME(),[ex,ey]=EN();
+  if(rmode==="calm"){const n=[0,10,22,40][will];for(let i=0;i<n;i++)parts.push({x:mx+(Math.random()-.3)*W*.5,y:my-20-Math.random()*H*.6,r:3+will*2+Math.random()*3,b:now+Math.random()*900,l:1400+Math.random()*900});
+    tm(`공격할 마음 없이 읊었다. 시안 주변에 반짝이는 빛이 잠시 피어난다. (의지 ${WILLN[will]}: 빛 ${n}개)`,1)}
+  else if(rmode==="atk"){const n=[0,2,5,9][will];for(let i=0;i<n;i++){const tx=ex+(Math.random()-.5)*40,ty=ey-10+(Math.random()-.5)*16;mets.push({x0:tx-W*.45-Math.random()*W*.2,y0:-20-Math.random()*40,x1:tx,y1:ty,b:now+i*220,l:700,w:2+will,hit:false})}
+    tm(`적을 공격할 마음으로 읊었다. 별이 유성이 되어 적에게 떨어진다. (의지 ${WILLN[will]}: 유성 ${n}개)`,1)}
+  else tm("구절을 읊었지만 장면을 머릿속에 그리지 못했다. 아무 일도 일어나지 않는다.");
+  if(calm){parts.forEach(p=>p.b=now-p.l/2);mets.forEach(m=>{m.b=now-m.l;});draw(now);parts=[];mets=[];return}
+  if(!run){run=true;requestAnimationFrame(loop)}}
+$$("[data-r]").forEach(b=>b.onclick=()=>{rmode=b.dataset.r;$$("[data-r]").forEach(x=>x.setAttribute("aria-pressed",x===b));recite()});
+$("#will").oninput=e=>{will=+e.target.value;$("#willV").textContent=WILL[will]};
+$("#will").onchange=recite;
+$("#tGo").onclick=recite;
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting&&!shown){shown=true;o.disconnect();setTimeout(recite,400)}}),{threshold:.5}).observe(sky);
+})();
+</script>
+
+</body>
+</html>
