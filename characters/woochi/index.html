@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JEON WOOCHI // G.H.D</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="비르투스 대원 전우치 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: 비르투스. 음반 속지(트랙 리스트)처럼 짠 구성, 짙은 적갈색 바탕에 비르투스 적색과 헤드폰의 호박색 */
+:root{
+  --bg:#110d0d;--panel:#1a1414;--panel2:#241b1a;--line:rgba(240,225,218,.12);--line2:rgba(240,225,218,.28);
+  --fg:#f4ede9;--dim:#a99891;--vir:#e4473f;--vir2:#c0262a;--amb:#f2b632;
+  --f-disp:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:radial-gradient(circle at 85% -10%,rgba(192,38,42,.16),transparent 45%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amb);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1240px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(17,13,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:16px;height:60px}
+.nav__name{display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-weight:900;font-size:24px;letter-spacing:.04em;text-decoration:none;white-space:nowrap}
+.nav__name img{width:26px;height:26px}
+.nav__idx{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-mono);font-size:12px;text-decoration:none;padding:6px 8px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--fg);border-color:var(--vir)}
+.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 10px}
+.nav__home:hover{background:var(--fg);color:var(--bg)}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:19px;gap:8px}.nav .in{gap:10px}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,88px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--vir);font-weight:500}
+.motto{display:inline-block;margin:22px 0 0;padding:4px 12px;border:1px solid var(--amb);color:var(--amb);font-family:var(--f-mono);font-size:13px;letter-spacing:.08em}
+.name{font-family:var(--f-disp);font-weight:900;font-size:clamp(64px,9.4vw,156px);white-space:nowrap;line-height:.8;margin:16px 0 0;text-transform:uppercase;letter-spacing:-.005em}
+.name span{display:block;color:var(--vir)}
+.ko{font-weight:700;font-size:clamp(28px,3.4vw,40px);margin:18px 0 0}
+.rank{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:7px 14px 7px 10px;border:1px solid var(--line2);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em}
+.rank img{width:22px;height:22px}
+.quote{font-weight:700;font-size:clamp(22px,2.7vw,32px);line-height:1.5;margin:26px 0 0;max-width:22em}
+.eq{display:flex;align-items:flex-end;gap:4px;height:34px;margin-top:24px}
+.eq i{width:6px;background:var(--vir);height:calc(var(--h)*1%);transform-origin:bottom;animation:eq 1.1s ease-in-out infinite alternate;animation-delay:calc(var(--d)*-.13s)}
+.eq i:nth-child(3n){background:var(--amb)}
+@keyframes eq{0%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
+body.calm .eq i{animation:none}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:620px;border:1px solid var(--line);background:var(--panel)}
+.dims div{padding:12px 14px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:4px 0 0;font-family:var(--f-disp);font-weight:900;font-size:32px;line-height:1}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.sleeve{position:relative;justify-self:center;width:100%;max-width:400px;margin:0 0 0 -8%}
+.disc{position:absolute;top:8%;right:-26%;width:84%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,var(--vir2) 0 15%,#0a0707 15.5% 17%,transparent 17.5%),repeating-radial-gradient(circle,#191212 0 2px,#0c0909 2px 4px);
+  box-shadow:0 0 0 1px var(--line2);animation:spin 9s linear infinite}
+.disc::after{content:"";position:absolute;inset:48.5%;border-radius:50%;background:var(--amb)}
+@keyframes spin{to{transform:rotate(360deg)}}
+body.calm .disc{animation:none}
+.sheet{position:relative;margin:0;background:#fff;padding:10px;box-shadow:12px 12px 0 var(--vir2)}
+.sheet img{width:100%}
+.sheet figcaption{display:flex;justify-content:space-between;gap:10px;color:#2a1c1b;padding-top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.sleeve{max-width:330px;margin:0 auto;left:-8%}.disc{right:-30%}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,104px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 18px;align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.head__no{grid-row:span 2;display:flex;flex-direction:column;align-items:center;justify-content:center;width:clamp(64px,8vw,92px);aspect-ratio:1;border-radius:50%;border:1px solid var(--vir);color:var(--vir);font-family:var(--f-disp);font-weight:900;font-size:clamp(28px,3.6vw,40px);line-height:1}
+.head__no small{font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;font-weight:500}
+.head__en{color:var(--vir)}
+.head h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(42px,6.4vw,82px);line-height:.88;margin:0;text-transform:uppercase}
+.head h2 span{font-family:var(--f-body);font-weight:700;font-size:.36em;color:var(--dim);margin-left:.5em;text-transform:none}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--vir);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:13px}
+.wave{display:block;width:100%;height:28px;color:var(--vir);opacity:.5}
+
+/* 01 */
+.ident{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px)}
+.idcard{display:grid;grid-template-columns:116px minmax(0,1fr);gap:16px;background:#f4ede9;color:#1c1312;padding:16px;align-self:start;border-top:6px solid var(--vir2)}
+.idcard img{width:116px;height:116px;object-fit:cover}
+.idcard__n{font-family:var(--f-disp);font-weight:900;font-size:34px;line-height:.9;margin:0;text-transform:uppercase}
+.idcard dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.idcard dt{opacity:.55}.idcard dd{margin:0;font-weight:600}
+.idcard__code{grid-column:1/-1;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;border-top:1px dashed rgba(0,0,0,.3);padding-top:10px;word-break:break-all;opacity:.7}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:13px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--vir);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:500}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.6em}}
+
+/* 02 */
+.look{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look__pics{display:grid;gap:12px}
+.look .sheet{box-shadow:none}
+.parts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.parts li{background:var(--panel);padding:12px 14px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:2px 12px;align-items:center}
+.parts i{grid-row:span 2;width:28px;height:28px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);border-radius:50%}
+.parts span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.parts b{font-weight:500;font-size:14px;line-height:1.35}
+@media (max-width:420px){.parts{grid-template-columns:1fr}}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look__pics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+
+/* 03 */
+.pers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trait{position:relative;padding-top:calc(clamp(18px,2.4vw,26px) + 6px)}
+.trait h3{font-family:var(--f-body);font-weight:700;font-size:clamp(22px,2.6vw,28px);margin:0 0 10px;display:flex;align-items:baseline;gap:12px}
+.trait h3 small{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--vir)}
+.trait p{margin:0}
+@media (max-width:760px){.pers{grid-template-columns:1fr}}
+
+/* 04 */
+.lhs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.lhs__l{font-family:var(--f-disp);font-weight:900;font-size:110px;line-height:.75;margin:0 0 16px;color:var(--vir)}
+.lhs .panel:nth-child(2) .lhs__l{color:transparent;-webkit-text-stroke:1.5px var(--vir)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-weight:700;font-size:19px}
+.lhs li:first-child{border-top:0}
+@media (max-width:640px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:80px}}
+
+/* 05 stats */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:32px;background:var(--panel)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-disp);font-weight:900;font-size:clamp(64px,9vw,104px);line-height:.8;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:14px;margin-top:16px;background:rgba(240,225,218,.06)}
+.hp__bar i{display:block;height:100%;width:0;background:var(--vir);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:440px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(228,71,63,.3);stroke:var(--vir);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--amb)}
+.radar text{fill:var(--fg);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--amb);font-size:10px;font-weight:600}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--vir)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:14px;font-weight:500}
+.bar{height:10px;background:rgba(240,225,218,.06)}
+.bar i{display:block;height:100%;background:var(--vir);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li:nth-child(4) .bar i{background:var(--amb)}
+.bars b{text-align:right;font-family:var(--f-disp);font-weight:900;font-size:24px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* 06 techniques */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:start}
+.tk__no{grid-row:span 3;font-family:var(--f-disp);font-weight:900;font-size:40px;line-height:1;color:var(--vir)}
+.tk__type{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim);margin:0}
+.tk--def .tk__no{color:var(--amb)}
+.tk h3{margin:0;font-size:22px;line-height:1.3}
+.tk p{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2);color:var(--fg)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* shared ability */
+.ab{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.ab__name{font-family:var(--f-disp);font-weight:900;font-size:clamp(56px,8.6vw,112px);line-height:.85;margin:0;text-transform:uppercase}
+.ab__ko{font-weight:700;font-size:clamp(28px,3.2vw,40px);margin:10px 0 0}
+.ab__type{display:inline-block;margin-top:14px;padding:4px 10px;border:1px solid var(--vir);color:var(--vir)}
+.ab__one{font-size:clamp(17px,1.9vw,20px);font-weight:500;margin:18px 0 0}
+.ab__one b{color:var(--amb)}
+.rules{display:grid;gap:10px;margin-top:22px}
+.rules div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 16px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.rules b{grid-row:span 2;font-family:var(--f-disp);font-weight:900;font-size:42px;line-height:1;color:var(--vir);min-width:2.6ch}
+.rules strong{font-size:16px}
+.rules span{color:var(--dim);font-size:14px}
+.orig{margin-top:14px;border:1px solid var(--line)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-family:var(--f-disp);font-weight:700;font-size:19px;letter-spacing:.04em;line-height:1.1}
+.btn:hover:not(:disabled){border-color:var(--fg)}
+.btn--main{background:var(--vir2);border-color:var(--vir2);color:#fff}
+.btn[aria-pressed="true"]{background:var(--amb);border-color:var(--amb);color:#1a1100}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:var(--bg);font-size:14px}
+.status.on{border-color:var(--amb)}
+@media (max-width:900px){.ab{grid-template-columns:1fr}}
+
+/* 07 special */
+.seg{display:inline-grid;grid-template-columns:1fr 1fr;border:1px solid var(--line2);margin-bottom:14px}
+.seg button{padding:8px 14px;border:0;background:none;cursor:pointer;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:0 0 14px;padding:0;list-style:none}
+.timeline li{padding:8px 10px;border:1px solid var(--line);font-size:12px;line-height:1.4;color:var(--dim);background:var(--bg)}
+.timeline li b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;font-weight:500}
+.timeline li.now{border-color:var(--amb);color:var(--fg);box-shadow:inset 0 -3px 0 var(--amb)}
+.sides{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.side{border:1px solid var(--line);background:var(--bg);padding:12px}
+.side h4{margin:0 0 8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;font-weight:500;color:var(--dim)}
+.unit{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.unit:first-of-type{border-top:0}
+.unit i{width:30px;height:30px;display:grid;place-items:center;font-style:normal;font-family:var(--f-disp);font-weight:900;background:var(--panel2);border:1px solid var(--line2)}
+.unit span{font-size:14px;font-weight:500;line-height:1.3}
+.unit span small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--dim);font-weight:400}
+.unit b{font-family:var(--f-disp);font-weight:900;font-size:24px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.unit.up b{color:var(--amb)}
+.unit.down b{color:var(--vir)}
+.unit.out{opacity:.35}
+.unit.out span{text-decoration:line-through}
+.unit.me i{background:var(--vir2);border-color:var(--vir2);color:#fff}
+.solo{display:none;margin-top:10px;padding:12px;border:1px dashed var(--vir);background:rgba(192,38,42,.08)}
+.solo.show{display:block}
+.solo label{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font-size:14px}
+.solo input[type=range]{flex:1 1 160px;accent-color:var(--vir)}
+.solo__out{display:flex;align-items:baseline;gap:10px;margin-top:8px;font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.solo__out b{font-family:var(--f-disp);font-weight:900;font-size:44px;line-height:1;color:var(--vir)}
+@media (max-width:560px){.sides{grid-template-columns:1fr}.timeline li{font-size:11px;padding:6px}}
+
+/* 08 talent */
+.stage{position:relative;border:1px solid var(--line);background:#0b0808;aspect-ratio:16/10;overflow:hidden}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage__lbl{position:absolute;left:8px;top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);pointer-events:none}
+.pick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pick button{padding:7px 12px;border:1px solid var(--line2);background:none;cursor:pointer;font-size:14px;font-weight:500}
+.pick button[aria-pressed="true"]{border-color:var(--amb);color:var(--amb);box-shadow:inset 0 -2px 0 var(--amb)}
+.amp{display:grid;grid-template-columns:auto minmax(0,1fr) 4.6em;gap:12px;align-items:center;margin-top:12px;font-size:14px}
+.amp input{width:100%;accent-color:var(--amb)}
+.amp output{font-family:var(--f-disp);font-weight:900;font-size:24px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.amp.off{opacity:.4}
+@media (max-width:480px){.btn{font-size:17px;padding:9px 12px}}
+
+/* 09 traits */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
+.facts div{background:var(--panel);padding:14px 16px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.facts dd{margin:4px 0 0;font-family:var(--f-disp);font-weight:900;font-size:30px;line-height:1.1}
+.facts dd small{font-family:var(--f-body);font-weight:500;font-size:14px;color:var(--dim);margin-left:6px}
+.tlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tlist h3{margin:0 0 8px;font-size:19px}
+.tlist p{margin:0}
+@media (max-width:760px){.facts,.tlist{grid-template-columns:1fr}}
+
+/* 10 */
+.inv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.inv__n{font-weight:700;font-size:24px;margin:0}
+.inv p:last-child{margin:8px 0 0}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+
+/* 11 links */
+.link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:0;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--vir2);max-width:900px}
+.link__top{display:flex;align-items:center;gap:14px;padding:18px;border-right:1px solid var(--line)}
+.link__top img{width:48px;height:48px;object-fit:contain;flex:none}
+.link__nm{font-weight:700;font-size:24px;line-height:1.2;margin:0}
+.link__role{margin:2px 0 0;color:var(--dim)}
+.link__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.link__tags span{font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--vir);color:var(--vir)}
+.link__tags span.k{background:var(--vir2);border-color:var(--vir2);color:#fff}
+.link__body{padding:18px}
+.link__q{font-weight:700;font-size:18px;margin:0 0 10px;line-height:1.55}
+.link__body p:last-child{margin:0;color:var(--dim)}
+@media (max-width:760px){.link{grid-template-columns:1fr}.link__top{border-right:0;border-bottom:1px solid var(--line)}}
+
+.outro{padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-disp);font-weight:900;font-size:clamp(34px,5.4vw,70px);line-height:1;margin:0;color:var(--vir);text-transform:uppercase}
+.outro__q{font-weight:700;font-size:clamp(20px,2.6vw,30px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:28px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--panel);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.eq i,.disc{animation:none}.hp__bar i,.bar i,.radar__shape{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/virtus.png" alt="" width="26" height="26">JEON WOOCHI<span class="mono dim" style="font-size:11px">&nbsp;/ Virtus</span></a>
+    <nav class="nav__idx" aria-label="섹션">
+      <a href="#s01" title="신원">01</a><a href="#s02" title="외관">02</a><a href="#s03" title="성격">03</a><a href="#s04" title="L/H">04</a><a href="#s05" title="능력치">05</a><a href="#s06" title="기술">06</a><a href="#s07" title="특수 능력">07</a><a href="#s08" title="발현 능력">08</a><a href="#s09" title="특징">09</a><a href="#s10" title="소지품">10</a><a href="#s11" title="선관">11</a>
+    </nav>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.006</span><span>Virtus // <b>Agent</b></span></p>
+      <p class="motto">[ 평화의 뮤지션! ]</p>
+      <h1 class="name">Jeon<span>Woochi</span></h1>
+      <p class="ko">전우치</p>
+      <p class="rank"><img src="../../assets/factions/virtus.png" alt="" width="22" height="22">비르투스 대원</p>
+      <blockquote class="quote">&ldquo;오늘 만든 곡, 들어보겠나?&rdquo;</blockquote>
+      <div class="eq" aria-hidden="true"><i style="--h:60;--d:1"></i><i style="--h:90;--d:4"></i><i style="--h:45;--d:2"></i><i style="--h:100;--d:6"></i><i style="--h:70;--d:3"></i><i style="--h:85;--d:7"></i><i style="--h:40;--d:5"></i><i style="--h:95;--d:2"></i><i style="--h:55;--d:8"></i><i style="--h:80;--d:1"></i><i style="--h:65;--d:6"></i><i style="--h:90;--d:3"></i><i style="--h:50;--d:4"></i><i style="--h:75;--d:7"></i></div>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>남성</dd></div>
+        <div><dt>Age</dt><dd>23</dd></div>
+        <div><dt>Height</dt><dd>187cm</dd></div>
+        <div><dt>Weight</dt><dd>표준</dd></div>
+      </dl>
+    </div>
+    <div class="sleeve">
+      <span class="disc" aria-hidden="true"></span>
+      <figure class="sheet">
+        <img src="assets/woochi.jpg" alt="전우치 전신 그림. 노란 헤드폰을 쓴 검은 단발머리 청년이 호박색 눈으로 미소 지으며 통기타를 연주한다. 검은 재킷 아래로 흰 소매가 보이고 가슴에 붉은 방패 배지를 달았다" width="800" height="1280">
+        <figcaption><span>WOOCHI.IMG</span><span>VIRTUS</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>01</span><span class="mono head__en">(Identity)</span><h2>Identity<span>신원 정보</span></h2></header>
+    <div class="ident">
+      <div class="idcard">
+        <img src="assets/face.jpg" alt="전우치 얼굴" width="116" height="116">
+        <div>
+          <p class="idcard__n">Jeon<br>Woochi</p>
+          <dl><dt>DIV</dt><dd>VIRTUS</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>M</dd><dt>AGE</dt><dd>23</dd></dl>
+        </div>
+        <div class="idcard__code">JEON&lt;&lt;WOOCHI&lt;&lt;VIR&lt;&lt;AGT&lt;&lt;0830&lt;&lt;M23&lt;&lt;187</div>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>전우치 / Jeon Woochi</td></tr>
+          <tr><th>1.2</th><td>Sex</td><td>남성</td></tr>
+          <tr><th>1.3</th><td>Age</td><td>23세</td></tr>
+          <tr><th>1.4</th><td>Height / Weight</td><td>187cm / 표준</td></tr>
+          <tr><th>1.5</th><td>Faction</td><td>비르투스 &middot; 대원</td></tr>
+          <tr><th>1.6</th><td>Attribute</td><td>특수</td></tr>
+          <tr><th>1.7</th><td>Special</td><td>환음향연</td></tr>
+          <tr><th>1.8</th><td>Talent</td><td>음파조율</td></tr>
+          <tr><th>1.9</th><td>Birthday</td><td>8월 30일</td></tr>
+          <tr><th>1.10</th><td>Coupling</td><td>CL &gt; HL &gt; BL</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>02</span><span class="mono head__en">(Appearance)</span><h2>Appearance<span>외관</span></h2></header>
+    <div class="look">
+      <div class="look__pics">
+        <figure class="sheet" style="margin:0"><img src="assets/face.jpg" alt="전우치 얼굴 그림. 노란 헤드폰, 검은 머리에 흰 브릿지, 호박색 눈으로 비스듬히 웃고 있다" width="480" height="480"><figcaption><span>FACE</span><span>VIRTUS</span></figcaption></figure>
+        <figure class="sheet" style="margin:0"><img src="assets/card.jpg" alt="전우치 상반신 그림. 통기타를 들고 연주하는 모습" width="560" height="700"><figcaption><span>LIVE</span><span>VIRTUS</span></figcaption></figure>
+      </div>
+      <div>
+        <ul class="parts">
+          <li><i style="--c:#1d1b1c"></i><span>2.1 Hair</span><b>어깨에 닿는 검은 단발, 흰 브릿지</b></li>
+          <li><i style="--c:#e8a21c"></i><span>2.2 Eyes</span><b>호박색 눈</b></li>
+          <li><i style="--c:#f2b632"></i><span>2.3 Headphones</span><b>늘 쓰고 있는 노란 헤드폰</b></li>
+          <li><i style="--c:#cfe3ea"></i><span>2.4 Inner</span><b>하늘빛 터틀넥, 흰 소매</b></li>
+          <li><i style="--c:#2a2830"></i><span>2.5 Outer</span><b>검은 조끼형 재킷, 검은 바지와 부츠</b></li>
+          <li><i style="--c:#c0262a"></i><span>2.6 Badge</span><b>가슴의 붉은 방패 배지</b></li>
+          <li><i style="--c:#d9a74a"></i><span>2.7 Guitar</span><b>전투용으로 개조한 통기타</b></li>
+          <li><i style="--c:#f4ede9"></i><span>2.8 Look</span><b>비스듬히 웃는 편안한 얼굴</b></li>
+        </ul>
+        <p class="note">신청서의 외관 칸이 비어 있어, 항목은 그림에서 보이는 모습을 정리한 것이다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>03</span><span class="mono head__en">(Personality)</span><h2>Personality<span>성격</span></h2></header>
+    <div class="pers">
+      <div class="panel trait"><h3>다정한, 친절한, 따듯한<small>3.1</small></h3><p>항상 밝고 친절하며, 모두에게 따듯한 모습을 보인다. 먼저 나서기보단 모두를 격려하는 역할을 좋아한다. 어지간해서는 타인에게 화를 잘 내지 않으며 대부분의 사람을 존중하고 이해해 준다. 정리하자면 함께 있으면 마음이 편해지는 그런 사람이랄까.</p></div>
+      <div class="panel trait"><h3>평화적인<small>3.2</small></h3><p>아무도 싸우지 않는 평화를 사랑한다. 웬만한 일은 평화롭게 대화로 풀어 나가는 것을 좋아한다. 언성을 높이는 일을 좋아하지 않으며, 다툼이 생길 것 같으면 자신이 한발 물러서는 일도 잦다.</p></div>
+      <div class="panel trait"><h3>정의로운<small>3.3</small></h3><p>언제나 대의를 위한다. 위험에 처한 사람을 보면 그냥 넘어가지 못하며, 다툼은 싫어하지만 그렇다고 불의를 못 본 척 넘기지도 못한다. 어찌 되었든 그의 목표는 조금이라도 더 나은 세상을 만드는 것이기에.</p></div>
+      <div class="panel trait"><h3>서포터, 지원자<small>3.4</small></h3><p>앞에 나서 싸우는 것보다 뒤에서 아군을 지원해 주는 역할을 선호한다. 그렇다고 나서는 것 자체를 싫어하냐면, 그것은 또 아니다! 필요에 따라서는 자신이 나서기도 하지만 그보다는 기본적으로 타인이 활약할 수 있게 돕는 것을 더 좋아한다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>04</span><span class="mono head__en">(Like / Hate)</span><h2>L / H</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>평화</li><li>대화</li><li>음악</li><li>노래</li><li>작곡</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>혼돈</li><li>말다툼</li><li>전투</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>05</span><span class="mono head__en">(Stats)</span><h2>Stats<span>능력치</span></h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 40, 방어력 50, 민첩성 70, 정확성 90, 정신력 70">
+        <g class="radar__grid"></g>
+        <polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon>
+        <g class="radar__dots"></g>
+        <g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>공격력</span><span class="bar"><i data-w="40"></i></span><b>40</b></li>
+        <li><span>5.2</span><span>방어력</span><span class="bar"><i data-w="50"></i></span><b>50</b></li>
+        <li><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="70"></i></span><b>70</b></li>
+        <li><span>5.4</span><span>정확성</span><span class="bar"><i data-w="90"></i></span><b>90</b></li>
+        <li><span>5.5</span><span>정신력</span><span class="bar"><i data-w="70"></i></span><b>70</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 320 = 40 + 50 + 70 + 90 + 70 &middot; 가장 높은 능력치는 정확성</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>06</span><span class="mono head__en">(Techniques)</span><h2>Techniques<span>기술</span></h2></header>
+    <div class="tech">
+      <div class="panel tk"><span class="tk__no">6.1</span><p class="tk__type">ATK &middot; 공격기</p><h3>슈퍼메가통기타</h3><div><div class="chips"><em>타격</em></div><p>무기로도 사용될 수 있게 특수 제작된 통기타로 강하게 타격한다.</p></div></div>
+      <div class="panel tk"><span class="tk__no">6.2</span><p class="tk__type">ATK &middot; 공격기</p><h3>시인의 노래</h3><div><div class="chips"><em>특수</em><em>회복</em></div><p>기타를 사용해 평화롭고 잔잔한 노래를 부른다. 아군의 사기를 올릴 수 있다.</p></div></div>
+      <div class="panel tk"><span class="tk__no">6.3</span><p class="tk__type">ATK &middot; 공격기</p><h3>전투의 노래</h3><div><div class="chips"><em>특수</em><em>광역</em></div><p>기타를 사용해 빠르고 격한 노래를 부른다. 비트감 있는 음파로 적을 팬다.</p></div></div>
+      <div class="panel tk tk--def"><span class="tk__no">6.4</span><p class="tk__type">DEF &middot; 방어기</p><h3>즉석안무</h3><div><div class="chips"><em>기민</em></div><p>민첩하게 공격을 회피한다. 그 유연한 모습은 언뜻 보면 춤을 추는 것 같기도 하다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>07</span><span class="mono head__en">(Special) &mdash; 특수</span><h2>Special<span>특수 능력</span></h2></header>
+    <div class="ab">
+      <div>
+        <p class="ab__name">Fantasia</p>
+        <p class="ab__ko">환음향연</p>
+        <span class="mono ab__type">특수</span>
+        <p class="ab__one">전장의 <b>불필요한 소리는 줄이고 자신의 노래는 키워</b> 아군의 사기를 올린다. 함께 싸울 동료가 남아 있지 않다면, 그 노래는 <b>한 명을 향한 공격</b>이 된다.</p>
+        <div class="rules">
+          <div><b>&times;1.3</b><strong>아군의 공격력</strong><span>아군의 공격력이 1.3배가 된다.</span></div>
+          <div><b>&times;0.8</b><strong>적군의 피해량</strong><span>적군의 피해량이 0.8배가 된다.</span></div>
+          <div><b>1T</b><strong>지속 시간</strong><span>다음 자신의 턴이 종료될 때까지 유지된다.</span></div>
+          <div><b>&times;2.5</b><strong>혼자 남았을 때</strong><span>아군 진영에 자신 혼자만 남았다면, 사용한 턴에 피해량 다이스 결과의 2.5배를 지정 한 명에게 가한다.</span></div>
+        </div>
+        <details class="orig"><summary>신청서 원문 보기</summary><p>예로부터 음악은 아군의 사기를 올리는데 큰 도움을 주곤 했다. 해당 공간의 불필요한 소리는 줄이고 자신의 노래는 키운다. 아군의 공격력이 1.3배가 되고, 적군의 피해량이 0.8배가 된다. 해당 효과는 다음 자신의 턴이 종료될때까지 유지된다. 만약 아군 진영중 자신 혼자만 남은 상태라면, 사기를 올려줄 수 있는 동료가 남아있지 않다면 특수능력을 사용한 턴에 피해량 다이스를 굴려 나온 데미지의 2.5배를 지정 한명에게 가한다.</p></details>
+      </div>
+      <div class="panel">
+        <p class="idx">7.1 &mdash; 발동해 보기</p>
+        <div class="seg" role="group" aria-label="상황 고르기"><button type="button" id="mTeam" aria-pressed="true">동료가 남아 있다</button><button type="button" id="mSolo" aria-pressed="false">혼자 남았다</button></div>
+        <ol class="timeline" id="tl">
+          <li><b>STEP 1</b>우치의 턴: 연주 시작</li>
+          <li><b>STEP 2</b>다른 캐릭터들의 턴</li>
+          <li><b>STEP 3</b>우치의 다음 턴이 끝나면 해제</li>
+        </ol>
+        <div class="sides">
+          <div class="side"><h4>아군 &middot; 공격력</h4><div id="allies"></div></div>
+          <div class="side"><h4>적군 &middot; 피해량</h4><div id="enemies"></div></div>
+        </div>
+        <div class="solo" id="solo">
+          <label for="dice">피해량 다이스 결과 <input type="range" id="dice" min="1" max="30" value="12"></label>
+          <div class="solo__out"><span>다이스 <span id="dv">12</span> &times; 2.5 =</span><b id="dmg">&ndash;</b><span>지정 한 명에게</span></div>
+        </div>
+        <p class="status" id="sp" aria-live="polite">연주를 시작하면 아군과 적군의 수치가 바뀐다.</p>
+        <div class="ctrl">
+          <button class="btn btn--main" id="spCast" type="button">환음향연 연주</button>
+          <button class="btn" id="spNext" type="button" disabled>다음 단계</button>
+          <button class="btn" id="spReset" type="button">초기화</button>
+        </div>
+        <p class="note">아군과 적군의 기본값 20은 바뀌는 비율을 보여 주기 위한 예시 수치다. 다이스 값도 예시이며, 실제 다이스는 진행 규칙을 따른다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>08</span><span class="mono head__en">(Talent) &mdash; 발현 능력</span><h2>Talent<span>발현 능력</span></h2></header>
+    <div class="ab">
+      <div>
+        <p class="ab__name">Tuning</p>
+        <p class="ab__ko">음파조율</p>
+        <p class="ab__one">음파를 <b>눈으로 볼 수 있고</b>, 보고 있는 음파라면 그 소리의 <b>크기를 바꾸거나 한 곳으로 모을 수</b> 있다.</p>
+        <div class="rules">
+          <div><b>보기</b><strong>음파가 보인다</strong><span>자신의 귀에 닿는 음파만 보인다. 원하면 타인에게도 보여 줄 수 있다.</span></div>
+          <div><b>조절</b><strong>소리 크기를 바꾼다</strong><span>보고 있는 음파의 근원지에서 나는 소리의 진폭을 조절한다. 진폭을 0으로 만든 벽은 부숴도 소리가 나지 않는다.</span></div>
+          <div><b>집중</b><strong>한 곳으로 모은다</strong><span>사방으로 퍼지는 음파를 한 곳으로 모으면, 아무리 큰 소리도 그곳에서만 들린다.</span></div>
+          <div><b>1H</b><strong>1시간 뒤 원래대로</strong><span>조절한 진폭은 그대로 두어도 1시간이 지나면 돌아간다.</span></div>
+          <div><b>!</b><strong>소리가 나야 한다</strong><span>음파가 보이지 않으면 조절할 수 없다. 대상이 어떤 방식으로든 소리를 내고 있어야 한다.</span></div>
+        </div>
+        <details class="orig"><summary>신청서 원문 보기</summary><p>음파를 시각적으로 볼 수 있으며, 원한다면 자신이 보는 음파를 타인에게 시각화 시켜줄 수도 있다. 시각적으로 보이는 음파는 자신의 귀에 닿는 음파로 한정되며 음파를 보고 있는 상태에서는 그 음파의 근원지에서 나는 소리의 진폭을 조절하거나 사방으로 퍼지는 음파를 한 곳으로 집중시킬 수 있다. 조절한 소리 진폭은 냅둬도 1시간이 지나면 원래대로 돌아간다. 음파가 보이지 않는 상태에서는 대상의 진폭을 조절할 수 없기 때문에 능력 사용을 위해서는 대상이 어떤 방식으로든 소리를 내고 있어야 한다. 예를들자면, 한 벽의 소리진폭을 0으로 조절했다고 하면 그 벽은 무엇을 부딪쳐도, 심지어 부순다 하더라도 아무 소리도 나지 않는다. 또한 음파를 한곳으로 집중시킨다면 아무리 큰 소리더라도 집중시킨 곳에서만 들린다.</p></details>
+      </div>
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 직접 조율해 보기</p>
+        <div class="stage"><canvas id="cv" role="img" aria-label="우치 주변의 소리 근원지와 음파 그림"></canvas><span class="stage__lbl">WOOCHI'S EAR // 음파 시야</span></div>
+        <div class="pick" role="group" aria-label="소리 근원지 고르기" id="pick"></div>
+        <div class="amp" id="ampRow"><label for="amp">진폭</label><input type="range" id="amp" min="0" max="200" step="10" value="100"><output id="ampV" for="amp">100%</output></div>
+        <p class="status" id="tp" aria-live="polite">근원지를 고르고 진폭을 움직여 보자.</p>
+        <div class="ctrl">
+          <button class="btn" id="knock" type="button">벽 두드리기</button>
+          <button class="btn" id="focus" type="button" aria-pressed="false">동료에게 집중</button>
+          <button class="btn" id="share" type="button" aria-pressed="false">동료에게도 보여 주기</button>
+          <button class="btn" id="hour" type="button">1시간 경과</button>
+        </div>
+        <p class="note">그림 속 근원지 배치와 동료는 예시다. 귀를 막는 헤드폰 이야기는 09 특징에 있다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>09</span><span class="mono head__en">(Traits)</span><h2>Traits<span>특징</span></h2></header>
+    <dl class="facts">
+      <div><dt>Birthday</dt><dd>8월 30일</dd></div>
+      <div><dt>Tone</dt><dd>하게체<small>컨셉 말투</small></dd></div>
+      <div><dt>Dream</dt><dd>싱어송라이터</dd></div>
+    </dl>
+    <div class="tlist">
+      <div class="panel"><p class="idx">9.1</p><h3>헤드폰</h3><p>능력으로 인해 귀를 막지 않으면 시야가 많이 어지러워져 항상 헤드폰으로 귀를 막고 있다. 소리를 못 듣는 것은 아니다. 귀가 밝은 편이기에 귀를 막은 상태에서도 집중하면 정상적인 대화가 가능하다. 약간의 독순술을 할 줄 아는 덕도 있다. 다만 이 때문에 소리에 예민하게 반응하지는 못해서 뒤에서 다가오면 놀라곤 한다.</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>음악과 이야기</h3><p>우치가 좋아하는 것들이다. 가능하다면 우치는 본래 싱어송라이터가 되려고 했었다. 옛날이라면 음유시인이라고 불렸을 것이다. 그러나 어쩔 수 없는 사정으로 꿈을 이루진 못했다. 그래도 종종 개인적으로 노래하고 작곡을 하며 취미 생활은 계속 이어 나가고 있다.</p></div>
+      <div class="panel"><p class="idx">9.3</p><h3>예술</h3><p>춤, 노래, 미술 등등... 예술과 관련한 분야라면 뭐든 평균 이상의 재능은 가지고 있다. 그중에서 음악을 가장 좋아할 뿐이다. 지나가다 보면 그가 흥얼거리고 있는 것을 자주 볼 수 있다.</p></div>
+      <div class="panel"><p class="idx">9.4</p><h3>말투</h3><p>주로 하게체를 쓴다. 진짜 말투는 아니고, 컨셉이기 때문에 필요하다고 생각될 때나 다급할 때는 평범한 말투가 튀어나온다.</p></div>
+      <div class="panel" style="grid-column:1/-1"><p class="idx">9.5</p><h3>Grand Harmony Directorate</h3><p>입단 후 항상 열심히 하는 축이다. 그러나 항상 앞서 싸우는 것은 선호하지 않고, 뒤에서 지원해 주는 방향을 좋아한다. 때때로는 자신은 이곳에 있을 만큼 대단한 사람이 아니라는 말도 하곤 한다. 그러나 싸워야 할 때가 온다면 결코 물러서지 않고 끝까지 버텨 낸다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>10</span><span class="mono head__en">(Inventory)</span><h2>Inventory<span>소지품</span></h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">통기타</p><p class="mono dim" style="margin:0">acoustic guitar</p><p>기타 소리를 발현 능력의 보조 도구로 사용하려고 가지고 다닌다. 다만 평소에 노래할 때도 쓰고, 아무래도 전투용으로 꽤 튼튼하게 개조되었기에 가끔 그냥 휘둘러서 타격용으로 쓰기도 한다.</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">수첩</p><p class="mono dim" style="margin:0">notebook</p><p>문득 떠오르는 악상이나 이야기, 가사 등을 적어 놓는다. 가끔 낙서를 하기도 한다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TRACK</small>11</span><span class="mono head__en">(Links)</span><h2>Links<span>선관</span></h2></header>
+    <article class="link">
+      <div class="link__top"><img src="../../assets/factions/virtus.png" alt="비르투스 문장" width="48" height="48"><div><p class="link__nm">전우곤</p><p class="mono link__role">소중한 동생</p><div class="link__tags"><span class="k">가족</span><span>입단 동기</span></div></div></div>
+      <div class="link__body">
+        <p class="link__q">&ldquo;넌 분명 잘 할 수 있고, 뭐든 될 수 있어. 넌 그런 아이니까.&rdquo;</p>
+        <p>소중한 동생. 어쩌다 보니 입단을 함께하게 되었다. 위험한 일을 함께 한다는 게 많이 걱정되긴 하지만 그래도 우곤이는 강인한 아이니까! 언제나 믿고 있다.</p>
+      </div>
+    </article>
+    <p class="note">전우곤의 진영은 신청서에 적혀 있지 않아, 우치와 같은 문장을 임시로 붙였다.</p>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <svg class="wave" viewBox="0 0 600 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14 Q 15 0 30 14 T 60 14 T 90 14 T 120 14 T 150 14 T 180 14 T 210 14 T 240 14 T 270 14 T 300 14 T 330 14 T 360 14 T 390 14 T 420 14 T 450 14 T 480 14 T 510 14 T 540 14 T 570 14 T 600 14" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <p class="outro__m" style="margin-top:28px">For a better world</p>
+    <p class="outro__q">[ 글쎄. 더 나은 세상을 만들 수 있다면 그것만으로 된 것 아니겠나? ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 잘 부탁드립니다!</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>JEON WOOCHI &middot; Virtus Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const h=/^#(full|calm)$/.exec(location.hash);if(h){pref=h[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+const calm=RM||pref==="calm";if(calm)document.body.classList.add("calm");
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+
+/* ---------- stats ---------- */
+const S=[["공격력",40],["방어력",50],["민첩성",70],["정확성",90],["정신력",70]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));
+  const [tx,ty]=pt(i,122),an=Math.abs(tx)<5?"middle":tx>0?"start":"end";
+  const t=el("text",{x:tx,y:ty-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);
+  const t2=el("text",{x:tx,y:ty+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let statsDone=false;
+function runStats(){if(statsDone)return;statsDone=true;$("#hp").classList.add("on");
+  $("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});
+  $$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));
+setTimeout(runStats,2500);
+
+/* ---------- 환음향연 ---------- */
+const BASE=20;
+let solo=false,step=0; // 0 대기, 1~3 효과 단계, 4 해제
+const ALLY=[["우","전우치","본인",1],["A","아군 A","예시"],["B","아군 B","예시"],["C","아군 C","예시"]];
+const ENEMY=[["가","적군 가","예시"],["나","적군 나","예시"]];
+function fmt(v){return Number.isInteger(v)?v:v.toFixed(1)}
+function drawSp(){
+  const on=step>=1&&step<=3&&!solo;
+  $("#allies").innerHTML=ALLY.map(([ic,n,s,me])=>{const out=solo&&!me;const v=on&&!out?BASE*1.3:BASE;
+    return `<div class="unit${me?" me":""}${out?" out":""}${on&&!out?" up":""}"><i>${ic}</i><span>${n}<small>${out?"전투 불능":s}</small></span><b>${out?"–":fmt(v)}</b></div>`}).join("");
+  $("#enemies").innerHTML=ENEMY.map(([ic,n,s],k)=>{const hit=solo&&step===1&&k===0;const v=on?BASE*.8:BASE;
+    return `<div class="unit${on?" down":""}"><i>${ic}</i><span>${n}<small>${hit?"지정 대상":s}</small></span><b>${fmt(v)}</b></div>`}).join("");
+  $$("#tl li").forEach((li,i)=>li.classList.toggle("now",!solo&&step===i+1||solo&&step===1&&i===0));
+  $("#spNext").disabled=solo||step===0||step>=4;
+  $("#spCast").disabled=step>=1&&step<=3;
+  $("#solo").classList.toggle("show",solo);
+  const d=+$("#dice").value;$("#dv").textContent=d;$("#dmg").textContent=solo&&step===1?fmt(d*2.5):"–";
+}
+const msg=(t,on)=>{const p=$("#sp");p.textContent=t;p.classList.toggle("on",!!on)};
+function setMode(s){solo=s;step=0;$("#mTeam").setAttribute("aria-pressed",!s);$("#mSolo").setAttribute("aria-pressed",s);
+  msg(s?"동료가 모두 쓰러지고 우치만 남은 상황. 연주하면 노래가 한 명을 향한 공격이 된다.":"연주를 시작하면 아군과 적군의 수치가 바뀐다.");drawSp()}
+$("#mTeam").onclick=()=>setMode(false);$("#mSolo").onclick=()=>setMode(true);
+$("#spCast").onclick=()=>{step=1;drawSp();
+  if(solo){const d=+$("#dice").value;msg(`사기를 올려 줄 동료가 없다. 다이스 ${d}의 2.5배인 ${fmt(d*2.5)}을(를) 적군 가에게 가한다.`,1)}
+  else msg("불필요한 소리는 줄고 노래는 커진다. 아군 공격력 ×1.3, 적군 피해량 ×0.8.",1)};
+$("#spNext").onclick=()=>{step++;drawSp();
+  if(step===2)msg("다른 캐릭터들의 턴. 효과는 그대로 이어진다.",1);
+  else if(step===3)msg("우치의 다음 턴. 이 턴이 끝날 때까지 효과가 남아 있다.",1);
+  else{msg("우치의 다음 턴이 끝나 효과가 풀렸다. 수치가 원래대로 돌아왔다.");}};
+$("#spReset").onclick=()=>setMode(solo);
+$("#dice").oninput=()=>{drawSp();if(solo&&step===1){const d=+$("#dice").value;msg(`다이스 ${d}의 2.5배인 ${fmt(d*2.5)}을(를) 적군 가에게 가한다.`,1)}};
+drawSp();
+
+/* ---------- 음파조율 ---------- */
+const cv=$("#cv"),cx=cv.getContext("2d");
+const css=getComputedStyle(document.documentElement),C=k=>css.getPropertyValue(k).trim();
+const VIR=C("--vir"),AMB=C("--amb"),FG=C("--fg"),DIM=C("--dim");
+const SRC=[
+  {id:"guitar",name:"통기타",x:.3,y:.66,amp:100,every:.5,sound:true},
+  {id:"steps",name:"발소리",x:.78,y:.22,amp:100,every:.85,sound:true},
+  {id:"wall",name:"벽",x:.92,y:.62,amp:100,every:0,sound:false,heard:false}
+];
+const ME={x:.14,y:.38},MATE={x:.56,y:.84};
+let sel="guitar",focus=false,share=false,rings=[],W=0,H=0,last=0,t0=performance.now(),running=false,visible=false;
+const src=id=>SRC.find(s=>s.id===id);
+function size(){const r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cx.setTransform(d,0,0,d,0,0);if(calm)drawStatic()}
+function emit(s,t){if(s.amp<=0)return;rings.push({s,born:t,f:focus&&sel===s.id})}
+function node(x,y,label,col,fill){cx.beginPath();cx.arc(x,y,7,0,Math.PI*2);cx.fillStyle=fill||col;cx.fill();cx.font="500 12px "+C("--f-body");cx.fillStyle=col;cx.textAlign="center";cx.fillText(label,x,y-14)}
+function scene(){
+  cx.clearRect(0,0,W,H);
+  cx.strokeStyle="rgba(240,225,218,.05)";cx.lineWidth=1;
+  for(let x=0;x<W;x+=24){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}
+  for(let y=0;y<H;y+=24){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+  const w=src("wall");cx.fillStyle="#3a2c2a";cx.fillRect(w.x*W-6,H*.38,12,H*.5);
+  node(ME.x*W,ME.y*H,"우치",AMB);
+  cx.strokeStyle=AMB;cx.lineWidth=2;cx.beginPath();cx.arc(ME.x*W,ME.y*H,11,Math.PI*1.1,Math.PI*1.9);cx.stroke();
+  node(MATE.x*W,MATE.y*H,share?"동료 (음파 보임)":"동료",share?AMB:FG);
+  SRC.forEach(s=>{const x=s.x*W,y=s.y*H;const on=s.id===sel;
+    node(x,y,s.name+(s.amp===0?" · 무음":s.amp!==100?` · ${s.amp}%`:""),on?AMB:s.amp===0?DIM:FG,on?AMB:s.amp===0?"#4a3c3a":VIR)});
+}
+function ringsDraw(t){
+  const sp=Math.min(W,H)*.42;
+  rings=rings.filter(r=>t-r.born<2.4);
+  rings.forEach(r=>{const life=(t-r.born)/2.4,rad=(t-r.born)*sp+6,a=(1-life)*Math.min(1,r.s.amp/100)*.85;
+    cx.strokeStyle=r.s.id===sel?AMB:VIR;cx.globalAlpha=a;cx.lineWidth=1+r.s.amp/100*1.6;cx.beginPath();
+    const x=r.s.x*W,y=r.s.y*H;
+    if(r.f){const d=Math.atan2(MATE.y*H-y,MATE.x*W-x);cx.arc(x,y,rad,d-.16,d+.16)}else cx.arc(x,y,rad,0,Math.PI*2);
+    cx.stroke();cx.globalAlpha=1;
+    if(r.f){const dist=Math.hypot(MATE.x*W-x,MATE.y*H-y);if(Math.abs(rad-dist)<10){cx.strokeStyle=AMB;cx.lineWidth=2;cx.beginPath();cx.arc(MATE.x*W,MATE.y*H,14,0,Math.PI*2);cx.stroke()}}
+  });
+}
+function frame(now){
+  if(!visible){running=false;return}
+  const t=(now-t0)/1000;
+  SRC.forEach(s=>{if(s.sound&&s.every){if(!s.last||t-s.last>s.every){s.last=t;emit(s,t)}}});
+  scene();ringsDraw(t);
+  requestAnimationFrame(frame);
+}
+function drawStatic(){scene();
+  SRC.forEach(s=>{if(!(s.sound||s.heard)||s.amp<=0)return;const x=s.x*W,y=s.y*H;const f=focus&&sel===s.id;
+    for(let k=1;k<=3;k++){cx.globalAlpha=(1-k*.25)*Math.min(1,s.amp/100);cx.strokeStyle=s.id===sel?AMB:VIR;cx.lineWidth=1+s.amp/100*1.6;cx.beginPath();
+      const rad=k*Math.min(W,H)*.09;if(f){const d=Math.atan2(MATE.y*H-y,MATE.x*W-x);cx.arc(x,y,rad,d-.16,d+.16)}else cx.arc(x,y,rad,0,Math.PI*2);cx.stroke()}
+    cx.globalAlpha=1;
+    if(f){cx.setLineDash([4,5]);cx.strokeStyle=AMB;cx.beginPath();cx.moveTo(x,y);cx.lineTo(MATE.x*W,MATE.y*H);cx.stroke();cx.setLineDash([])}});
+}
+function start(){if(calm){drawStatic();return}if(!running){running=true;requestAnimationFrame(frame)}}
+new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;if(visible)start()})).observe(cv);
+new ResizeObserver(size).observe(cv);
+
+$("#pick").innerHTML=SRC.map(s=>`<button type="button" data-id="${s.id}" aria-pressed="${s.id===sel}">${s.name}</button>`).join("");
+const tp=(t,on)=>{const p=$("#tp");p.textContent=t;p.classList.toggle("on",!!on)};
+function canTune(s){return s.sound||s.heard}
+function sync(){
+  const s=src(sel),ok=canTune(s);
+  $$("#pick button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.id===sel));
+  const a=$("#amp");a.disabled=!ok;a.value=s.amp;$("#ampV").textContent=s.amp+"%";$("#ampRow").classList.toggle("off",!ok);
+  $("#focus").setAttribute("aria-pressed",focus);$("#focus").disabled=!ok;
+  $("#share").setAttribute("aria-pressed",share);
+  if(calm)drawStatic();
+}
+$$("#pick button").forEach(b=>b.onclick=()=>{sel=b.dataset.id;focus=false;const s=src(sel);
+  if(!canTune(s))tp("벽은 지금 아무 소리도 내지 않아 음파가 보이지 않는다. 먼저 벽을 두드려 소리를 내야 조절할 수 있다.");
+  else tp(`${s.name}의 음파를 보고 있다. 진폭을 움직여 보자.`);sync()});
+$("#amp").oninput=e=>{const s=src(sel);s.amp=+e.target.value;sync();
+  if(s.amp===0)tp(s.id==="wall"?"벽의 진폭이 0이 되었다. 이제 무엇을 부딪쳐도, 부숴도 아무 소리가 나지 않는다.":`${s.name}의 진폭이 0이 되었다. 소리가 사라졌다.`,1);
+  else tp(`${s.name}의 진폭 ${s.amp}%. 1시간이 지나면 100%로 돌아간다.`,1)};
+$("#knock").onclick=()=>{const w=src("wall");const first=!w.heard;w.heard=true;
+  if(!calm){const t=(performance.now()-t0)/1000;[0,.18,.36].forEach(d=>setTimeout(()=>emit(w,(performance.now()-t0)/1000),d*1000))}
+  if(w.amp===0)tp("벽을 세게 쳤지만 아무 소리도 나지 않는다. 진폭이 0이기 때문이다.",1);
+  else tp(first?"벽에서 소리가 났다. 이제 벽의 음파가 보이니 진폭을 조절할 수 있다.":"벽에서 소리가 난다.",1);
+  if(sel==="wall")sync();else if(calm)drawStatic()};
+$("#focus").onclick=()=>{focus=!focus;sync();const s=src(sel);
+  tp(focus?`${s.name}의 소리를 동료에게 모았다. 아무리 큰 소리도 동료가 있는 곳에서만 들린다.`:"집중을 풀었다. 음파가 다시 사방으로 퍼진다.",focus)};
+$("#share").onclick=()=>{share=!share;sync();tp(share?"우치가 보는 음파를 동료에게도 보여 주고 있다.":"음파는 다시 우치에게만 보인다.",share)};
+$("#hour").onclick=()=>{SRC.forEach(s=>s.amp=100);focus=false;sync();tp("1시간이 지나 조절했던 진폭이 모두 원래대로 돌아왔다.")};
+sync();
+})();
+</script>
+</body>
+</html>
