@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>조류의 칼날, 바리</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="비르투스 대원 바리 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Saira+Condensed:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: 비르투스. 해도(海圖)와 물때표처럼 짠 페이지. 밤바다 남색에 비르투스 적색 칼날, 푸른 눈의 바다색, 까치놀의 노을빛. 섹션은 물때(TIDE) 번호 */
+:root{
+  --bg:#07111b;--panel:#0d1a27;--panel2:#132536;--line:rgba(225,238,248,.12);--line2:rgba(225,238,248,.28);
+  --fg:#eef4f8;--dim:#8fa4b6;--vir:#e4473f;--vir2:#c0262a;--sea:#46a8dc;--sun:#f2a541;
+  --f-disp:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-lat:"Saira Condensed","Arial Narrow",sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 50% -10%,rgba(70,168,220,.16),transparent 55%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1200px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(7,17,27,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-size:22px;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-lat);font-weight:600;font-size:15px;text-decoration:none;padding:4px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--fg);border-color:var(--vir)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--fg);color:var(--bg)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:3px;pointer-events:none;overflow:hidden}
+.np i{display:block;height:100%;width:0;max-width:100%;background:linear-gradient(90deg,var(--sea),var(--sun),var(--vir))}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:19px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:46%;pointer-events:none}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--vir);font-weight:500}
+.tide{display:inline-block;margin:22px 0 0;padding:4px 12px;background:var(--vir2);color:#fff;font-family:var(--f-disp);font-size:17px;letter-spacing:.06em}
+.name{font-family:var(--f-disp);font-size:clamp(110px,18vw,220px);line-height:.95;margin:10px 0 0;white-space:nowrap;letter-spacing:.02em}
+.name .ch{display:inline-block}
+.name .ch:last-child{color:var(--vir)}
+.en{font-family:var(--f-lat);font-weight:800;font-size:clamp(24px,3vw,36px);letter-spacing:.3em;margin:0;color:var(--sea);text-transform:uppercase}
+.quote{font-weight:700;font-size:clamp(21px,2.6vw,30px);line-height:1.5;margin:24px 0 0;max-width:22em}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:600px;background:var(--panel);border:1px solid var(--line)}
+.dims div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:2px 0 0;font-family:var(--f-disp);font-size:clamp(22px,2.6vw,28px);line-height:1.2}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.chart{position:relative;justify-self:center;width:100%;max-width:400px;margin:0;padding:10px;background:#f4f1ea;color:#13202c;box-shadow:14px 14px 0 var(--vir2)}
+.chart::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 23px,rgba(70,120,160,.12) 23px 24px),repeating-linear-gradient(90deg,transparent 0 23px,rgba(70,120,160,.12) 23px 24px);pointer-events:none}
+.chart img{position:relative;width:100%;mix-blend-mode:multiply}
+.chart figcaption{position:relative;display:flex;justify-content:space-between;gap:10px;padding-top:6px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em}
+.compass{position:absolute;right:14px;top:14px;width:58px;height:58px;border-radius:50%;border:1.5px solid #13202c;display:grid;place-items:center;font-family:var(--f-lat);font-weight:800;font-size:12px;background:rgba(244,241,234,.85)}
+.compass::before{content:"";position:absolute;width:6px;height:44px;background:linear-gradient(180deg,var(--vir2) 50%,#13202c 50%);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:needle 6s ease-in-out infinite}
+.compass b{position:absolute;top:2px;font-size:10px}
+@keyframes needle{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(18deg)}}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.chart{max-width:320px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,100px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:end;margin-bottom:clamp(26px,4vw,40px)}
+.head__no{grid-row:span 2;position:relative;display:flex;flex-direction:column;align-items:flex-start;padding:6px 12px 6px 10px;border-left:4px solid var(--sea);font-family:var(--f-lat);font-weight:800;font-size:clamp(34px,4.4vw,52px);line-height:.9;color:var(--sea);transition:border-color .4s,color .4s}
+.head__no small{font-family:var(--f-mono);font-weight:500;font-size:10px;letter-spacing:.14em;color:var(--dim);margin-bottom:4px}
+.sec.live .head__no{border-color:var(--vir);color:var(--vir)}
+.head__en{font-family:var(--f-lat);font-weight:600;font-size:15px;letter-spacing:.2em;color:var(--sea);text-transform:uppercase}
+.head h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(32px,4.8vw,56px);line-height:1.1;margin:0;min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--sea);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:14px}
+
+/* 01 */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.card{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;background:#f4f1ea;color:#13202c;padding:18px;align-self:start;border-top:6px solid var(--vir2)}
+.card img{width:110px;height:110px;object-fit:cover;border:1px solid rgba(0,0,0,.12)}
+.card__n{font-family:var(--f-disp);font-size:40px;line-height:1;margin:0}
+.card__e{font-family:var(--f-lat);font-weight:800;letter-spacing:.24em;font-size:15px;margin:2px 0 0;color:#2b6f98}
+.card dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.card dt{opacity:.55}.card dd{margin:0;font-weight:500}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--vir);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:500}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.card{grid-template-columns:84px minmax(0,1fr)}.card img{width:84px;height:84px}.card__n{font-size:32px}}
+
+/* 02 */
+.look{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look .chart{max-width:none;box-shadow:8px 8px 0 var(--vir2)}
+.desc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.desc li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.desc i{width:32px;height:32px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.desc b{display:block;font-size:16px;font-weight:500;line-height:1.45}
+.desc span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+.desc li.wide{grid-column:1/-1}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look .chart{max-width:340px}}
+@media (max-width:520px){.desc{grid-template-columns:1fr}}
+
+/* 03 */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.key{padding:clamp(24px,3vw,36px) 20px;background:var(--panel);border:1px solid var(--line);border-bottom:3px solid var(--sea);text-align:center}
+.key:nth-child(3){border-bottom-color:var(--vir)}
+.key b{display:block;font-family:var(--f-disp);font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.2}
+.key span{font-family:var(--f-lat);font-weight:600;letter-spacing:.18em;font-size:14px;color:var(--dim);text-transform:uppercase}
+@media (max-width:640px){.keys{grid-template-columns:1fr}}
+
+/* 04 */
+.lhs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lhs__l{font-family:var(--f-lat);font-weight:800;font-size:96px;line-height:.8;margin:0 0 14px;color:var(--sea)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--vir)}
+.lhs .panel:nth-child(3) .lhs__l{color:var(--sun)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-weight:700;font-size:19px}
+.lhs li:first-child{border-top:0}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:72px}}
+
+/* 05 */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:30px;background:var(--panel)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-disp);font-size:clamp(56px,8vw,96px);line-height:.9;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:12px;margin-top:16px;background:rgba(225,238,248,.06)}
+.hp__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sea),var(--sun),var(--vir));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(70,168,220,.26);stroke:var(--sea);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--vir)}
+.radar text{fill:var(--fg);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--sun);font-size:10px;font-weight:500}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--sea)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:15px;font-weight:700}
+.bar{height:8px;background:rgba(225,238,248,.06)}
+.bar i{display:block;height:100%;background:var(--sea);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--vir)}
+.bars b{text-align:right;font-family:var(--f-disp);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* 06 */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:flex;flex-direction:column;gap:6px;transition:border-color .3s,box-shadow .3s}
+.tk:hover{border-color:var(--vir);box-shadow:inset 3px 0 0 var(--vir)}
+.tk__type{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.tk h3{margin:0;font-family:var(--f-disp);font-weight:400;font-size:30px;line-height:1.2}
+.tk__q{margin:0;color:var(--sun);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2)}
+.tk--def{border-top:3px solid var(--sea)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* 07, 08 abilities */
+.sk__top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.ab__name{font-family:var(--f-disp);font-size:clamp(56px,8vw,104px);line-height:1;margin:0}
+.ab__en{font-family:var(--f-lat);font-weight:800;letter-spacing:.2em;font-size:clamp(16px,1.8vw,20px);margin:4px 0 0;color:var(--sea);text-transform:uppercase}
+.ab__type{display:inline-block;margin-top:12px;padding:3px 10px;border:1px solid var(--vir);color:var(--vir)}
+.sk__sum{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.75}
+.sk__sum b{color:var(--sun)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.flow li{padding:14px 16px;background:var(--panel);border:1px solid var(--line);font-size:15px;color:var(--dim);line-height:1.55}
+.flow li b{display:block;font-family:var(--f-disp);font-weight:400;font-size:34px;line-height:1.1;color:var(--sun)}
+.flow li.minus b{color:var(--vir)}
+.flow li span{display:block;color:var(--fg);font-weight:700;margin:2px 0}
+.demo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px;align-items:start}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.seg button{flex:1 1 auto;padding:9px 14px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-size:15px;font-weight:700;text-align:left;line-height:1.35}
+.seg button small{display:block;font-size:12px;font-weight:400;color:var(--dim)}
+.seg button[aria-pressed="true"]{border-color:var(--sun);box-shadow:inset 0 -3px 0 var(--sun)}
+.rate{display:grid;grid-template-columns:auto minmax(0,1fr) 3em;gap:12px;align-items:center;margin-bottom:12px;font-size:15px}
+.rate input{width:100%;accent-color:var(--sun)}
+.rate output{font-family:var(--f-disp);font-size:22px;text-align:right}
+.sea{position:relative;padding:16px 12px 14px;background:linear-gradient(180deg,#0b2033,#07111b);border:1px solid var(--line);overflow:hidden}
+.foes{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.foe{position:relative;text-align:center;padding:10px 6px;border:1px solid var(--line);background:rgba(7,17,27,.7)}
+.foe i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 4px;border:1px solid var(--line2);font-style:normal;font-family:var(--f-disp);font-size:18px;background:var(--panel2)}
+.foe.tgt i{border-color:var(--vir);color:var(--vir)}
+.foe span{display:block;font-size:13px}
+.foe small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--dim)}
+.foe .tot{display:block;margin-top:4px;font-family:var(--f-disp);font-size:24px;font-variant-numeric:tabular-nums;color:var(--fg)}
+.foe .pop{position:absolute;left:50%;top:4px;transform:translateX(-50%);font-family:var(--f-disp);font-size:20px;color:var(--sun);opacity:0;pointer-events:none;white-space:nowrap}
+.foe .pop.big{color:var(--vir);font-size:24px}
+.foe .pop.show{animation:pop 1s ease-out}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,10px)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-24px)}}
+.swell{position:absolute;left:-30%;top:0;bottom:0;width:30%;background:linear-gradient(90deg,transparent,rgba(70,168,220,.35),rgba(242,165,65,.25),transparent);pointer-events:none;opacity:0}
+.swell.go{animation:swell .55s ease-in}
+@keyframes swell{0%{left:-30%;opacity:1}100%{left:110%;opacity:1}}
+.slash{position:absolute;left:0;top:50%;width:0;height:3px;background:linear-gradient(90deg,transparent,#fff,var(--vir));transform:rotate(-24deg);transform-origin:0 50%;pointer-events:none;box-shadow:0 0 12px var(--vir)}
+.slash.go{animation:slash .35s ease-out forwards}
+@keyframes slash{0%{width:0;opacity:1}70%{width:120%;opacity:1}100%{width:120%;opacity:0}}
+.lock{display:flex;align-items:center;gap:8px;margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.lock i{width:30px;height:12px;border:1px solid var(--line2)}
+.lock i.on{background:var(--vir2);border-color:var(--vir2)}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:var(--bg);font-size:15px}
+.status.on{border-color:var(--sun)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-weight:700;font-size:15px;line-height:1.2}
+.btn:hover:not(:disabled){border-color:var(--fg)}
+.btn--main{background:var(--vir2);border-color:var(--vir2);color:#fff}
+.btn--sea{background:var(--sea);border-color:var(--sea);color:#04131f}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.how b{display:block;font-size:17px;margin-bottom:2px}
+.how b i{font-style:normal;font-family:var(--f-lat);font-weight:800;color:var(--vir);margin-right:8px}
+.how p{margin:0;color:var(--dim);font-size:14px}
+.orig{margin-top:12px;border:1px solid var(--line)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.view{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px;background:#000;border:1px solid var(--line)}
+.eye{position:relative;aspect-ratio:4/3;overflow:hidden;background:#000}
+.eye canvas{position:absolute;inset:0;width:100%;height:100%}
+.eye span{position:absolute;left:8px;top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.65);z-index:2}
+.eye::after{content:"";position:absolute;inset:0;background:#000;opacity:0;transition:opacity .8s}
+.eye.shut::after{opacity:.94}
+.eye.shut span{color:var(--vir)}
+.futures{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;padding:10px;background:var(--bg);border:1px solid var(--line)}
+.futures i{flex:none;width:6px;height:6px;border-radius:50%;background:rgba(225,238,248,.16);transition:background .3s,transform .3s}
+.futures i.on{background:var(--sun);transform:scale(2.2);box-shadow:0 0 10px var(--sun)}
+@media (max-width:900px){.sk__top,.demo{grid-template-columns:1fr}}
+@media (max-width:640px){.flow{grid-template-columns:1fr}}
+
+/* 09 */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
+.facts div{background:var(--panel);padding:14px 16px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.facts dd{margin:4px 0 0;font-family:var(--f-disp);font-size:26px;line-height:1.2}
+.traits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.traits h3{margin:0 0 6px;font-size:19px}
+.traits p:last-child{margin:0}
+@media (max-width:760px){.facts,.traits{grid-template-columns:1fr}}
+
+/* 10 */
+.inv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.inv__n{font-family:var(--f-disp);font-size:24px;margin:0;line-height:1.25}
+@media (max-width:860px){.inv{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.inv{grid-template-columns:1fr}}
+
+/* 11 */
+.link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--sea);max-width:920px}
+.link__top{display:flex;align-items:center;gap:14px;padding:18px;border-right:1px solid var(--line)}
+.link__top i{flex:none;display:grid;place-items:center;width:52px;height:52px;border:1px solid var(--line2);font-style:normal;font-family:var(--f-disp);font-size:24px;background:var(--panel2)}
+.link__nm{font-weight:700;font-size:20px;line-height:1.3;margin:0}
+.link__role{margin:2px 0 0;color:var(--dim)}
+.link__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.link__tags span{font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--sea);color:var(--sea)}
+.link__go{display:inline-block;margin-top:10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--sun)}
+.link__body{padding:18px}
+.link__q{font-weight:700;font-size:18px;margin:0 0 10px;line-height:1.55}
+.link__body p:last-child{margin:0;color:var(--dim)}
+@media (max-width:760px){.link{grid-template-columns:1fr}.link__top{border-right:0;border-bottom:1px solid var(--line)}}
+.single{max-width:560px;padding:clamp(22px,3vw,34px) clamp(20px,3vw,30px);background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--vir);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.single__big{margin:0;font-family:var(--f-lat);font-weight:800;font-size:clamp(56px,8vw,96px);line-height:.9;color:var(--vir)}
+.single__txt{margin:0;color:var(--dim)}
+
+.outro{position:relative;padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-lat);font-weight:800;font-size:clamp(40px,7vw,92px);line-height:1;margin:0;letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(90deg,var(--sea),var(--sun),var(--vir));-webkit-background-clip:text;background-clip:text;color:transparent}
+.outro__q{font-family:var(--f-disp);font-size:clamp(22px,2.8vw,32px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:24px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--panel);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+
+/* FX */
+.cuts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.cut{position:absolute;left:0;top:0;width:150px;height:2px;margin:-1px 0 0 -75px;background:linear-gradient(90deg,transparent,#fff 40%,var(--c) 60%,transparent);box-shadow:0 0 10px var(--c);transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(0);animation:cut .5s ease-out forwards}
+@keyframes cut{0%{transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(0);opacity:1}40%{transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(1);opacity:1}100%{transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(1.1);opacity:0}}
+.drop{position:absolute;left:0;top:0;width:5px;height:5px;border-radius:50%;background:var(--sea);animation:drop .7s ease-out forwards}
+@keyframes drop{0%{transform:translate(var(--x),var(--y));opacity:1}100%{transform:translate(var(--x1),var(--y1));opacity:0}}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{0%{opacity:0;transform:translateX(-24px)}100%{opacity:1;transform:none}}
+.ch.cutin{animation:cutin .7s cubic-bezier(.2,.9,.2,1) both;animation-delay:calc(var(--k)*180ms + .15s)}
+@keyframes cutin{0%{opacity:0;clip-path:inset(0 100% 0 0);transform:translateX(-20px)}100%{opacity:1;clip-path:inset(0 0 0 0);transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+.name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num{overflow-wrap:normal;word-break:normal}
+body.calm .compass::before,body.calm .rise,body.calm .ch.cutin{animation:none}
+@media (prefers-reduced-motion:reduce){.compass::before,.rise,.ch.cutin,.cut,.drop,.foe .pop.show,.swell.go,.slash.go{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/virtus.png" alt="" width="24" height="24">바리<span class="mono dim" style="font-size:11px">&nbsp;/ Virtus</span></a>
+    <nav class="nav__idx" aria-label="섹션">
+      <a href="#s01" title="신원">01</a><a href="#s02" title="외관">02</a><a href="#s03" title="성격">03</a><a href="#s04" title="L/H/S">04</a><a href="#s05" title="능력치">05</a><a href="#s06" title="기술">06</a><a href="#s07" title="특수 능력">07</a><a href="#s08" title="청천의 눈">08</a><a href="#s09" title="특징">09</a><a href="#s10" title="소지품">10</a><a href="#s11" title="선관">11</a><a href="#s12" title="지향 커플링">12</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <canvas id="waves" aria-hidden="true"></canvas>
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.???</span><span>Virtus // <b>Agent</b></span></p>
+      <p class="tide">[ 조류의 칼날 ]</p>
+      <h1 class="name" aria-label="바리">바리</h1>
+      <p class="en">Bari</p>
+      <blockquote class="quote">&ldquo;다들 기죽지 말고 잘해보자고!&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>24</dd></div>
+        <div><dt>Height</dt><dd>170cm</dd></div>
+        <div><dt>Weight</dt><dd>표준</dd></div>
+      </dl>
+    </div>
+    <figure class="chart">
+      <img src="assets/bari.jpg" alt="바리 전신 그림. 어깨에 걸친 긴 머리, 얼굴을 가로지르는 큰 상처, 오른쪽 가슴에 비르투스 문양이 새겨진 지정복 차림으로 한 손을 허리에 짚고 서 있다" width="800" height="1280">
+      <span class="compass" aria-hidden="true"><b>N</b></span>
+      <figcaption><span>CHART // BARI</span><span>VIRTUS</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>01</span><span class="head__en">Identity</span><h2>신원</h2></header>
+    <div class="ident">
+      <div class="card">
+        <img src="assets/face.jpg" alt="바리 얼굴" width="110" height="110">
+        <div>
+          <p class="card__n">바리</p>
+          <p class="card__e">BARI</p>
+          <dl><dt>DIV</dt><dd>VIRTUS</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>24</dd></dl>
+        </div>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>바리 / Bari</td></tr>
+          <tr><th>1.2</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.3</th><td>Age</td><td>24세</td></tr>
+          <tr><th>1.4</th><td>Height / Weight</td><td>170cm / 표준</td></tr>
+          <tr><th>1.5</th><td>Faction</td><td>비르투스 &middot; 대원</td></tr>
+          <tr><th>1.6</th><td>Attribute</td><td>참격</td></tr>
+          <tr><th>1.7</th><td>Special</td><td>천해의 파도</td></tr>
+          <tr><th>1.8</th><td>Ability</td><td>청천의 눈</td></tr>
+          <tr><th>1.9</th><td>Birthday</td><td>10월 29일</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>02</span><span class="head__en">Appearance</span><h2>외관</h2></header>
+    <div class="look">
+      <figure class="chart"><img src="assets/card.jpg" alt="바리 상반신 그림" width="560" height="700"><figcaption><span>APPEARANCE</span><span>VIRTUS</span></figcaption></figure>
+      <ul class="desc">
+        <li><i style="--c:#16232c"></i><div><span>2.1 HAIR</span><b>흑발, 낮게 묶어 어깨에 걸쳤다</b></div></li>
+        <li><i style="--c:#46a8dc"></i><div><span>2.2 EYES</span><b>날카롭고 쌍꺼풀 진 파란 눈</b></div></li>
+        <li class="wide"><i style="--c:#c9877a"></i><div><span>2.3 SCAR</span><b>얼굴을 가로지르는 큰 상처</b></div></li>
+        <li class="wide"><i style="--c:#c0262a"></i><div><span>2.4 UNIFORM</span><b>지정복 차림. 외투 오른쪽 가슴팍에 소속 문양이 새겨져 있다</b></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>03</span><span class="head__en">Personality</span><h2>성격</h2></header>
+    <div class="keys">
+      <div class="key"><b>쾌활한</b><span>cheerful</span></div>
+      <div class="key"><b>외향적인</b><span>outgoing</span></div>
+      <div class="key"><b>정의 추구</b><span>justice</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>04</span><span class="head__en">Like / Hate / Scare</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>짭짤한 음식</li><li>바다</li><li>대화</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>정의롭지 못한 일</li><li>과도한 업무</li><li>거짓말</li></ul></div>
+      <div class="panel"><p class="lhs__l">S</p><ul><li>불</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>05</span><span class="head__en">Stats</span><h2>능력치</h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 60, 방어력 60, 민첩성 50, 정확성 60, 정신력 90">
+        <g class="radar__grid"></g><polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon><g class="radar__dots"></g><g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>공격력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li><span>5.2</span><span>방어력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="50"></i></span><b>50</b></li>
+        <li><span>5.4</span><span>정확성</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li class="top"><span>5.5</span><span>정신력</span><span class="bar"><i data-w="90"></i></span><b>90</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 320 = 60 + 60 + 50 + 60 + 90 &middot; 가장 높은 능력치는 정신력</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>06</span><span class="head__en">Techniques</span><h2>기술</h2></header>
+    <div class="tech">
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>까치놀</h3><div class="chips"><em>참격</em><em>처형</em></div><p class="tk__q">석양이 지듯이</p><p>상대의 마지막을 정확하게 그어낸다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>너울</h3><div class="chips"><em>참격</em><em>보복</em></div><p class="tk__q">너울치듯이</p><p>자신이 받은 피해를 흘려 넘겨 베어낸다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>물비늘</h3><div class="chips"><em>참격</em></div><p class="tk__q">비늘을 꽂아 넣듯</p><p>칼로 베어낸다.</p></div>
+      <div class="panel tk tk--def"><p class="tk__type">DEF &middot; 방어 기술</p><h3>밀물</h3><div class="chips"><em>반격</em></div><p class="tk__q">파도가 오듯</p><p>자신에게 공격이 가해지면 맞받아친다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>07</span><span class="head__en">Special &mdash; 특수 능력</span><h2>천해의 파도</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">천해의 파도</p>
+        <p class="ab__en">Sky-Sea Wave</p>
+        <span class="mono ab__type">참격</span>
+      </div>
+      <p class="sk__sum">한 명을 크게 <b>베어낸 뒤</b>, 그 칼끝에서 <b>파도 세 줄기</b>가 일어 적 전체를 덮친다. 모든 힘을 쏟는 만큼 <b>3턴 동안은 칼을 들 수 없다</b>.</p>
+    </div>
+    <ol class="flow">
+      <li><b>&times;1.5</b><span>한 명을 벤다</span>지정한 상대에게 1.5배의 참격 피해.</li>
+      <li><b>파도 &times;3</b><span>적 전체를 덮친다</span>광역 파동 3개. 하나하나가 벤 피해의 절반만큼 참격 피해.</li>
+      <li class="minus"><b>3턴</b><span>공격 불가</span>사용한 뒤 3턴 동안 공격할 수 없다.</li>
+    </ol>
+    <div class="demo">
+      <div class="panel" id="spPanel">
+        <p class="idx">7.1 &mdash; 직접 휘둘러 보자</p>
+        <div class="rate"><label for="base">기본 참격 피해</label><input type="range" id="base" min="20" max="80" step="10" value="40"><output id="baseV" for="base">40</output></div>
+        <div class="sea" id="sea">
+          <span class="swell" id="swell" aria-hidden="true"></span>
+          <div class="foes" id="foes"></div>
+        </div>
+        <div class="lock" id="lock"><span>공격 불가</span><i></i><i></i><i></i></div>
+        <p class="status" id="spMsg" aria-live="polite">버튼을 누르면 적 가를 베고, 파도 세 줄기가 적 전체를 덮친다.</p>
+        <div class="ctrl"><button class="btn btn--main" id="spGo" type="button">천해의 파도</button><button class="btn" id="spNext" type="button" disabled>다음 턴</button><button class="btn" id="spReset" type="button">처음으로</button></div>
+        <p class="note">기본 참격 피해 40은 예시다. 막대를 움직이면 계산이 바뀐다.</p>
+      </div>
+      <div class="how">
+        <div><b><i>A</i>베는 피해</b><p>기본 피해 &times; 1.5. 예시 40이면 60.</p></div>
+        <div><b><i>B</i>파도 한 줄기</b><p>벤 피해의 절반. 60의 절반인 30이 적 전체에게.</p></div>
+        <div><b><i>C</i>합계</b><p>베인 적은 60 + 30 &times; 3 = 150, 나머지 적은 30 &times; 3 = 90.</p></div>
+        <div><b><i>D</i>그 대가</b><p>3턴 동안 공격 불가. 방어와 반격은 따로 적혀 있지 않다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>상대방을 베어내어 x1.5의 참격피해를 입힌다. 추가로 [광역]효과를 지닌 파동 3개를 만들어내며, 각각 베어낸 피해의 절반에 해당하는 참격피해를 입힌다. 이후 3턴간 공격이 불가능하다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>08</span><span class="head__en">Ability &mdash; 능력</span><h2>청천의 눈</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">청천의 눈</p>
+        <p class="ab__en">Eye of the Clear Sky</p>
+        <span class="mono ab__type">능력</span>
+      </div>
+      <p class="sk__sum">눈으로 <b>바깥 하늘</b>을 올려다보면 <b>앞으로 올 미래</b>가 보인다. 다만 수백 가지 미래 중 <b>단 하나</b>만 보이고, 한 번 쓰면 <b>다른 쪽 눈의 시야가 막힌다</b>.</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 하늘을 올려다보자</p>
+        <div class="seg" role="group" aria-label="장소">
+          <button type="button" data-pl="out" aria-pressed="true">바깥<small>하늘이 보인다</small></button>
+          <button type="button" data-pl="in" aria-pressed="false">실내<small>천장만 보인다</small></button>
+        </div>
+        <div class="view"><div class="eye" id="eyeL"><canvas id="cvL"></canvas><span>LEFT</span></div><div class="eye" id="eyeR"><canvas id="cvR"></canvas><span>RIGHT</span></div></div>
+        <div class="futures" id="futs" aria-hidden="true"></div>
+        <p class="status" id="eMsg" aria-live="polite">하늘을 본다를 누르면 수백 갈래의 미래 중 하나가 보인다.</p>
+        <div class="ctrl"><button class="btn btn--sea" id="eGo" type="button">하늘을 본다</button><button class="btn" id="eReset" type="button">처음으로</button></div>
+      </div>
+      <div class="how">
+        <div><b><i>A</i>바깥 하늘만</b><p>꼭 바깥의 하늘이어야 한다. 실내에서는 쓸 수 없다.</p></div>
+        <div><b><i>B</i>미래는 하나만</b><p>수백 가지 미래 가운데 단 하나만 본다. 어떤 미래가 보일지는 고를 수 없다.</p></div>
+        <div><b><i>C</i>한쪽 눈이 막힌다</b><p>한 번 쓰면 다른 한쪽 눈의 시야가 차단된다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>자신의 눈을 통해 "하늘"(무조건 바깥의 하늘이여야 함.)을 볼 시. 앞으로 찾아올 미래를 본다. 다만 수백가지의 미래 중 단 하나만을 보는것이며 한번 사용할시 다른 한쪽 눈의 시야가 차단된다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>09</span><span class="head__en">Traits</span><h2>특징</h2></header>
+    <dl class="facts">
+      <div><dt>Birthday</dt><dd>10월 29일</dd></div>
+      <div><dt>Hobby</dt><dd>러닝</dd></div>
+      <div><dt>Habit</dt><dd>흥얼흥얼</dd></div>
+    </dl>
+    <div class="traits">
+      <div class="panel"><p class="idx">9.1</p><h3>히어로의 딸</h3><p>부모님 두 분 모두 히어로셨기에, 그에 대한 자부심이 크다.</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>노래 흥얼거리기</h3><p>노래를 흥얼거리는 버릇이 있다.</p></div>
+      <div class="panel"><p class="idx">9.3</p><h3>운동</h3><p>취미로 다양한 운동을 한다. 가장 많이 하는 것은 러닝.</p></div>
+      <div class="panel"><p class="idx">9.4</p><h3>흡연자</h3><p>담배를 피운다. 소지품에도 담배 몇 개비가 든 종이갑이 있다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>10</span><span class="head__en">Inventory</span><h2>소지품</h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">썬글라스</p><p class="mono dim" style="margin:0">sunglasses</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">환도를 닮은 칼</p><p class="mono dim" style="margin:0">sword</p></div>
+      <div class="panel"><p class="idx">10.3</p><p class="inv__n">별사탕이 든 통</p><p class="mono dim" style="margin:0">konpeito</p></div>
+      <div class="panel"><p class="idx">10.4</p><p class="inv__n">담배 몇 개비가 든 종이갑</p><p class="mono dim" style="margin:0">cigarettes</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>11</span><span class="head__en">Links</span><h2>선관</h2></header>
+    <article class="link">
+      <div class="link__top"><i>K</i><div><p class="link__nm">쿠드랴프카 세베랴노비치 이바노프</p><p class="mono link__role">쿠디 &middot; 사피엔티아</p><div class="link__tags"><span>친관</span></div><a class="link__go" href="https://forcharacterwebsite.github.io/Kudryavka/">쿠드랴프카 페이지 &rarr;</a></div></div>
+      <div class="link__body">
+        <p class="link__q">&ldquo;쿠디! 조용하지만 좋은 친구지! 경청도 잘하고.&rdquo;</p>
+        <p>뒷골목의 수상한 물건을 옮기던 쿠드랴프카와, 뒷골목의 악인들에게 혼쭐을 내러 다니던 바리는 어쩌다 우연히 만났다. 그 수상한 물건을 바리는 몇 번이고 검문하듯 살펴보고, 호기심에 질문하다 보니 어느새 친해져 버렸다. 묵묵히 제 이야기를 들어 주는 쿠드랴프카를 좋은 친구로 여기며 &lsquo;쿠디&rsquo;라고 부르는 등 편하게 대한다. 물론, 너무 불편해할까 봐 걱정하는 것도 없잖아 있다.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>TIDE</small>12</span><span class="head__en">Coupling</span><h2>지향 커플링</h2></header>
+    <div class="single"><p class="single__big">HL</p><p class="single__txt">지향 커플링</p></div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">Protect them all</p>
+    <p class="outro__q">[ 모두를 지킬 수 있다면 뭐든지 해보겠어! ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 다들 잘 지내봅시다!</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>BARI &middot; Virtus Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON";startWaves()}
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm()};
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+const FIT=".name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num";
+function fit(){$$(FIT).forEach(e=>{e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<80){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* 이름: 칼로 베어 드러내듯 */
+(()=>{let k=0;const n=$(".name");[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement("span");s.className="ch"+(calm?"":" cutin");s.style.setProperty("--k",k++);s.textContent=ch;s.setAttribute("aria-hidden","true");f.appendChild(s)});c.replaceWith(f)}})})();
+
+/* 표지 바다: 노을 아래 파도 */
+const wc=$("#waves"),wx=wc.getContext("2d");let WW=0,WH=0,wRun=false,wVis=true;
+function wsize(){const r=wc.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);WW=r.width;WH=r.height;wc.width=Math.round(WW*d);wc.height=Math.round(WH*d);wx.setTransform(d,0,0,d,0,0);wdraw(performance.now())}
+function wdraw(now){const t=now/1000;wx.clearRect(0,0,WW,WH);
+  const g=wx.createLinearGradient(0,0,0,WH);g.addColorStop(0,"rgba(242,165,65,0)");g.addColorStop(.35,"rgba(242,165,65,.10)");g.addColorStop(1,"rgba(70,168,220,.08)");wx.fillStyle=g;wx.fillRect(0,0,WW,WH);
+  for(let L=0;L<6;L++){const y0=WH*(.3+L*.13),a=6+L*3,sp=.5+L*.18;wx.beginPath();for(let x=0;x<=WW;x+=8){const y=y0+Math.sin(x/(90+L*30)+t*sp+L)*a+Math.sin(x/37-t*sp*1.7)*a*.25;x?wx.lineTo(x,y):wx.moveTo(x,y)}
+    wx.strokeStyle=L<2?`rgba(242,165,65,${.35-L*.1})`:`rgba(70,168,220,${.12+L*.05})`;wx.lineWidth=1.4;wx.stroke()}}
+function wloop(now){wdraw(now);if(!calm&&wVis)requestAnimationFrame(wloop);else wRun=false}
+function startWaves(){if(calm){wdraw(performance.now());return}if(!wRun&&wVis){wRun=true;requestAnimationFrame(wloop)}}
+new ResizeObserver(wsize).observe(wc);
+new IntersectionObserver(es=>es.forEach(e=>{wVis=e.isIntersecting;if(wVis)startWaves()})).observe($(".hero"));
+applyCalm();
+
+const RV=".panel,.flow li,.how>div,.key,.desc li,.card,.head,.single,.link";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));rio.observe(el)});
+
+/* 누르면 칼끝이 지나가고 물방울이 튄다 */
+const cuts=document.createElement("div");cuts.className="cuts";cuts.setAttribute("aria-hidden","true");document.body.appendChild(cuts);
+addEventListener("pointerdown",e=>{if(calm||RM||e.target.closest("input"))return;const x=e.clientX,y=e.clientY,r=-35+Math.random()*-20;
+  const c=document.createElement("span");c.className="cut";c.style.cssText=`--x:${x}px;--y:${y}px;--r:${r}deg;--c:${Math.random()<.5?"var(--vir)":"var(--sea)"}`;cuts.appendChild(c);setTimeout(()=>c.remove(),600);
+  for(let i=0;i<6;i++){const d=document.createElement("span");d.className="drop";const a=Math.random()*Math.PI*2,dist=20+Math.random()*30;d.style.cssText=`--x:${x}px;--y:${y}px;--x1:${x+Math.cos(a)*dist}px;--y1:${y+Math.sin(a)*dist+14}px`;cuts.appendChild(d);setTimeout(()=>d.remove(),800)}});
+
+/* ---------- 능력치 ---------- */
+const S=[["공격력",60],["방어력",60],["민첩성",50],["정확성",60],["정신력",90]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx,ly]=pt(i,122),an=Math.abs(lx)<5?"middle":lx>0?"start":"end";
+  const t=el("text",{x:lx,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 천해의 파도 ---------- */
+const FOES=[["가","적군 가","지정 대상",1],["나","적군 나","예시"],["다","적군 다","예시"]];
+let lockN=0,tot={},busy=false;
+function base(){return +$("#base").value}
+function drawFoes(){$("#foes").innerHTML=FOES.map(([ic,n,s,t])=>`<div class="foe${t?" tgt":""}" data-n="${n}"><span class="pop"></span><i>${ic}</i><span>${n}</span><small>${s}</small><span class="tot">${tot[n]||0}</span></div>`).join("")}
+function lockDraw(){$$("#lock i").forEach((p,i)=>p.classList.toggle("on",i<lockN));$("#spGo").disabled=lockN>0||busy;$("#spNext").disabled=lockN===0||busy}
+function sm(t,on){const p=$("#spMsg");p.innerHTML=t;p.classList.toggle("on",!!on)}
+function hit(n,v,big){tot[n]=(tot[n]||0)+v;const f=$(`.foe[data-n="${n}"]`);f.querySelector(".tot").textContent=tot[n];const p=f.querySelector(".pop");p.textContent="-"+v;p.classList.toggle("big",!!big);
+  if(!calm){p.classList.remove("show");void p.offsetWidth;p.classList.add("show");fx(f,"shake")}}
+function reset(){tot={};lockN=0;busy=false;drawFoes();lockDraw();sm("버튼을 누르면 적 가를 베고, 파도 세 줄기가 적 전체를 덮친다.")}
+$("#base").oninput=()=>{$("#baseV").textContent=base()};
+$("#spGo").onclick=()=>{tot={};drawFoes();const b=base(),cut=b*1.5,wave=cut/2,d=calm?0:1;busy=true;lockDraw();
+  const tgt=$('.foe[data-n="적군 가"]');if(!calm){const s=document.createElement("span");s.className="slash";tgt.appendChild(s);void s.offsetWidth;s.classList.add("go");setTimeout(()=>s.remove(),400)}
+  hit("적군 가",cut,1);sm(`적 가를 벤다. 기본 ${b} &times; 1.5 = <b>${cut}</b>.`,1);
+  [0,1,2].forEach(i=>setTimeout(()=>{fx($("#swell"),"go");FOES.forEach(([,n])=>hit(n,wave));
+    sm(`파도 ${i+1}번째. 벤 피해 ${cut}의 절반인 <b>${wave}</b>이 적 전체에게.`,1);
+    if(i===2){lockN=3;busy=false;lockDraw();sm(`끝. 적 가는 ${cut} + ${wave}&times;3 = <b>${cut+wave*3}</b>, 나머지는 ${wave}&times;3 = <b>${wave*3}</b>. 이제 3턴 동안 공격할 수 없다.`,1)}},d*(600+i*650)))};
+$("#spNext").onclick=()=>{lockN--;lockDraw();sm(lockN?`한 턴이 지났다. 공격 불가 ${lockN}턴 남음.`:"3턴이 지나 다시 칼을 들 수 있다.",!!lockN)};
+$("#spReset").onclick=reset;
+reset();
+
+/* ---------- 청천의 눈 ---------- */
+let place="out",used=false;
+const futs=$("#futs");futs.innerHTML=Array.from({length:300},()=>"<i></i>").join("");
+function sky(cv,out,t){const r=cv.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1),W=r.width,H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);const x=cv.getContext("2d");x.setTransform(d,0,0,d,0,0);
+  if(out){const g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,"#3b8fd0");g.addColorStop(1,"#a9d8f2");x.fillStyle=g;x.fillRect(0,0,W,H);
+    x.fillStyle="rgba(255,255,255,.85)";[[.25,.35,.16],[.62,.25,.2],[.8,.6,.13]].forEach(([cx,cy,s])=>{for(let i=0;i<4;i++){x.beginPath();x.arc(W*cx+i*W*s*.35-W*s*.5,H*cy+(i%2)*6,W*s*.28,0,7);x.fill()}})}
+  else{x.fillStyle="#2a2f36";x.fillRect(0,0,W,H);x.strokeStyle="rgba(255,255,255,.08)";for(let i=0;i<W;i+=22){x.beginPath();x.moveTo(i,0);x.lineTo(i,H);x.stroke()}x.fillStyle="rgba(255,240,200,.6)";x.fillRect(W*.4,H*.45,W*.2,6)}}
+function drawEyes(){sky($("#cvL"),place==="out");sky($("#cvR"),place==="out")}
+new ResizeObserver(drawEyes).observe($("#eyeL"));
+function em(t,on){const p=$("#eMsg");p.textContent=t;p.classList.toggle("on",!!on)}
+function eReset(){used=false;$("#eyeR").classList.remove("shut");$$("#futs i").forEach(i=>i.classList.remove("on"));$("#eGo").disabled=false;em("하늘을 본다를 누르면 수백 갈래의 미래 중 하나가 보인다.")}
+$$("[data-pl]").forEach(b=>b.onclick=()=>{place=b.dataset.pl;$$("[data-pl]").forEach(x=>x.setAttribute("aria-pressed",x===b));drawEyes();eReset();if(place==="in")em("실내에서는 천장만 보인다. 바깥 하늘이 아니면 능력을 쓸 수 없다.")});
+$("#eGo").onclick=()=>{
+  if(place==="in"){em("올려다봐도 천장뿐이다. 바깥의 하늘이 아니라서 아무것도 보이지 않는다.");fx($(".view"),"shake");return}
+  const all=$$("#futs i");all.forEach(i=>i.classList.remove("on"));const pick=Math.random()*all.length|0;
+  let n=0;const spin=()=>{all.forEach(i=>i.classList.remove("on"));const k=n<12&&!calm?Math.random()*all.length|0:pick;all[k].classList.add("on");
+    if(n<12&&!calm){n++;setTimeout(spin,70)}else{$("#eyeR").classList.add("shut");used=true;$("#eGo").disabled=true;em(`${all.length}갈래의 미래 중 단 하나, ${pick+1}번째 미래를 보았다. 그 대가로 오른쪽 눈의 시야가 막혔다.`,1)}};
+  spin()};
+$("#eReset").onclick=eReset;
+})();
+</script>
+
+</body>
+</html>
