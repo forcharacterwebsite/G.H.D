@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KISEKI // 키노쿠니야 히세키</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="사피엔티아 대원 키노쿠니야 히세키 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;900&family=Dela+Gothic+One&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: 사피엔티아. 아이돌 공연 세트리스트(M01~M10)처럼 짠 무대, 짙은 남색 객석에 사피엔티아 청색과 응원봉 분홍, 별빛. 모티프는 보이지 않는 선 '궤적' */
+:root{
+  --bg:#090c18;--panel:#11162b;--panel2:#1a2142;--line:rgba(220,228,255,.12);--line2:rgba(220,228,255,.28);
+  --fg:#f2f4ff;--dim:#9aa3c8;--sap:#6f97ff;--sap2:#4a78d8;--pink:#ff9ad5;--star:#fff3c4;
+  --f-disp:"Unbounded","Arial Black",Impact,sans-serif;
+  --f-jp:"Dela Gothic One","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 50% -20%,rgba(74,120,216,.28),transparent 55%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1240px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(9,12,24,.9);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-weight:900;font-size:18px;letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;gap:2px;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-mono);font-size:12px;text-decoration:none;padding:6px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--fg);border-color:var(--pink)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--fg);color:var(--bg)}
+.nav__fx[aria-pressed="false"]{color:var(--dim)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.np i{display:block;height:100%;width:0;max-width:calc(100% - 6px);background:linear-gradient(90deg,var(--sap2),var(--sap),var(--pink));position:relative}
+.np i::after{content:"★";position:absolute;right:-7px;top:-9px;font-size:13px;line-height:1;color:var(--star);text-shadow:0 0 10px var(--pink)}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:15px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.beam{position:absolute;top:-10%;width:42%;height:130%;pointer-events:none;background:linear-gradient(180deg,rgba(111,151,255,.22),rgba(111,151,255,0) 80%);clip-path:polygon(44% 0,56% 0,100% 100%,0 100%);transform-origin:50% 0;animation:sway 7s ease-in-out infinite alternate}
+.beam--l{left:-6%;transform:rotate(-18deg)}
+.beam--r{right:-6%;background:linear-gradient(180deg,rgba(255,154,213,.2),rgba(255,154,213,0) 80%);animation-delay:-3.5s;transform:rotate(18deg)}
+@keyframes sway{0%{rotate:-8deg}100%{rotate:8deg}}
+.tw{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--star);box-shadow:0 0 8px var(--star);animation:tw 2.6s ease-in-out infinite;animation-delay:var(--d);left:var(--x);top:var(--y);pointer-events:none}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.3)}}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px) clamp(70px,8vw,110px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--sap);font-weight:500}
+.catch{margin:22px 0 0;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.catch b{font-weight:700;font-size:15px;padding:4px 12px;background:var(--pink);color:#2a0b1e}
+.catch span{font-family:var(--f-jp);font-size:14px;color:var(--pink);letter-spacing:.04em}
+.name{font-family:var(--f-disp);font-weight:900;font-size:clamp(30px,7vw,108px);line-height:.92;margin:18px 0 0;text-transform:uppercase;letter-spacing:-.02em;white-space:nowrap}
+.name .w2{display:block;background:linear-gradient(90deg,var(--sap) 0%,var(--pink) 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.name .ch{display:inline-block}
+.w2 .ch{background:inherit;-webkit-background-clip:text;background-clip:text}
+.ko{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin:18px 0 0}
+.ko b{font-weight:700;font-size:clamp(26px,3.2vw,38px)}
+.ko span{font-family:var(--f-jp);font-size:clamp(16px,1.8vw,20px);color:var(--dim)}
+.nick{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:8px 14px;border:1px solid var(--line2);font-size:14px}
+.nick b{font-family:var(--f-jp);font-weight:400;color:var(--star);font-size:16px}
+.quote{font-weight:700;font-size:clamp(21px,2.6vw,30px);line-height:1.5;margin:24px 0 0;max-width:22em}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:620px;border:1px solid var(--line);background:var(--panel)}
+.dims div{padding:12px 14px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:4px 0 0;font-family:var(--f-disp);font-weight:900;font-size:clamp(18px,4.6vw,24px);line-height:1.1}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.pc{position:relative;justify-self:center;width:100%;max-width:380px;padding:9px;border-radius:14px;
+  background:linear-gradient(115deg,#9fb6ff,#ffc4e6,#fff3c4,#b9f1ff,#9fb6ff,#ffc4e6) 0 0/300% 300%;animation:holo 6s linear infinite;
+  transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) rotate(2deg);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+@keyframes holo{to{background-position:300% 300%}}
+.pc__in{position:relative;background:#fff;border-radius:8px;overflow:hidden}
+.pc__in img{width:100%}
+.pc__glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--gx,30%) var(--gy,20%),rgba(255,255,255,.55),transparent 45%);mix-blend-mode:soft-light}
+.pc__cap{display:flex;justify-content:space-between;gap:8px;padding:8px 4px 2px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#1b2340}
+.pc__stk{position:absolute;right:-14px;top:18px;width:74px;height:74px;display:grid;place-items:center;text-align:center;background:var(--pink);color:#2a0b1e;font-family:var(--f-disp);font-weight:900;font-size:11px;line-height:1.1;
+  clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);padding-top:10px;transform:rotate(12deg)}
+.lights{position:absolute;left:0;right:0;bottom:0;height:64px;display:flex;justify-content:space-around;align-items:flex-end;pointer-events:none;padding:0 2%;
+  background:linear-gradient(0deg,rgba(9,12,24,.95),transparent)}
+.lights i{width:5px;height:34px;border-radius:3px;background:var(--c);box-shadow:0 0 12px var(--c);transform-origin:50% 120%;animation:wave 1.2s ease-in-out infinite alternate;animation-delay:calc(var(--k)*-.09s);opacity:.85}
+@keyframes wave{0%{transform:rotate(-16deg)}100%{transform:rotate(16deg)}}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.pc{max-width:300px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,104px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 18px;align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.head__no{grid-row:span 2;position:relative;display:grid;place-items:center;min-width:clamp(70px,8vw,96px);padding:10px 12px;border:1px solid var(--sap);color:var(--sap);font-family:var(--f-disp);font-weight:900;font-size:clamp(24px,3vw,34px);line-height:1;transition:background .4s,color .4s}
+.head__no small{display:block;font-family:var(--f-mono);font-size:9px;letter-spacing:.14em;font-weight:500;margin-bottom:4px;text-align:center}
+.head__no::after{content:"★";position:absolute;right:-8px;top:-10px;font-size:14px;color:var(--pink);opacity:0;transition:opacity .3s}
+.sec.live .head__no{background:var(--sap2);color:#fff;border-color:var(--sap2)}
+.sec.live .head__no::after{opacity:1;animation:tw 1.6s ease-in-out infinite}
+.head__en{color:var(--sap)}
+.head h2{min-width:0;font-family:var(--f-disp);font-weight:900;font-size:clamp(22px,5vw,62px);line-height:.95;margin:0;text-transform:uppercase;letter-spacing:-.02em}
+.head h2 span{font-family:var(--f-body);font-weight:700;font-size:.42em;color:var(--dim);margin-left:.5em;text-transform:none;letter-spacing:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0;border-radius:4px}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--sap);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:13px}
+
+/* 01 ticket */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.ticket{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 92px;background:#f2f4ff;color:#141a33;align-self:start;border-radius:6px;overflow:hidden}
+.ticket__main{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;padding:16px}
+.ticket__main img{width:104px;height:104px;object-fit:cover;border-radius:4px}
+.ticket__n{font-family:var(--f-disp);font-weight:900;font-size:clamp(13px,3.6vw,22px);line-height:1;margin:0;text-transform:uppercase}
+.ticket__j{font-family:var(--f-jp);font-size:13px;margin:4px 0 0;opacity:.7}
+.ticket dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.ticket dt{opacity:.55}.ticket dd{margin:0;font-weight:600}
+.ticket__stub{border-left:2px dashed rgba(20,26,51,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;background:var(--sap2);color:#fff;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-align:center;padding:8px}
+.ticket__stub b{font-family:var(--f-disp);font-size:26px;line-height:1}
+.ticket::before,.ticket::after{content:"";position:absolute;right:83px;width:18px;height:18px;border-radius:50%;background:var(--bg)}
+.ticket::before{top:-9px}.ticket::after{bottom:-9px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--sap);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:500}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.ticket{grid-template-columns:minmax(0,1fr) 70px}.ticket::before,.ticket::after{right:61px}.ticket__main{grid-template-columns:80px minmax(0,1fr)}.ticket__main img{width:80px;height:80px}}
+
+/* 02 */
+.look{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look__pics{display:grid;gap:12px}
+.snap{margin:0;background:#fff;padding:8px;border-radius:6px}
+.snap figcaption{display:flex;justify-content:space-between;padding-top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:#1b2340}
+.parts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.parts li{background:var(--panel);padding:12px 14px;display:grid;grid-template-columns:28px minmax(0,1fr);gap:2px 12px;align-items:center}
+.parts i{grid-row:span 2;width:28px;height:28px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.parts span{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.parts b{font-weight:500;font-size:14px;line-height:1.4}
+.look__q{margin:14px 0 0;padding:14px 16px;border-left:3px solid var(--pink);background:var(--panel);color:var(--fg)}
+@media (max-width:420px){.parts{grid-template-columns:1fr}}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look__pics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+
+/* 03 */
+.pers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.trait h3{font-weight:700;font-size:clamp(21px,2.4vw,26px);margin:0 0 10px;display:flex;align-items:baseline;gap:12px}
+.trait h3 small{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.1em;color:var(--pink)}
+.trait p{margin:0}
+.trait,.tk,.inv .panel{transition:border-color .3s,box-shadow .3s}
+.trait:hover,.tk:hover,.inv .panel:hover{border-color:var(--sap);box-shadow:0 0 0 1px var(--sap),0 0 28px rgba(111,151,255,.18)}
+@media (max-width:760px){.pers{grid-template-columns:1fr}}
+
+/* 04 */
+.lhs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lhs__l{font-family:var(--f-disp);font-weight:900;font-size:96px;line-height:.8;margin:0 0 16px;color:var(--sap)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--pink)}
+.lhs .panel:nth-child(3) .lhs__l{color:transparent;-webkit-text-stroke:1.5px var(--dim)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-weight:700;font-size:18px;line-height:1.45}
+.lhs li:first-child{border-top:0}
+.lhs li small{display:block;font-weight:400;font-size:13px;color:var(--dim)}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:72px}}
+@media (max-width:520px){.pc__stk{right:-4px;top:10px;width:62px;height:62px;font-size:10px}.pc{transform:none}.head{gap:2px 12px}.head__no{min-width:58px;padding:8px}.head h2 span{display:block;margin:6px 0 0;font-size:15px}.nav__name{font-size:14px}}
+
+/* 05 stats */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:32px;background:var(--panel);border-radius:4px}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-disp);font-weight:900;font-size:clamp(44px,8vw,92px);line-height:.85;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:14px;margin-top:16px;background:rgba(220,228,255,.06);border-radius:7px;overflow:hidden}
+.hp__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sap2),var(--sap),var(--pink));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:440px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(111,151,255,.3);stroke:var(--sap);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--pink)}
+.radar text{fill:var(--fg);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--pink);font-size:10px;font-weight:600}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--sap)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:14px;font-weight:500}
+.bar{height:10px;background:rgba(220,228,255,.06);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--sap);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--pink)}
+.bars b{text-align:right;font-family:var(--f-disp);font-weight:900;font-size:20px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* 06 */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;align-items:start}
+.tk__no{grid-row:span 3;font-family:var(--f-disp);font-weight:900;font-size:30px;line-height:1.1;color:var(--sap)}
+.tk--def .tk__no{color:var(--pink)}
+.tk__type{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim);margin:0}
+.tk h3{margin:0;font-size:22px;line-height:1.3}
+.tk p{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2);border-radius:20px}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* abilities shared */
+.ab{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.ab__name{font-family:var(--f-disp);font-weight:900;font-size:clamp(22px,5vw,68px);line-height:.95;margin:0;text-transform:uppercase;letter-spacing:-.02em}
+.ab__name span{color:var(--pink)}
+.ab__ko{font-weight:700;font-size:clamp(24px,2.8vw,34px);margin:12px 0 0}
+.ab__type{display:inline-block;margin-top:14px;padding:4px 10px;border:1px solid var(--sap);color:var(--sap)}
+.ab__one{font-size:clamp(17px,1.9vw,20px);font-weight:500;margin:18px 0 0}
+.ab__one b{color:var(--pink)}
+.rules{display:grid;gap:10px;margin-top:22px}
+.rules div{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 16px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.rules b{grid-row:span 2;font-family:var(--f-disp);font-weight:900;font-size:28px;line-height:1;color:var(--sap);min-width:3ch}
+.rules strong{font-size:16px}
+.rules span{color:var(--dim);font-size:14px}
+.orig{margin-top:14px;border:1px solid var(--line);border-radius:4px}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-weight:700;font-size:15px;line-height:1.2;border-radius:30px}
+.btn:hover:not(:disabled){border-color:var(--fg)}
+.btn--main{background:var(--sap2);border-color:var(--sap2);color:#fff}
+.btn--pink{background:var(--pink);border-color:var(--pink);color:#2a0b1e}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line2);border-radius:30px;overflow:hidden;margin-bottom:12px}
+.seg button{padding:8px 14px;border:0;background:none;cursor:pointer;font-size:14px;font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:var(--bg);font-size:14px}
+.status.on{border-color:var(--pink)}
+@media (max-width:900px){.ab{grid-template-columns:1fr}}
+
+/* 07 special */
+#s07 .panel{position:relative;overflow:hidden}
+.timeline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:0 0 14px;padding:0;list-style:none}
+.timeline li{padding:8px 10px;border:1px solid var(--line);font-size:12px;line-height:1.4;color:var(--dim);background:var(--bg)}
+.timeline li b{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;font-weight:500}
+.timeline li.now{border-color:var(--pink);color:var(--fg);box-shadow:inset 0 -3px 0 var(--pink)}
+.duel{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;padding:18px 14px;border:1px solid var(--line);background:var(--bg);min-height:120px}
+.duel svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.who{position:relative;z-index:1;text-align:center}
+.who i{display:grid;place-items:center;width:46px;height:46px;margin:0 auto 6px;border:1px solid var(--line2);font-style:normal;font-family:var(--f-disp);font-weight:900;background:var(--panel2)}
+.who.en i{border-color:var(--sap)}
+.who span{font-size:13px;font-weight:500}
+.who small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--dim)}
+.verdict{position:relative;z-index:1;font-family:var(--f-disp);font-weight:900;font-size:clamp(16px,2.2vw,22px);text-align:center;padding:6px 12px;border:1px solid var(--line2);background:var(--panel);min-width:7em}
+.verdict.fail{border-color:var(--pink);color:var(--pink)}
+.verdict.ok{border-color:var(--sap);color:var(--sap)}
+.dice{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.die{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);background:var(--bg);font-size:13px}
+.die b{font-family:var(--f-disp);font-weight:900;font-size:20px;font-variant-numeric:tabular-nums}
+.die.ok b{color:var(--sap)}.die.no b{color:var(--pink)}
+.tally{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-family:var(--f-mono);font-size:12px;color:var(--dim)}
+.tally b{color:var(--fg);font-weight:600}
+.rate{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4em;gap:12px;align-items:center;margin-top:12px;font-size:14px}
+.rate input{width:100%;accent-color:var(--sap)}
+.rate output{font-family:var(--f-disp);font-weight:900;text-align:right;font-variant-numeric:tabular-nums}
+.prob{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.prob div{padding:10px 12px;border:1px solid var(--line);background:var(--bg)}
+.prob span{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:var(--dim)}
+.prob b{font-family:var(--f-disp);font-weight:900;font-size:26px}
+.prob div+div b{color:var(--pink)}
+.sweep{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(100deg,transparent 30%,rgba(255,154,213,.22) 45%,rgba(111,151,255,.2) 55%,transparent 70%);transform:translateX(-110%)}
+.sweep.go{animation:sweep 1s ease-out}
+@keyframes sweep{to{transform:translateX(110%)}}
+[data-mode="atk"] .only-def,[data-mode="def"] .only-atk{display:none}
+@media (max-width:560px){.timeline li{font-size:11px;padding:6px}.who i{width:40px;height:40px}}
+
+/* 08 talent */
+.stage{position:relative;border:1px solid var(--line);background:#070a14;aspect-ratio:16/10;max-width:100%;overflow:hidden;touch-action:none;cursor:crosshair;border-radius:4px}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.stage__lbl{position:absolute;left:8px;top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);pointer-events:none}
+.stage__hint{position:absolute;right:8px;bottom:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:var(--dim);pointer-events:none}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opts p{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+
+/* 09 */
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:12px}
+.facts div{background:var(--panel);padding:14px 16px;min-width:0}
+.facts dt{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);text-transform:uppercase}
+.facts dd{margin:4px 0 0;font-weight:700;font-size:20px;line-height:1.35}
+.tlist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tlist h3{margin:0 0 8px;font-size:19px}
+.tlist p{margin:0}
+.tlist p+p{margin-top:8px}
+@media (max-width:760px){.facts,.tlist{grid-template-columns:1fr}}
+
+/* 10 */
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inv__n{font-weight:700;font-size:22px;margin:0}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+
+.outro{position:relative;padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-disp);font-weight:900;font-size:clamp(24px,5vw,64px);line-height:1;margin:0;text-transform:uppercase;background:linear-gradient(90deg,var(--sap),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.outro__j{font-family:var(--f-jp);color:var(--dim);margin:12px 0 0}
+.outro__q{font-weight:700;font-size:clamp(20px,2.6vw,30px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:28px auto 0;color:var(--dim);max-width:40em}
+.foot{border-top:1px solid var(--line);background:var(--panel);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+
+/* 스킬 쉽게 보기 */
+.name,.head h2,.ab__name,.ticket__n,.outro__m,.dims dd,.hp__num{overflow-wrap:normal;word-break:normal}
+#s07 .ab__name,#s08 .ab__name{font-size:clamp(22px,3.8vw,54px)}
+.sk__top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.sk__sum{margin:0;font-size:clamp(17px,2vw,21px);font-weight:500;line-height:1.7}
+.sk__sum b{color:var(--pink)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.flow li{position:relative;padding:14px 16px 14px 58px;background:var(--panel);border:1px solid var(--line);border-radius:4px;font-size:14px;color:var(--dim);line-height:1.5}
+.flow li b{position:absolute;left:14px;top:14px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--sap2);color:#fff;font-family:var(--f-disp);font-size:14px}
+.flow li span{display:block;color:var(--fg);font-weight:700;font-size:15px;margin-bottom:2px}
+.pick2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--sap);padding:clamp(18px,2.4vw,26px);border-radius:4px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.opt--b{border-top-color:var(--pink)}
+.opt__k{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--dim)}
+.opt h3{margin:0;font-size:clamp(22px,2.6vw,28px);line-height:1.3}
+.opt__big{margin:0;font-size:17px;font-weight:500}
+.opt__big b{font-family:var(--f-disp);font-size:1.6em;color:var(--sap);margin-right:6px}
+.opt--b .opt__big b{font-family:var(--f-body);font-size:1em;color:var(--pink)}
+.hits{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.hit{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border:1px solid var(--line);background:var(--bg);border-radius:4px;transition:background .25s,border-color .25s,transform .25s}
+.hit b{font-family:var(--f-mono);font-size:11px;color:var(--dim);font-weight:500}
+.hit small{font-size:13px;font-weight:700}
+.hit.miss{border-color:var(--pink);background:rgba(255,154,213,.14);transform:rotate(-5deg)}
+.hit.miss small{color:var(--pink)}
+.hit.land{border-color:var(--sap);background:rgba(111,151,255,.12)}
+.hit.land small{color:var(--sap)}
+.cmp{display:grid;gap:6px}
+.cmp div{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:10px;align-items:baseline;padding:10px 12px;background:var(--bg);border:1px solid var(--line);border-radius:4px}
+.cmp div:last-child{border-color:var(--pink)}
+.cmp span{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;color:var(--dim)}
+.cmp p{margin:0;font-size:14px}
+.rolls{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:8px;align-items:center}
+.roll{padding:12px 8px;text-align:center;border:1px solid var(--line2);background:var(--bg);border-radius:4px;transition:opacity .3s,border-color .3s}
+.roll span{display:block;font-family:var(--f-mono);font-size:11px;color:var(--dim)}
+.roll b{font-size:16px}
+.roll.off{opacity:.3}
+.roll.ok{border-color:var(--sap)}.roll.ok b{color:var(--sap)}
+.roll.no{border-color:var(--pink)}.roll.no b{color:var(--pink)}
+.rolls .arr{color:var(--dim)}
+.opt__res{margin:0;min-height:3.2em;padding:10px 12px;background:var(--bg);border-left:3px solid var(--line2);font-size:14px}
+.opt__res b{color:var(--pink)}
+.opt .btn{align-self:flex-start}
+.opt .note{margin:0}
+#s07 .orig{margin-top:12px}
+.tal{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px;align-items:start}
+.scn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
+.scn button{display:flex;flex-direction:column;gap:2px;text-align:left;padding:10px 12px;border:1px solid var(--line2);background:var(--bg);border-radius:4px;cursor:pointer;font-weight:700;font-size:15px;line-height:1.35}
+.scn button small{font-weight:400;font-size:12px;color:var(--dim)}
+.scn button[aria-pressed="true"]{border-color:var(--pink);box-shadow:inset 0 -3px 0 var(--pink)}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:4px}
+.how b{display:block;font-size:17px;margin-bottom:2px}
+.how b i{font-style:normal;color:var(--pink);margin-right:8px;font-family:var(--f-mono);font-size:12px}
+.how p{margin:0;color:var(--dim);font-size:14px}
+@media (max-width:900px){.sk__top,.pick2,.tal{grid-template-columns:1fr}}
+@media (max-width:600px){.flow{grid-template-columns:1fr}}
+@media (max-width:480px){.scn{grid-template-columns:1fr}}
+/* FX */
+.trail{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:45}
+.bursts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.bs{position:absolute;left:0;top:0;font-size:var(--s);line-height:1;color:var(--c);text-shadow:0 0 10px var(--c);animation:bs .8s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes bs{0%{transform:translate(var(--x0),var(--y0)) scale(.4);opacity:1}100%{transform:translate(var(--x1),var(--y1)) scale(1) rotate(var(--r));opacity:0}}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:none}}
+.ch.pop{animation:pop .8s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--k)*50ms + .1s)}
+.name:hover .ch{animation:bob .6s ease-in-out;animation-delay:calc(var(--k)*35ms)}
+@keyframes pop{0%{transform:translateY(50%) scale(.6);opacity:0}100%{transform:none;opacity:1}}
+@keyframes bob{50%{transform:translateY(-12%)}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+.flash{animation:flash .6s}
+@keyframes flash{0%{box-shadow:0 0 0 2px var(--pink),0 0 30px var(--pink)}100%{box-shadow:none}}
+body.calm .beam,body.calm .tw,body.calm .lights i,body.calm .pc,body.calm .sec.live .head__no::after{animation:none}
+body.calm .pc{transform:rotate(2deg)}
+body.calm .rise,body.calm .ch.pop,body.calm .name:hover .ch{animation:none}
+@media (prefers-reduced-motion:reduce){.beam,.tw,.lights i,.pc,.rise,.ch.pop,.name:hover .ch,.bs,.sec.live .head__no::after{animation:none}}
+</style>
+</head>
+<body>
+<canvas class="trail" id="trail" aria-hidden="true"></canvas>
+
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/sapientia.png" alt="" width="24" height="24">KISEKI<span class="mono dim" style="font-size:11px">&nbsp;/ Sapientia</span></a>
+    <nav class="nav__idx" aria-label="섹션">
+      <a href="#s01" title="신원">01</a><a href="#s02" title="외관">02</a><a href="#s03" title="성격">03</a><a href="#s04" title="L/H/S">04</a><a href="#s05" title="능력치">05</a><a href="#s06" title="기술">06</a><a href="#s07" title="특수 능력">07</a><a href="#s08" title="발현 능력">08</a><a href="#s09" title="특징">09</a><a href="#s10" title="소지품">10</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <span class="beam beam--l" aria-hidden="true"></span><span class="beam beam--r" aria-hidden="true"></span>
+  <div aria-hidden="true" id="stars"></div>
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.007</span><span>Sapientia // <b>Agent</b></span></p>
+      <p class="catch"><b>[ 당신 곁에 내려온 기적! ]</b><span lang="ja">あなたのそばに舞い降りた奇跡！</span></p>
+      <h1 class="name" aria-label="Kinokuniya Hiseki">Kinokuniya<span class="w2">Hiseki</span></h1>
+      <p class="ko"><b>키노쿠니야 히세키</b><span lang="ja">紀伊国屋 ひせき</span></p>
+      <p class="nick">호칭으로 미는 이름 <b lang="ja">キセキ</b> 키세키(기적)</p>
+      <blockquote class="quote">&ldquo;아아~, 나는 아이돌이 되고 싶었는데!&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>20</dd></div>
+        <div><dt>Height</dt><dd>165cm</dd></div>
+        <div><dt>Weight</dt><dd>표준</dd></div>
+      </dl>
+    </div>
+    <div class="pc" id="pc">
+      <div class="pc__in">
+        <img src="assets/hiseki.jpg" alt="키노쿠니야 히세키 전신 그림. 허리까지 오는 검은 반곱슬 머리에 흰 브릿지, 한쪽 눈을 찡긋 감고 손을 높이 들어 인사한다. 소매가 트인 흰 재킷과 검은 단복, 골반에 두른 랩 치마 차림으로 한쪽 다리를 들고 서 있다" width="720" height="1280">
+        <span class="pc__glare" aria-hidden="true"></span>
+      </div>
+      <p class="pc__cap"><span>KISEKI.PHOTOCARD</span><span>No.007</span></p>
+      <span class="pc__stk" aria-hidden="true">시선<br>고정!</span>
+    </div>
+  </div>
+  <div class="lights" id="lights" aria-hidden="true"></div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>01</span><span class="mono head__en">(Identity)</span><h2>Identity<span>신원 정보</span></h2></header>
+    <div class="ident">
+      <div class="ticket">
+        <div class="ticket__main">
+          <img src="assets/face.jpg" alt="히세키 얼굴" width="104" height="104">
+          <div>
+            <p class="ticket__n">Kinokuniya<br>Hiseki</p>
+            <p class="ticket__j" lang="ja">紀伊国屋 ひせき</p>
+            <dl><dt>DIV</dt><dd>SAPIENTIA</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>20</dd></dl>
+          </div>
+        </div>
+        <div class="ticket__stub"><span>ADMIT</span><b>007</b><span>ONE</span></div>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>키노쿠니야 히세키 / 紀伊国屋 ひせき</td></tr>
+          <tr><th>1.2</th><td>Nickname</td><td>키세키 (기적)</td></tr>
+          <tr><th>1.3</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.4</th><td>Age</td><td>20세</td></tr>
+          <tr><th>1.5</th><td>Height / Weight</td><td>165cm / 표준</td></tr>
+          <tr><th>1.6</th><td>Faction</td><td>사피엔티아 &middot; 대원</td></tr>
+          <tr><th>1.7</th><td>Attribute</td><td>특수</td></tr>
+          <tr><th>1.8</th><td>Special</td><td>궤적 &bull; 너 &bull; 아말가메이션</td></tr>
+          <tr><th>1.9</th><td>Talent</td><td>궤적 &bull; 나 &bull; 스텝</td></tr>
+          <tr><th>1.10</th><td>Links / Coupling</td><td>&ndash; / &ndash;</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>02</span><span class="mono head__en">(Appearance)</span><h2>Appearance<span>외관</span></h2></header>
+    <div class="look">
+      <div class="look__pics">
+        <figure class="snap"><img src="assets/face.jpg" alt="히세키 얼굴 그림. 흑발에 밝은 브릿지, 별 모양 안광이 있는 검은 눈으로 살짝 웃는다" width="480" height="480"><figcaption><span>FACE</span><span>No.007</span></figcaption></figure>
+        <figure class="snap"><img src="assets/card.jpg" alt="히세키 상반신 그림. 손을 들어 인사하며 윙크한다" width="560" height="700"><figcaption><span>HELLO!</span><span>No.007</span></figcaption></figure>
+      </div>
+      <div>
+        <ul class="parts">
+          <li><i style="--c:#1a1a1f"></i><span>2.1 Hair</span><b>흑발 + 백색 브릿지, 허리까지 닿는 반곱슬</b></li>
+          <li><i style="--c:#2c2c34"></i><span>2.2 Eyes</span><b>검은 눈, 올라간 눈매</b></li>
+          <li><i style="--c:#fff3c4"></i><span>2.3 Glint</span><b>눈 아래쪽에 별 모양 안광</b></li>
+          <li><i style="--c:#f2f4ff"></i><span>2.4 Sleeve</span><b>단복의 소매 지퍼는 열려 있다</b></li>
+          <li><i style="--c:#111116"></i><span>2.5 Skirt</span><b>골반에 두른 랩 치마</b></li>
+          <li><i style="--c:#4a78d8"></i><span>2.6 Face</span><b>평범하진 않지만 특출나지도 않은, 적당한 미인상</b></li>
+        </ul>
+        <p class="look__q">주변에 한두 명쯤 있을 법한&hellip; &hellip;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>03</span><span class="mono head__en">(Personality)</span><h2>Personality<span>성격</span></h2></header>
+    <div class="pers">
+      <div class="panel trait"><h3>밝은<small>3.1</small></h3><p>언제나 긍정 파워 장착! 인사할 때부터 활기차던 모습이 헤어진 다음까지도 이어질 것이다.</p></div>
+      <div class="panel trait"><h3>단순한<small>3.2</small></h3><p>종종 엉뚱해 보일 정도로 단순하다. 좋은 것은 좋은 것, 싫은 것은&hellip; 글쎄! 그렇다 해서 생각이 깊지 않은 건 (아마도) 아니지만, 늘 툭 내뱉는 결과는 YES OR NO.</p></div>
+      <div class="panel trait"><h3>주저앉지 않는<small>3.3</small></h3><p>그 덕분일까? 어떤 어려움에도 굴하지 않는 회복 탄력성을 지녔다. 다시 도전할 수 있다면 최대한 빨리, 완벽한 실패라 하더라도 신속히 털어내고 내일을 향해 가는 게 나으니까! 히세키가 사피엔티아에 소속된 가장 큰 원인이기도 하다.</p></div>
+      <div class="panel trait"><h3>사랑받고 컸어?<small>3.4</small></h3><p>그 외에도 특출난 자존감과 자신감, 주변을 유연하게 대하는 태도부터, 세상을 바라보는 시선까지&hellip; 좋게 말하면 살아감에 여유가 있어 뵈고, 나쁘게 말하면 철부지 공주님 같다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>04</span><span class="mono head__en">(Like / Hate / Scare)</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>키세키라 불러 주기!</li><li>누군가 저를 바라보는 시선</li><li>수다 떠는 시간</li><li>라즈베리 잼이 샌드된 초코 다쿠아즈<small>이게 아니면 안 된다!</small></li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>과하게 정적인 공간</li><li>완벽 무시</li><li>커피 젤리</li></ul><p class="note">물론 엄청나게 싫어하는 건 또 아니다.</p></div>
+      <div class="panel"><p class="lhs__l">S</p><ul><li>글쎄!<small>그리 무서워하는 대상 역시 없다.</small></li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>05</span><span class="mono head__en">(Stats)</span><h2>Stats<span>능력치</span></h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 60, 방어력 85, 민첩성 30, 정확성 85, 정신력 60">
+        <g class="radar__grid"></g>
+        <polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon>
+        <g class="radar__dots"></g>
+        <g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>공격력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+        <li class="top"><span>5.2</span><span>방어력</span><span class="bar"><i data-w="85"></i></span><b>85</b></li>
+        <li><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="30"></i></span><b>30</b></li>
+        <li class="top"><span>5.4</span><span>정확성</span><span class="bar"><i data-w="85"></i></span><b>85</b></li>
+        <li><span>5.5</span><span>정신력</span><span class="bar"><i data-w="60"></i></span><b>60</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 320 = 60 + 85 + 30 + 85 + 60 &middot; 가장 높은 능력치는 방어력과 정확성</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>06</span><span class="mono head__en">(Techniques)</span><h2>Techniques<span>기술</span></h2></header>
+    <div class="tech">
+      <div class="panel tk"><span class="tk__no">6.1</span><p class="tk__type">ATK &middot; 공격 기술</p><h3>악센트</h3><div><div class="chips"><em>특수</em></div><p>몸의 힘을 빼고, 궤적의 위치를 자신의 팔과 발로 향한다. 가속도를 타고 접근해 강하게 공격한다.</p></div></div>
+      <div class="panel tk"><span class="tk__no">6.2</span><p class="tk__type">ATK &middot; 공격 기술</p><h3>모두 여기로 집중!</h3><div><div class="chips"><em>특수</em><em>광역</em></div><p>여러 궤적을 한 점으로 모은다. 모두의 발길이 한데 뒤섞여 서로 부딪치는 아수라장을 만든다.</p></div></div>
+      <div class="panel tk"><span class="tk__no">6.3</span><p class="tk__type">ATK &middot; 공격 기술</p><h3>아웃트로</h3><div><div class="chips"><em>특수</em><em>처형</em></div><p>헤어지기 전에는 인사를 해야지! 궤적을 적의 머리에 조준하고, 바닥 방향으로 당긴다.</p></div></div>
+      <div class="panel tk tk--def"><span class="tk__no">6.4</span><p class="tk__type">DEF &middot; 수비 기술</p><h3>사필귀정</h3><div><div class="chips"><em>방어</em><em>반격</em></div><p>적이 긴장한 그 순간, 빠르게 궤적을 그어 전투 흐름을 무너뜨린 이내 반격한다.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>07</span><span class="mono head__en">(Special) &mdash; 특수</span><h2>Special<span>특수 능력</span></h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">Trace <span>&bull;</span> You <span>&bull;</span> Amalgamation</p>
+        <p class="ab__ko">궤적 &bull; 너 &bull; 아말가메이션</p>
+        <span class="mono ab__type">특수</span>
+      </div>
+      <p class="sk__sum">팔을 뻗어 적에게 <b>보이지 않는 작은 선</b>을 긋는다. 적은 몸의 균형이 틀어지고 거리 감각이 어긋난다. 그래서 <b>공격</b>과 <b>수비</b> 중 하나를 골라 방해할 수 있다.</p>
+    </div>
+    <ol class="flow">
+      <li><b>1</b><span>히세키의 턴</span>공격을 방해할지, 수비를 방해할지 고르고 선을 긋는다.</li>
+      <li><b>2</b><span>턴이 끝난다</span>효과는 이 턴이 끝난 다음부터 시작된다.</li>
+      <li><b>3</b><span>다음 1턴 동안</span>적이 흔들린다. 1턴이 지나면 원래대로.</li>
+    </ol>
+    <div class="pick2">
+      <article class="opt" id="optA">
+        <p class="opt__k">선택 A</p>
+        <h3>적의 공격을 방해</h3>
+        <p class="opt__big"><b>60%</b>확률로 적의 공격이 빗나간다.</p>
+        <div class="hits" id="hits" aria-live="polite"></div>
+        <p class="opt__res" id="resA">버튼을 누르면 적이 10번 공격한다. 몇 번이나 빗나갈까?</p>
+        <button class="btn btn--main" id="goA" type="button">적이 10번 공격하면?</button>
+      </article>
+      <article class="opt opt--b" id="optB">
+        <p class="opt__k">선택 B</p>
+        <h3>적의 수비를 방해</h3>
+        <p class="opt__big">적이 막아 내도 <b>한 번 더</b> 막아야 한다.</p>
+        <div class="cmp">
+          <div><span>평소</span><p>방어나 회피 판정에 <b>1번</b> 성공하면 막는다.</p></div>
+          <div><span>방해 중</span><p>성공해도 취소되고, 같은 능력치로 다시 굴린다. <b>2번 연속</b> 성공해야 막는다.</p></div>
+        </div>
+        <div class="rolls"><div class="roll" id="r1"><span>방어 판정</span><b>?</b></div><span class="arr" aria-hidden="true">&rarr;</span><div class="roll off" id="r2"><span>다시 판정</span><b>?</b></div></div>
+        <p class="opt__res" id="resB" aria-live="polite">버튼을 누르면 아군이 공격하고, 적이 막으려 한다.</p>
+        <button class="btn btn--pink" id="goB" type="button">아군이 공격하면?</button>
+        <p class="note">적의 방어 성공률을 50%로 가정한 예시. 이 경우 적이 막을 확률은 50%에서 25%로 떨어진다.</p>
+      </article>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>기존 능력의 궤적을 전투에 맞게 응용. 시전 시 적의 공격 / 적의 수비 중 하나를 선택해, 해당 턴이 끝난 이후 1턴 동안 적을 방해한다. 공격을 고를 시 적에게 공격 실패 확률 60%를 부여한다. 수비를 고를 시 적이 성공한 방어와 회피 판정을 취소 후 같은 능력치로 재판정, 즉 2번의 판정 성공을 요구한다. 팔을 내뻗어 타인에게 작은 궤적을 만들어낸다. 몸의 균형을 틀거나 거리 계산에 오차를 내는 등. 정확한 타이밍, 절묘한 각도 조절이 최고의 나비 효과를 이끈다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>08</span><span class="mono head__en">(Talent) &mdash; 발현 능력</span><h2>Talent<span>발현 능력</span></h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">Trace <span>&bull;</span> Me <span>&bull;</span> Step</p>
+        <p class="ab__ko">궤적 &bull; 나 &bull; 스텝</p>
+        <span class="mono ab__type">특수</span>
+      </div>
+      <p class="sk__sum">남의 눈에는 <b>보이지 않는 선</b>을 긋고, 상대가 그 선을 따라 <b>몸을 움직이도록 이끈다</b>. 춤, 운동, 악기 연주처럼 정확한 동작이 필요할 때 자주 쓴다.</p>
+    </div>
+    <div class="tal">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 상황을 골라 보자</p>
+        <div class="stage" id="stage"><canvas id="cv" role="img" aria-label="히세키가 그은 선과 그 선을 따라 움직이는 상대"></canvas><span class="stage__lbl">HISEKI'S VIEW</span><span class="stage__hint">끌어서 직접 선을 그을 수도 있다</span></div>
+        <div class="scn" role="group" aria-label="상황">
+          <button type="button" data-sc="follow" aria-pressed="true">크게 긋기<small>손가락을 휘저어 강하게</small></button>
+          <button type="button" data-sc="weak" aria-pressed="false">작게 긋기<small>눈동자만 굴려 약하게</small></button>
+          <button type="button" data-sc="break" aria-pressed="false">상대가 버티면<small>자세를 굳히거나 반대로</small></button>
+        </div>
+        <p class="status" id="tMsg" aria-live="polite">상황을 누르면 상대가 선을 따라 움직인다.</p>
+        <div class="ctrl"><button class="btn btn--main" id="tGo" type="button">다시 보기</button><button class="btn" id="tSample" type="button">예시 선으로</button></div>
+      </div>
+      <div class="how">
+        <div><b><i>01</i>따라온다</b><p>편안한 상대나 따르려는 상대는 선을 따라 몸이 움직인다. 억지로 시키는 힘은 아니다.</p></div>
+        <div><b><i>02</i>버티면 끊긴다</b><p>반대 방향으로 움직이거나 일부러 자세를 굳히면 선이 쉽게 끊긴다.</p></div>
+        <div><b><i>03</i>크게 그을수록 강하다</b><p>눈동자만 굴리면 약하게, 손가락을 공중에 크게 휘저으면 강하게. 평소 동작으로 세기를 조절한다.</p></div>
+        <div><b><i>04</i>나에게도 쓴다</b><p>자기 자신에게 선을 그어 정확한 자세를 잡을 수도 있다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>09</span><span class="mono head__en">(Traits)</span><h2>Traits<span>특징</span></h2></header>
+    <dl class="facts">
+      <div><dt>1st person</dt><dd>나 <small class="dim" style="font-size:14px;font-weight:400">존댓말일 때도</small></dd></div>
+      <div><dt>2nd person</dt><dd>당신 <small class="dim" style="font-size:14px;font-weight:400">반말일 때도</small></dd></div>
+      <div><dt>Wish</dt><dd>아이돌</dd></div>
+    </dl>
+    <div class="tlist">
+      <div class="panel"><p class="idx">9.1</p><h3>말투</h3><p>일인칭은 나, 이인칭은 당신. 어째선지 반말 이인칭도 당신이며 존대 일인칭도 나다&hellip;</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>버릇</h3><p>자신은 아이돌이 되고 싶었다는 말을 자주 한다.</p><p>그러나 입버릇에 비해 미련은 그다지 없어 보인다. 사람들에게 환호받는 기적이 되는 건 여기서도 가능하잖아! &hellip;하는 가벼운 소리와 함께.</p></div>
+      <div class="panel" style="grid-column:1/-1"><p class="idx">9.3</p><h3>호칭</h3><p>본명은 히세키(ひせき). 그래서, 한 글자만 바꾼 &lsquo;키세키(奇跡, 기적)&rsquo;를 호칭으로 밀고 있다. 키세키라 불러 주는 것을 좋아한다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>M</small>10</span><span class="mono head__en">(Inventory)</span><h2>Inventory<span>소지품</span></h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">일기장</p><p class="mono dim" style="margin:0">diary</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">만년필</p><p class="mono dim" style="margin:0">fountain pen</p></div>
+      <div class="panel"><p class="idx">10.3</p><p class="inv__n">손거울</p><p class="mono dim" style="margin:0">hand mirror</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">Eyes on me!</p>
+    <p class="outro__j" lang="ja">あなたのそばに舞い降りた奇跡！</p>
+    <p class="outro__q">[ 나, 잘할게! 모두들~ 시선고정! ]</p>
+    <p class="outro__o">오너 한마디 &mdash; &lsquo;당신&rsquo;은 영어로 뭘까요&hellip; 아무튼 잘 부탁드립니다. 가개장 중 선관, 러닝 중 조율은 편하게 갠밴 와주세요.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>KINOKUNIYA HISEKI &middot; Sapientia Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON"}
+applyCalm();
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm();drawT()};
+
+/* nav: 지금 섹션 표시 */
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+/* 표지 장식: 별과 응원봉 */
+$("#stars").innerHTML=Array.from({length:26},(_,i)=>`<span class="tw" style="--x:${(i*37+11)%100}%;--y:${(i*53+7)%88}%;--d:${(i%9)*-.3}s"></span>`).join("");
+$("#lights").innerHTML=Array.from({length:30},(_,i)=>`<i style="--k:${i};--c:${i%3===1?"var(--pink)":"var(--sap)"}"></i>`).join("");
+
+/* 이름 글자 */
+let k=0;const wrap=el=>[...el.childNodes].forEach(n=>{if(n.nodeType===3){const f=document.createDocumentFragment();[...n.textContent].forEach(c=>{const s=document.createElement("span");s.className="ch"+(calm?"":" pop");s.style.setProperty("--k",k++);s.textContent=c;s.setAttribute("aria-hidden","true");f.appendChild(s)});n.replaceWith(f)}else wrap(n)});
+wrap($(".name"));
+
+/* 포토카드 기울기 */
+const pc=$("#pc");
+if(matchMedia("(hover:hover)").matches){
+  pc.addEventListener("pointermove",e=>{if(calm)return;const r=pc.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+    pc.style.setProperty("--ry",(x-.5)*16+"deg");pc.style.setProperty("--rx",-(y-.5)*12+"deg");pc.style.setProperty("--gx",x*100+"%");pc.style.setProperty("--gy",y*100+"%")});
+  pc.addEventListener("pointerleave",()=>{pc.style.setProperty("--ry","0deg");pc.style.setProperty("--rx","0deg")});
+}
+
+/* 스크롤하면 떠오르기: 보이는 상태에서 시작하고, 화면에 들어올 때만 움직인다 */
+const RV=".panel,.opt,.flow li,.how>div,.rules>div,.parts li,.bars li,.facts>div,.ticket,.snap,.ab__name,.ab__ko,.ab__one,.head";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero"))return;const r=el.getBoundingClientRect();if(r.top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));rio.observe(el)});
+
+/* 포인터 궤적 + 누르면 별이 터진다 */
+const tc=$("#trail"),tx=tc.getContext("2d");let pts=[],tRun=false;
+function tsize(){const d=Math.min(2,devicePixelRatio||1);tc.width=innerWidth*d;tc.height=innerHeight*d;tx.setTransform(d,0,0,d,0,0)}tsize();addEventListener("resize",tsize);
+function tloop(){const now=performance.now();pts=pts.filter(p=>now-p.t<550);tx.clearRect(0,0,innerWidth,innerHeight);
+  for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],life=1-(now-b.t)/550;tx.strokeStyle=`rgba(${i%2?"255,154,213":"111,151,255"},${life*.8})`;tx.lineWidth=life*3+.5;tx.lineCap="round";tx.beginPath();tx.moveTo(a.x,a.y);tx.lineTo(b.x,b.y);tx.stroke()}
+  if(pts.length){requestAnimationFrame(tloop)}else{tRun=false}}
+addEventListener("pointermove",e=>{if(calm||e.pointerType==="touch")return;pts.push({x:e.clientX,y:e.clientY,t:performance.now()});if(!tRun){tRun=true;requestAnimationFrame(tloop)}},{passive:true});
+const bursts=document.createElement("div");bursts.className="bursts";bursts.setAttribute("aria-hidden","true");document.body.appendChild(bursts);
+function burst(x,y,n=8){if(calm||RM)return;for(let i=0;i<n;i++){const a=i/n*Math.PI*2+Math.random()*.4,d=40+Math.random()*40,s=document.createElement("span");s.className="bs";s.textContent=i%3?"★":"✦";
+  s.style.cssText=`--x0:${x-6}px;--y0:${y-8}px;--x1:${x-6+Math.cos(a)*d}px;--y1:${y-8+Math.sin(a)*d}px;--r:${(Math.random()-.5)*180}deg;--s:${10+Math.random()*10}px;--c:${i%2?"var(--pink)":"var(--star)"}`;
+  bursts.appendChild(s);setTimeout(()=>s.remove(),900)}}
+addEventListener("pointerdown",e=>{if(e.target.closest("input,#stage"))return;burst(e.clientX,e.clientY)});
+
+/* 넓은 제목 글꼴이 칸을 넘으면 글자 크기를 줄여 맞춘다 */
+const FIT=".name,.head h2,.ab__name,.ticket__n,.outro__m,.dims dd,.hp__num";
+function fit(){$$(FIT).forEach(e=>{e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;
+  while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<60){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* ---------- 능력치 ---------- */
+const S=[["공격력",60],["방어력",85],["민첩성",30],["정확성",85],["정신력",60]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx,ly]=pt(i,122),an=Math.abs(lx)<5?"middle":lx>0?"start":"end";
+  const t=el("text",{x:lx,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 궤적 • 너 • 아말가메이션 ---------- */
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+$("#hits").innerHTML=Array.from({length:10},(_,i)=>`<span class="hit"><b>${i+1}</b><small>공격</small></span>`).join("");
+let busyA=false;
+$("#goA").onclick=()=>{if(busyA)return;busyA=true;const H=$$("#hits .hit"),res=H.map(()=>Math.random()<.6);let miss=0;
+  H.forEach(h=>{h.className="hit";h.querySelector("small").textContent="공격"});$("#resA").textContent="적이 공격한다…";
+  H.forEach((h,i)=>setTimeout(()=>{const m=res[i];if(m)miss++;h.className="hit "+(m?"miss":"land");h.querySelector("small").textContent=m?"빗나감":"명중";
+    if(i===H.length-1){$("#resA").innerHTML=`10번 중 <b>${miss}번</b> 빗나갔다. 확률이 60%라 누를 때마다 조금씩 달라진다.`;busyA=false;const r=$("#hits").getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,10)}},calm?0:i*140))};
+let busyB=false;
+$("#goB").onclick=()=>{if(busyB)return;busyB=true;const r1=$("#r1"),r2=$("#r2"),s1=Math.random()<.5,s2=Math.random()<.5,d=calm?0:700;
+  [r1,r2].forEach(r=>{r.className="roll";r.querySelector("b").textContent="?"});r2.classList.add("off");$("#resB").textContent="아군이 공격했다. 적이 막으려 한다…";
+  setTimeout(()=>{r1.classList.add(s1?"ok":"no");
+    if(!s1){r1.querySelector("b").textContent="실패";$("#resB").innerHTML="첫 판정부터 실패했다. <b>공격 명중!</b>";busyB=false;return}
+    r1.querySelector("b").textContent="성공 → 취소";$("#resB").textContent="막았지만 선 때문에 취소됐다. 한 번 더 굴린다…";r2.classList.remove("off");
+    setTimeout(()=>{r2.querySelector("b").textContent=s2?"성공":"실패";r2.classList.add(s2?"ok":"no");
+      $("#resB").innerHTML=s2?"두 번 다 성공해서 막아 냈다.":"다시 판정에서 실패했다. <b>공격 명중!</b>";if(!s2)fx($("#optB"),"shake");busyB=false},d)},d)};
+
+/* ---------- 궤적 • 나 • 스텝 ---------- */
+const stage=$("#stage"),cv=$("#cv"),cx=cv.getContext("2d");
+let W=0,H=0,path=[],drawing=false,sc="follow",anim=null,actor=null,broken=null,trailT=[];
+const SAMPLE=Array.from({length:60},(_,i)=>{const t=i/59;return[.14+t*.72,.62-Math.sin(t*Math.PI*2)*.22-t*.08]});
+function size(){const r=stage.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cx.setTransform(d,0,0,d,0,0);drawT()}
+new ResizeObserver(size).observe(stage);
+function P(p){return[p[0]*W,p[1]*H]}
+function lenAt(){let L=[0];for(let i=1;i<path.length;i++){const a=P(path[i-1]),b=P(path[i]);L.push(L[i-1]+Math.hypot(b[0]-a[0],b[1]-a[1]))}return L}
+function at(f){if(path.length<2)return P(path[0]||[.5,.5]);const L=lenAt(),T=L[L.length-1]*f;let i=1;while(i<L.length-1&&L[i]<T)i++;const s=(T-L[i-1])/((L[i]-L[i-1])||1),a=P(path[i-1]),b=P(path[i]);return[a[0]+(b[0]-a[0])*s,a[1]+(b[1]-a[1])*s]}
+function star(x,y,r,col){cx.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.45:r;cx.lineTo(x+Math.cos(a)*rr,y+Math.sin(a)*rr)}cx.closePath();cx.fillStyle=col;cx.fill()}
+function drawT(){
+  if(!W)return;cx.clearRect(0,0,W,H);
+  cx.strokeStyle="rgba(220,228,255,.05)";cx.lineWidth=1;for(let x=0;x<W;x+=24){cx.beginPath();cx.moveTo(x,0);cx.lineTo(x,H);cx.stroke()}for(let y=0;y<H;y+=24){cx.beginPath();cx.moveTo(0,y);cx.lineTo(W,y);cx.stroke()}
+  if(path.length>1){
+    if(broken!=null){for(let i=1;i<path.length;i++){const a=P(path[i-1]),b=P(path[i]),dy=broken*(10+(i%5)*6),al=Math.max(0,1-broken);cx.strokeStyle=`rgba(255,154,213,${al})`;cx.lineWidth=2;cx.beginPath();cx.moveTo(a[0]+(i%3-1)*broken*8,a[1]+dy);cx.lineTo(b[0]+(i%3-1)*broken*8,b[1]+dy);cx.stroke()}}
+    else{const g=cx.createLinearGradient(...P(path[0]),...P(path[path.length-1]));g.addColorStop(0,"#6f97ff");g.addColorStop(1,"#ff9ad5");
+      cx.save();cx.shadowColor="#ff9ad5";cx.shadowBlur=12;cx.strokeStyle=g;cx.lineWidth=sc==="weak"?1.5:3.5;cx.globalAlpha=sc==="weak"?.55:1;cx.setLineDash([2,7]);cx.lineCap="round";cx.beginPath();path.forEach((p,i)=>{const[x,y]=P(p);i?cx.lineTo(x,y):cx.moveTo(x,y)});cx.stroke();cx.restore();
+      const e=P(path[path.length-1]);star(e[0],e[1],7,"#fff3c4")}}
+  if(trailT.length>1){cx.strokeStyle="rgba(242,244,255,.35)";cx.lineWidth=1.5;cx.setLineDash([]);cx.beginPath();trailT.forEach(([x,y],i)=>i?cx.lineTo(x,y):cx.moveTo(x,y));cx.stroke()}
+  const a=actor||at(0);
+  cx.beginPath();cx.arc(a[0],a[1],12,0,Math.PI*2);cx.fillStyle="#f2f4ff";cx.fill();cx.font="600 12px "+getComputedStyle(document.body).fontFamily;cx.fillStyle="#9aa3c8";cx.textAlign="center";cx.fillText(sc==="break"?"상대 (버틴다)":"상대",a[0],a[1]+28);
+  star(a[0],a[1],5,"#4a78d8");
+}
+const MSG={follow:["선을 크게 긋자 상대가 선을 끝까지 따라 움직였다.",1],weak:["눈동자만 굴려 작게 그으니 힘이 약하다. 상대가 조금 움직이다 멈췄다.",1],break:["상대가 자세를 굳히고 버티자 선이 툭 끊어졌다.",1]};
+function tm(t,on){const p=$("#tMsg");p.textContent=t;p.classList.toggle("on",!!on)}
+function play(){
+  if(anim)cancelAnimationFrame(anim);broken=null;trailT=[];actor=null;
+  const max=sc==="break"?.12:sc==="weak"?.4:1,dur=1800*max+500,s0=at(0);
+  const place=f=>{let p=at(f);if(sc==="break")p=[s0[0]+(p[0]-s0[0])*.25,s0[1]+(p[1]-s0[1])*.25];return p};
+  const fin=()=>tm(...MSG[sc]);
+  if(calm){actor=place(max);if(sc==="break")broken=.6;drawT();fin();return}
+  tm(sc==="break"?"선을 그었다. 그런데 상대가 몸에 힘을 주고 있다…":"선을 그었다. 상대가 움직이기 시작한다…");
+  const t0=performance.now();
+  const loop=n=>{const q=Math.min(1,(n-t0)/dur),e=q<.5?2*q*q:1-Math.pow(-2*q+2,2)/2;
+    if(sc!=="break"||q<.55){actor=place(e*max);trailT.push(actor)}else{broken=Math.min(1,(q-.55)/.45)}
+    drawT();if(q<1)anim=requestAnimationFrame(loop);else{anim=null;if(sc==="break")fx(stage,"shake");else if(sc==="follow"){const r=stage.getBoundingClientRect();burst(r.left+actor[0],r.top+actor[1],10)}fin()}};
+  anim=requestAnimationFrame(loop)}
+function pos(e){const r=stage.getBoundingClientRect();return[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]}
+stage.addEventListener("pointerdown",e=>{if(anim)cancelAnimationFrame(anim),anim=null;drawing=true;stage.setPointerCapture(e.pointerId);path=[pos(e)];actor=null;broken=null;trailT=[];drawT()});
+stage.addEventListener("pointermove",e=>{if(!drawing)return;const p=pos(e),l=path[path.length-1];if(Math.hypot((p[0]-l[0])*W,(p[1]-l[1])*H)>4){path.push(p);drawT()}});
+const endDraw=()=>{if(!drawing)return;drawing=false;if(path.length<4){path=SAMPLE.slice();tm("선이 너무 짧아 예시 선으로 돌려놓았다.");drawT()}else play()};
+stage.addEventListener("pointerup",endDraw);stage.addEventListener("pointercancel",endDraw);
+$$("[data-sc]").forEach(b=>b.onclick=()=>{sc=b.dataset.sc;$$("[data-sc]").forEach(x=>x.setAttribute("aria-pressed",x===b));play()});
+$("#tGo").onclick=play;
+$("#tSample").onclick=()=>{path=SAMPLE.slice();play()};
+path=SAMPLE.slice();
+let played=false;new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting&&!played){played=true;o.disconnect();setTimeout(play,400)}}),{threshold:.5}).observe(stage);
+})();
+</script>
+
+</body>
+</html>
