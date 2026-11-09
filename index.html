@@ -341,6 +341,23 @@ body.calm .ticker__t,body.calm .unk{animation:none}
       "page": "characters/sian/index.html",
       "credit": "나나곰제과점",
       "joined": "2026-11-09"
+    },
+    {
+      "id": "lanfang",
+      "no": "009",
+      "name": "Lan Fang",
+      "nameKo": "란 팡",
+      "faction": "libertas",
+      "sex": "여",
+      "age": 40,
+      "height": "150cm",
+      "attribute": "타격",
+      "talent": "만상(萬象)",
+      "quote": "오야오야... 소란스럽구먼~",
+      "image": "characters/lanfang/assets/card.jpg",
+      "imagePosition": "50% 0%",
+      "page": "characters/lanfang/index.html",
+      "joined": "2026-11-09"
     }
   ]
 }
@@ -415,7 +432,8 @@ F.hq={id:"hq",name:"본부 직속",en:"Headquarters",color:"#ececec",emblem:""};
 /* 단장은 항상 맨 앞, 그다음 번호 순 */
 /* 직책 순서: 총사령관 → 단장 → 대원, 같은 직책끼리는 번호 순 */
 const RANK={"총사령관":0,"단장":1};const rk=c=>RANK[c.rank]??9;
-const chars=[...data.characters].sort((a,b)=>(rk(a)-rk(b))||String(a.no).localeCompare(String(b.no)));
+/* 정렬: 총사령관, 단장(번호순), 그다음 대원은 영문 이름 알파벳순 */
+const chars=[...data.characters].sort((a,b)=>(rk(a)-rk(b))||(rk(a)<9?String(a.no).localeCompare(String(b.no)):String(a.name).localeCompare(String(b.name),"en",{sensitivity:"base"})));
 const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
 const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
 

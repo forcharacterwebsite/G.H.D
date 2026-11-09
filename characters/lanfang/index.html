@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>물 흐르듯, 란 팡</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="리베르타스 대원 란 팡 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Song+Myung&family=Marcellus&family=Gowun+Dodum&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: 리베르타스. 찻자리에 펼친 두루마리. 먹빛 바탕, 한지색 글씨, 리베르타스 녹색과 청자색, 귀걸이 술의 주홍 낙관. 장 번호는 一~十二 */
+:root{
+  --bg:#0f130e;--panel:#161c15;--panel2:#1d251b;--line:rgba(233,228,212,.12);--line2:rgba(233,228,212,.28);
+  --fg:#ece8da;--dim:#9da592;--lib:#8cc152;--cel:#9fcab2;--seal:#c8412f;--paper:#e9e4d4;--ink:#1a1f17;
+  --f-disp:"Song Myung","Nanum Myeongjo","AppleMyungjo",serif;
+  --f-lat:"Marcellus","Times New Roman",serif;
+  --f-body:"Gowun Dodum","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:radial-gradient(ellipse at 80% -10%,rgba(140,193,82,.12),transparent 50%),radial-gradient(ellipse at 0% 60%,rgba(159,202,178,.06),transparent 50%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cel);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1180px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(15,19,14,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-size:21px;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-disp);font-size:16px;text-decoration:none;padding:4px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--fg);border-color:var(--seal)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--fg);color:var(--bg)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.np i{display:block;height:100%;width:0;max-width:calc(100% - 8px);background:linear-gradient(90deg,var(--cel),var(--lib));position:relative}
+.np i::after{content:"";position:absolute;right:-5px;top:-4px;width:10px;height:10px;border-radius:50% 0 50% 50%;background:var(--lib);transform:rotate(45deg)}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:18px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--lib);font-weight:500}
+.flowt{margin:22px 0 0;font-family:var(--f-disp);font-size:clamp(18px,2vw,22px);color:var(--cel);letter-spacing:.2em}
+.name{font-family:var(--f-disp);font-size:clamp(84px,14vw,176px);line-height:1;margin:6px 0 0;white-space:nowrap;letter-spacing:.04em}
+.name .ch{display:inline-block}
+.en{font-family:var(--f-lat);font-size:clamp(22px,2.6vw,32px);letter-spacing:.24em;margin:4px 0 0;color:var(--lib);text-transform:uppercase}
+.quote{font-family:var(--f-disp);font-size:clamp(22px,2.6vw,30px);line-height:1.6;margin:26px 0 0;max-width:22em}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:600px;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.dims div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:2px 0 0;font-family:var(--f-disp);font-size:clamp(22px,2.6vw,28px);line-height:1.2}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.scroll{position:relative;justify-self:center;width:100%;max-width:470px;margin:0;padding:18px 16px 14px;background:var(--paper);color:var(--ink);box-shadow:0 30px 60px rgba(0,0,0,.4)}
+.scroll::before,.scroll::after{content:"";position:absolute;left:-10px;right:-10px;height:12px;background:linear-gradient(180deg,#4a3a24,#2c2216);border-radius:6px}
+.scroll::before{top:-6px}.scroll::after{bottom:-6px}
+.scroll img{width:100%}
+.scroll figcaption{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#4b5244}
+.stamp{display:inline-grid;place-items:center;width:42px;height:42px;background:var(--seal);color:#fbe9df;font-family:var(--f-disp);font-size:13px;line-height:1.05;text-align:center;border-radius:3px;transform:rotate(-6deg);box-shadow:inset 0 0 0 2px rgba(255,255,255,.18)}
+.leaf{position:absolute;top:-30px;left:var(--x);width:16px;height:9px;background:var(--lib);border-radius:0 100% 0 100%;opacity:.7;pointer-events:none;animation:fall var(--t) linear infinite;animation-delay:var(--d)}
+@keyframes fall{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(40px,50vh) rotate(200deg)}100%{transform:translate(-20px,110vh) rotate(420deg)}}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.scroll{max-width:360px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,100px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:end;margin-bottom:clamp(26px,4vw,40px)}
+.head__no{grid-row:span 2;position:relative;display:grid;place-items:center;width:clamp(58px,7vw,80px);aspect-ratio:1;border:1px solid var(--line2);font-family:var(--f-disp);font-size:clamp(28px,3.6vw,40px);line-height:1;color:var(--cel);transition:background .4s,color .4s,border-color .4s}
+.sec.live .head__no{background:var(--seal);border-color:var(--seal);color:#fbe9df;transform:rotate(-4deg)}
+.head__en{font-family:var(--f-lat);font-size:15px;letter-spacing:.2em;color:var(--lib);text-transform:uppercase}
+.head h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(32px,4.8vw,56px);line-height:1.15;margin:0;min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--lib);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:14px}
+
+/* 一 */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.card{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;background:var(--paper);color:var(--ink);padding:18px;align-self:start}
+.card img{width:110px;height:110px;object-fit:cover}
+.card__n{font-family:var(--f-disp);font-size:34px;line-height:1.1;margin:0}
+.card__e{font-family:var(--f-lat);letter-spacing:.18em;font-size:14px;margin:0;color:#4a6d2a}
+.card dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.card dt{opacity:.55}.card dd{margin:0;font-weight:500}
+.card .stamp{position:absolute;right:14px;bottom:14px}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--lib);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.card{grid-template-columns:84px minmax(0,1fr)}.card img{width:84px;height:84px}.card__n{font-size:28px}}
+
+/* 二 */
+.look{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,3vw,40px);align-items:start}
+.look .scroll{max-width:none}
+.desc{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.desc li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.desc i{width:34px;height:34px;border-radius:50%;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2)}
+.desc b{display:block;font-size:17px;font-weight:400}
+.desc span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look .scroll{max-width:380px}}
+
+/* 三 */
+.keys{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.key{padding:clamp(24px,3vw,36px) 20px;background:var(--panel);border:1px solid var(--line);text-align:center}
+.key b{display:block;font-family:var(--f-disp);font-weight:400;font-size:clamp(30px,4vw,44px);line-height:1.2}
+.key span{font-family:var(--f-lat);letter-spacing:.16em;font-size:13px;color:var(--cel);text-transform:uppercase}
+@media (max-width:640px){.keys{grid-template-columns:1fr}}
+
+/* 四 */
+.lhs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lhs__l{font-family:var(--f-lat);font-size:84px;line-height:.8;margin:0 0 14px;color:var(--lib)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--seal)}
+.lhs .panel:nth-child(3) .lhs__l{color:var(--cel)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-size:19px}
+.lhs li:first-child{border-top:0}
+.lhs .say{margin:0;font-family:var(--f-disp);font-size:20px;line-height:1.6}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:64px}}
+
+/* 五 */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:30px;background:var(--panel)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-size:22px;margin:0}
+.hp__num{font-family:var(--f-disp);font-size:clamp(56px,8vw,96px);line-height:.9;margin:0;font-variant-numeric:tabular-nums}
+.hp__num small{font-size:.4em;color:var(--lib);margin-left:6px}
+.hp__bar{display:flex;height:12px;margin-top:16px;background:rgba(233,228,212,.06)}
+.hp__bar i{display:block;height:100%;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp__base{background:var(--cel)}.hp__bonus{background:var(--lib);transition-delay:.3s!important}
+.hp.on .hp__base{width:calc(300/350*100%)}.hp.on .hp__bonus{width:calc(50/350*100%)}
+.hp__leg{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:10px;color:var(--dim)}
+.hp__leg i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(140,193,82,.24);stroke:var(--lib);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--seal)}
+.radar text{fill:var(--fg);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--cel);font-size:10px;font-weight:500}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--lib)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:15px}
+.bar{height:8px;background:rgba(233,228,212,.06)}
+.bar i{display:block;height:100%;background:var(--cel);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--lib)}
+.bars li.low .bar i{background:var(--seal)}
+.bars b{text-align:right;font-family:var(--f-disp);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* 六 */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:flex;flex-direction:column;gap:6px;transition:border-color .3s}
+.tk:hover{border-color:var(--lib)}
+.tk__type{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.tk h3{margin:0;font-family:var(--f-disp);font-weight:400;font-size:28px;line-height:1.3}
+.tk h3 small{font-size:.6em;color:var(--dim);margin-left:6px}
+.tk__q{margin:0;font-family:var(--f-disp);font-size:18px;color:var(--cel);line-height:1.6}
+.tk p:last-child{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2)}
+.tk--def{border-top:3px solid var(--cel)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* 七, 八 abilities */
+.sk__top{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.ab__name{font-family:var(--f-disp);font-size:clamp(72px,10vw,128px);line-height:1;margin:0}
+.ab__ko{font-family:var(--f-lat);letter-spacing:.2em;font-size:clamp(16px,1.8vw,20px);margin:4px 0 0;color:var(--lib);text-transform:uppercase}
+.ab__type{display:inline-block;margin-top:12px;padding:3px 10px;border:1px solid var(--seal);color:var(--seal)}
+.sk__sum{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.8}
+.sk__sum b{color:var(--cel);font-weight:400;border-bottom:1px solid var(--cel)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.flow li{padding:14px 16px;background:var(--panel);border:1px solid var(--line);font-size:15px;color:var(--dim);line-height:1.55}
+.flow li b{display:block;font-family:var(--f-disp);font-weight:400;font-size:30px;line-height:1.1;color:var(--fg)}
+.flow li b em{font-style:normal;color:var(--lib)}
+.flow li.minus b em{color:var(--seal)}
+.flow li span{display:block;color:var(--fg);font-size:15px;margin:2px 0}
+.demo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px;align-items:start}
+.seg{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.seg button{flex:1 1 auto;padding:9px 14px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-size:15px;text-align:left;line-height:1.35}
+.seg button small{display:block;font-size:12px;color:var(--dim)}
+.seg button[aria-pressed="true"]{border-color:var(--lib);box-shadow:inset 0 -3px 0 var(--lib)}
+.turns{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;margin:0 0 12px;padding:0;list-style:none}
+.turns li{padding:8px 6px;text-align:center;border:1px solid var(--line);background:var(--bg);font-size:12px;line-height:1.35;color:var(--dim);transition:background .3s,border-color .3s}
+.turns li b{display:block;font-family:var(--f-mono);font-weight:500;font-size:11px;letter-spacing:.06em}
+.turns li.act{background:rgba(159,202,178,.12);border-color:var(--cel);color:var(--fg)}
+.turns li.bonus{border-color:var(--lib);border-style:dashed;color:var(--fg)}
+.turns li.now{box-shadow:inset 0 -3px 0 var(--seal);color:var(--fg)}
+.field{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.unit{position:relative;padding:12px 10px;text-align:center;border:1px solid var(--line);background:var(--bg);transition:border-color .3s}
+.unit i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 6px;border-radius:50%;font-style:normal;font-family:var(--f-disp);font-size:20px;background:var(--panel2);border:1px solid var(--line2)}
+.unit.me i{background:var(--lib);border-color:var(--lib);color:var(--ink)}
+.unit span{display:block;font-size:14px}
+.unit small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--dim)}
+.unit .hpv{display:block;font-family:var(--f-disp);font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.unit .dmg{position:absolute;left:50%;top:6px;transform:translateX(-50%);font-family:var(--f-disp);font-size:20px;color:var(--seal);opacity:0;pointer-events:none}
+.unit .dmg.show{animation:dmg 1.2s ease-out}
+.unit .dmg.heal{color:var(--lib)}
+@keyframes dmg{0%{opacity:0;transform:translate(-50%,10px)}20%{opacity:1}100%{opacity:0;transform:translate(-50%,-26px)}}
+.unit.shield{border-color:var(--cel);box-shadow:0 0 0 1px var(--cel),0 0 24px rgba(159,202,178,.25)}
+.badge{display:inline-block;margin-top:6px;padding:1px 6px;font-family:var(--f-mono);font-size:10px;border:1px solid var(--seal);color:var(--seal)}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:var(--bg);font-size:15px}
+.status.on{border-color:var(--lib)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-size:15px;line-height:1.2}
+.btn:hover:not(:disabled){border-color:var(--fg)}
+.btn--main{background:var(--lib);border-color:var(--lib);color:var(--ink)}
+.btn--seal{background:var(--seal);border-color:var(--seal);color:#fbe9df}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.how b{display:block;font-size:17px;font-weight:400;margin-bottom:2px}
+.how b i{font-style:normal;font-family:var(--f-disp);color:var(--seal);margin-right:8px}
+.how p{margin:0;color:var(--dim);font-size:14px}
+.orig{margin-top:12px;border:1px solid var(--line)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.pond{position:relative;aspect-ratio:16/9;max-width:100%;background:linear-gradient(180deg,#121a14,#0c110d);border:1px solid var(--line);overflow:hidden}
+.pond canvas{position:absolute;inset:0;width:100%;height:100%}
+.pond__lbl{position:absolute;left:10px;top:8px;font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;color:var(--dim);pointer-events:none}
+.meters{display:grid;gap:8px;margin-top:12px}
+.meter{display:grid;grid-template-columns:5em minmax(0,1fr) 3em;gap:10px;align-items:center;font-size:14px}
+.meter .bar{height:8px}
+.meter .bar i{background:var(--lib);transition:width .3s}
+.meter b{font-family:var(--f-mono);font-weight:500;font-size:12px;text-align:right}
+.toggle{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:10px 14px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;width:100%;text-align:left;font-size:16px}
+.toggle i{position:relative;flex:none;width:44px;height:24px;border-radius:12px;background:var(--line2);transition:background .3s}
+.toggle i::after{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:var(--fg);transition:transform .3s}
+.toggle[aria-pressed="true"]{border-color:var(--lib)}
+.toggle[aria-pressed="true"] i{background:var(--lib)}
+.toggle[aria-pressed="true"] i::after{transform:translateX(20px)}
+.toggle small{display:block;font-size:12px;color:var(--dim)}
+@media (max-width:900px){.sk__top,.demo{grid-template-columns:1fr}}
+@media (max-width:760px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}.turns li{font-size:11px;padding:6px 2px}.field{gap:6px}.unit i{width:34px;height:34px}}
+
+/* 九 */
+.traits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.traits .panel p:last-child{margin:0}
+.traits h3{margin:0 0 6px;font-family:var(--f-disp);font-weight:400;font-size:22px}
+@media (max-width:760px){.traits{grid-template-columns:1fr}}
+
+/* 十 */
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inv__n{font-family:var(--f-disp);font-size:26px;margin:0}
+.inv button{margin-top:10px}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+.squeak{display:inline-block}
+.squeak.go{animation:sq .35s}
+@keyframes sq{30%{transform:scale(1.25,.75)}60%{transform:scale(.9,1.1)}}
+
+/* 十一, 十二 */
+.single{max-width:560px;padding:clamp(22px,3vw,34px) clamp(20px,3vw,30px);background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--lib);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.single__big{margin:0;font-family:var(--f-lat);font-size:clamp(48px,7vw,84px);line-height:.9;color:var(--lib)}
+.single__txt{margin:0;color:var(--dim)}
+
+.outro{position:relative;padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-disp);font-size:clamp(48px,8vw,104px);line-height:1;margin:0;letter-spacing:.1em;color:var(--cel)}
+.outro__q{font-family:var(--f-disp);font-size:clamp(20px,2.6vw,30px);line-height:1.6;margin:18px auto 0;max-width:22em}
+.outro__o{margin:24px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--panel);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+
+/* FX */
+.ripples{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.rp{position:absolute;left:0;top:0;width:0;height:0}
+.rp i{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;border:1.5px solid var(--cel);opacity:0;animation:rp 1.4s ease-out forwards}
+.rp i:nth-child(2){animation-delay:.18s;border-color:var(--lib)}
+.rp i:nth-child(3){animation-delay:.36s}
+@keyframes rp{0%{transform:scale(.1);opacity:.8}100%{transform:scale(2.2);opacity:0}}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*80ms)}
+@keyframes rise{0%{opacity:0;transform:translateY(20px);filter:blur(3px)}100%{opacity:1;transform:none;filter:none}}
+.ch.ink{animation:inkin 1.2s ease-out both;animation-delay:calc(var(--k)*260ms + .1s)}
+@keyframes inkin{0%{opacity:0;filter:blur(12px);transform:scale(1.15)}100%{opacity:1;filter:none;transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num{overflow-wrap:normal;word-break:normal}
+body.calm .leaf,body.calm .rise,body.calm .ch.ink{animation:none}
+body.calm .leaf{display:none}
+@media (prefers-reduced-motion:reduce){.leaf{display:none}.rise,.ch.ink,.rp i,.unit .dmg.show,.squeak.go{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/libertas.png" alt="" width="24" height="24">란 팡<span class="mono dim" style="font-size:11px">&nbsp;/ Libertas</span></a>
+    <nav class="nav__idx" aria-label="장">
+      <a href="#s01" title="신원">一</a><a href="#s02" title="외관">二</a><a href="#s03" title="성격">三</a><a href="#s04" title="L/H/S">四</a><a href="#s05" title="능력치">五</a><a href="#s06" title="기술">六</a><a href="#s07" title="특수 능력">七</a><a href="#s08" title="발현 능력">八</a><a href="#s09" title="특징">九</a><a href="#s10" title="소지품">十</a><a href="#s11" title="선관">十一</a><a href="#s12" title="지향 커플링">十二</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div id="leaves" aria-hidden="true"></div>
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.009</span><span>Libertas // <b>Agent</b></span></p>
+      <p class="flowt">[ 물 흐르듯 ]</p>
+      <h1 class="name" aria-label="란 팡">란 팡</h1>
+      <p class="en">Lan Fang</p>
+      <blockquote class="quote">&ldquo;오야오야&hellip; 소란스럽구먼~&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>40</dd></div>
+        <div><dt>Height</dt><dd>150cm</dd></div>
+        <div><dt>Weight</dt><dd>평균</dd></div>
+      </dl>
+    </div>
+    <figure class="scroll">
+      <img src="assets/lanfang.jpg" alt="란 팡 그림. 초록 머리를 아래로 동그랗게 양갈래로 묶고, 눈을 반쯤 감은 채 웃으며 손끝에 찻잎 하나를 들고 있다. 귀에는 붉은 술 귀걸이를 달았다" width="1100" height="1000">
+      <figcaption><span>流水 // LAN FANG</span><span class="stamp" aria-hidden="true">空</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no">一</span><span class="head__en">Identity</span><h2>신원</h2></header>
+    <div class="ident">
+      <div class="card">
+        <img src="assets/face.jpg" alt="란 팡 얼굴" width="110" height="110">
+        <div>
+          <p class="card__n">란 팡</p>
+          <p class="card__e">LAN FANG</p>
+          <dl><dt>DIV</dt><dd>LIBERTAS</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>40</dd></dl>
+        </div>
+        <span class="stamp" aria-hidden="true">蘭</span>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>란 팡 / Lan Fang</td></tr>
+          <tr><th>1.2</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.3</th><td>Age</td><td>40세</td></tr>
+          <tr><th>1.4</th><td>Height / Weight</td><td>150cm / 평균</td></tr>
+          <tr><th>1.5</th><td>Faction</td><td>리베르타스 &middot; 대원</td></tr>
+          <tr><th>1.6</th><td>Attribute</td><td>타격</td></tr>
+          <tr><th>1.7</th><td>Special</td><td>공(空)</td></tr>
+          <tr><th>1.8</th><td>Talent</td><td>만상(萬象)</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no">二</span><span class="head__en">Appearance</span><h2>외관</h2></header>
+    <div class="look">
+      <figure class="scroll"><img src="assets/card.jpg" alt="란 팡 상반신 그림" width="560" height="700"><figcaption><span>APPEARANCE</span><span class="stamp" aria-hidden="true">形</span></figcaption></figure>
+      <ul class="desc">
+        <li><i style="--c:#7f9c5a"></i><div><span>2.1 HAIR</span><b>초록색 머리칼, 아래로 동그랗게 묶은 양갈래</b></div></li>
+        <li><i style="--c:#9a9e9a"></i><div><span>2.2 EYES</span><b>눈을 반쯤 감고 다닌다. 눈동자는 회색</b></div></li>
+        <li><i style="--c:#b0372b"></i><div><span>2.3 EARRING</span><b>귀에 늘어뜨린 붉은 술 귀걸이 (그림)</b></div></li>
+        <li><i style="--c:#f2d9c9"></i><div><span>2.4 FACE</span><b>나이에 비해 엄청난 동안</b></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no">三</span><span class="head__en">Personality</span><h2>성격</h2></header>
+    <div class="keys">
+      <div class="key"><b>조용한</b><span>quiet</span></div>
+      <div class="key"><b>차분한</b><span>calm</span></div>
+      <div class="key"><b>인내심 많은</b><span>patient</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no">四</span><span class="head__en">Like / Hate / Scare</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>독서</li><li>서예</li><li>명상</li><li>다도</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>정신 사나운 것</li><li>격한 운동</li><li>예의 없는 것</li></ul></div>
+      <div class="panel"><p class="lhs__l">S</p><p class="say">&ldquo;이 풍진 세상, 비워내면 두려울 것 없는 게다~&rdquo;</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no">五</span><span class="head__en">Stats</span><h2>능력치</h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 350: 기본 300, 추가 50">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">350<small>300 + 50</small></p></div>
+      <div class="hp__bar" aria-hidden="true"><i class="hp__base"></i><i class="hp__bonus"></i></div>
+      <p class="mono hp__leg"><span><i style="background:var(--cel)"></i>기본 300</span><span><i style="background:var(--lib)"></i>추가 50</span></p>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 육각 그래프: 추가 체력 50, 공격력 1, 방어력 90, 민첩성 38, 정확성 1, 정신력 90">
+        <g class="radar__grid"></g><polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0 0,0"></polygon><g class="radar__dots"></g><g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>추가 체력</span><span class="bar"><i data-w="50"></i></span><b>50</b></li>
+        <li class="low"><span>5.2</span><span>공격력</span><span class="bar"><i data-w="1"></i></span><b>1</b></li>
+        <li class="top"><span>5.3</span><span>방어력</span><span class="bar"><i data-w="90"></i></span><b>90</b></li>
+        <li><span>5.4</span><span>민첩성</span><span class="bar"><i data-w="38"></i></span><b>38</b></li>
+        <li class="low"><span>5.5</span><span>정확성</span><span class="bar"><i data-w="1"></i></span><b>1</b></li>
+        <li class="top"><span>5.6</span><span>정신력</span><span class="bar"><i data-w="90"></i></span><b>90</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 공격과 정확을 1로 비우고, 체력&middot;방어&middot;정신에 모두 실었다. 비워내야 담기는 법.</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no">六</span><span class="head__en">Techniques</span><h2>기술</h2></header>
+    <div class="tech">
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>수와 화<small>水 &middot; 火</small></h3><div class="chips"><em>타격</em></div><p class="tk__q">둘은 반대되는 성질이자 상호보완하는 성질.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>태와 극<small>太 &middot; 極</small></h3><div class="chips"><em>타격</em></div><p class="tk__q">둘 사이에 어떤 힘이 들어온 들 부드럽게 섞여 함께 흘러가니.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>음과 양<small>陰 &middot; 陽</small></h3><div class="chips"><em>타격</em><em>필중</em></div><p class="tk__q">유(柔)는 방어의 극치요, 물레방아의 이치라.</p></div>
+      <div class="panel tk tk--def"><p class="tk__type">DEF &middot; 방어 기술</p><h3>유자불절<small>柔者不折</small></h3><div class="chips"><em>도발</em></div><p class="tk__q">부드럽다는 건, 다이아몬드보다도 부수기 힘들지.</p><p>공격으로 받은 충격을 합기로 갈무리해 땅으로 퍼뜨려 줄인다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no">七</span><span class="head__en">Special &mdash; 특수 능력</span><h2>공(空)</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">空</p>
+        <p class="ab__ko">Emptiness</p>
+        <span class="mono ab__type">타격</span>
+      </div>
+      <p class="sk__sum">스스로를 비워 <b>적의 공격을 자기 쪽으로 끌어들이고</b>, 들어온 힘은 <b>반만 받아 흘려보낸다</b>. 그동안은 손발을 묶고 버티기만 한다. 버틴 뒤에는 그 흐름을 되돌려 기운을 되찾는다.</p>
+    </div>
+    <ol class="flow">
+      <li><b><em>90%</em></b><span>공격이 란 팡에게 몰린다</span>2턴 동안 적의 공격 대부분이 란 팡을 노린다. 광역 공격이면 아군 몫까지 대신 맞는다.</li>
+      <li><b><em>&minus;50%</em></b><span>받는 피해 절반</span>같은 2턴 동안 받는 피해가 반으로 줄어든다.</li>
+      <li class="minus"><b><em>&times;</em></b><span>공격·방어 불가</span>2턴 동안 공격 행동도, 방어 행동도 할 수 없다.</li>
+      <li><b><em>+30</em></b><span>되돌리기</span>이 효과로 피해를 받은 다음 턴에 [음과 양]으로 적을 맞히면 체력 30 회복. 1회만.</li>
+    </ol>
+    <div class="demo">
+      <div class="panel" id="spPanel">
+        <p class="idx">7.1 &mdash; 언제 시작될까? 속도를 골라 보자</p>
+        <div class="seg" role="group" aria-label="속도">
+          <button type="button" data-sp="fast" aria-pressed="true">적보다 빠를 때<small>이번 턴부터 2턴</small></button>
+          <button type="button" data-sp="slow" aria-pressed="false">적보다 느릴 때<small>다음 턴부터 2턴</small></button>
+        </div>
+        <ol class="turns" id="turns"></ol>
+        <div class="field" id="field"></div>
+        <p class="status" id="spMsg" aria-live="polite">&lsquo;공 시전&rsquo;을 누르면 1턴이 시작된다.</p>
+        <div class="ctrl">
+          <button class="btn btn--main" id="spCast" type="button">공 시전</button>
+          <button class="btn btn--seal" id="spHit" type="button" disabled>적의 공격</button>
+          <button class="btn btn--seal" id="spAoe" type="button" disabled>적의 광역 공격</button>
+          <button class="btn" id="spNext" type="button" disabled>다음 턴</button>
+          <button class="btn" id="spYY" type="button" disabled>음과 양</button>
+          <button class="btn" id="spReset" type="button">처음으로</button>
+        </div>
+        <p class="note">적의 공격 피해는 40으로 가정한 예시. 아군 A와 B의 체력도 예시다.</p>
+      </div>
+      <div class="how">
+        <div><b><i>壹</i>언제부터?</b><p>적보다 빠르면 시전한 그 턴부터, 느리면 다음 턴부터 2턴 동안.</p></div>
+        <div><b><i>貳</i>누가 맞나?</b><p>단일 공격은 90% 확률로 란 팡에게 온다. 광역 공격은 아군 몫까지 전부 란 팡이 받는다.</p></div>
+        <div><b><i>參</i>얼마나 아픈가?</b><p>그 2턴 동안 받는 피해는 절반.</p></div>
+        <div><b><i>肆</i>그 뒤에는?</b><p>피해를 받은 다음 턴에 [음과 양](필중)으로 적을 치면, 한 번에 한해 체력 30을 되찾는다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>적보다 턴이 빠르다면 이번 턴, 그렇지 않다면 다음 턴부터 2턴동안 피격 확률이 90%로 증가한다. 광역 공격일 경우 아군이 받은 피해까지 대신 입는다. 피격확률이 증가된 턴부터 시 2턴간 받는 피해가 50% 감소한다. 2턴간 공격 행동과 방어 행동이 불가하다. 이 스킬의 효과로 적에게 피해를 입은 다음 턴에 [음과 양]을 사용해 적에게 피해를 입힌다면 1회에 한하여 체력을 30 회복한다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no">八</span><span class="head__en">Talent &mdash; 발현 능력</span><h2>만상(萬象)</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">萬象</p>
+        <p class="ab__ko">Myriad Forms</p>
+        <span class="mono ab__type">발현 능력</span>
+      </div>
+      <p class="sk__sum">격해지는 감정을 <b>스스로 가라앉힐 수 있다</b>. 그래서 언제나 차분하고 침착하다. 덕분에 일의 능률, 삶을 대하는 태도, 행동의 정확성까지 바르게 잡힌다.</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 마음을 물결로 보자</p>
+        <button class="toggle" id="calmTg" type="button" aria-pressed="true"><i aria-hidden="true"></i><span>만상 켜짐<small>끄면 보통 사람의 마음처럼 출렁인다</small></span></button>
+        <div class="pond"><canvas id="cv" role="img" aria-label="마음의 물결. 소란이 생기면 물결이 일고, 만상이 켜져 있으면 금세 잔잔해진다"></canvas><span class="pond__lbl" id="pondLbl">MIND // 잔잔함</span></div>
+        <div class="seg" role="group" aria-label="소란 일으키기" style="margin-top:12px;margin-bottom:0">
+          <button type="button" data-ev="noise">정신 사나운 소란<small>주변이 시끄럽다</small></button>
+          <button type="button" data-ev="rude">예의 없는 사람<small>무례한 말을 듣는다</small></button>
+          <button type="button" data-ev="battle">급박한 전투<small>공격이 쏟아진다</small></button>
+        </div>
+        <div class="meters" id="meters">
+          <div class="meter"><span>일의 능률</span><span class="bar"><i></i></span><b></b></div>
+          <div class="meter"><span>삶의 태도</span><span class="bar"><i></i></span><b></b></div>
+          <div class="meter"><span>행동 정확성</span><span class="bar"><i></i></span><b></b></div>
+        </div>
+        <p class="status" id="tMsg" aria-live="polite">위의 소란을 눌러 마음에 돌을 던져 보자.</p>
+      </div>
+      <div class="how">
+        <div><b><i>壹</i>감정을 조절한다</b><p>화나 조급함처럼 격해지는 감정을 가라앉힌다.</p></div>
+        <div><b><i>貳</i>늘 차분하다</b><p>어떤 소란 속에서도 침착한 상태를 유지한다.</p></div>
+        <div><b><i>參</i>그래서 바르게</b><p>능률, 삶을 대하는 태도, 행동의 정확성이 옳게 변한다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no">九</span><span class="head__en">Traits</span><h2>특징</h2></header>
+    <div class="traits">
+      <div class="panel"><p class="idx">9.1</p><h3>엄청난 동안</h3><p>나이에 비해 얼굴이 엄청 동안이다.</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>비밀이 많다</h3><p>자기에 대한 건 별로 알려주지 않는다.</p></div>
+      <div class="panel"><p class="idx">9.3</p><h3>더 나이 든 말투</h3><p>나이에 비해 훨씬 나이 든 말투를 쓴다. &ldquo;오야오야&hellip;&rdquo;</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no">十</span><span class="head__en">Inventory</span><h2>소지품</h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">부채</p><p class="mono dim" style="margin:0">folding fan</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">다도 세트</p><p class="mono dim" style="margin:0">tea set</p></div>
+      <div class="panel"><p class="idx">10.3</p><p class="inv__n"><span class="squeak" id="doll">삑삑 인형</span></p><p class="mono dim" style="margin:0">squeaky doll</p><button class="btn" id="squeak" type="button">눌러 보기</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no">十一</span><span class="head__en">Links</span><h2>선관</h2></header>
+    <div class="single"><p class="single__big">&times;</p><p class="single__txt">선관 없음</p></div>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <div class="in">
+    <header class="head"><span class="head__no">十二</span><span class="head__en">Coupling</span><h2>지향 커플링</h2></header>
+    <div class="single"><p class="single__big">SL &gt; ALL</p><p class="single__txt">지향 커플링</p></div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">空手來 空手去</p>
+    <p class="outro__q">[ 공수래공수거. 흐름 따라 정착한 것이지. ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 잘부탁합니당</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>LAN FANG &middot; Libertas Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON"}
+applyCalm();
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm()};
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+const FIT=".name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num";
+function fit(){$$(FIT).forEach(e=>{e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<80){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* 표지: 이름이 먹처럼 번지고, 찻잎이 흘러내린다 */
+if(!calm){let k=0;const n=$(".name");[...n.childNodes].forEach(c=>{if(c.nodeType===3){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement("span");s.className="ch ink";s.style.setProperty("--k",k++);s.textContent=ch===" "?" ":ch;s.setAttribute("aria-hidden","true");f.appendChild(s)});c.replaceWith(f)}})}
+$("#leaves").innerHTML=Array.from({length:9},(_,i)=>`<span class="leaf" style="--x:${(i*37+8)%96}%;--t:${11+(i%4)*3}s;--d:${-i*1.7}s"></span>`).join("");
+
+const RV=".panel,.flow li,.how>div,.key,.desc li,.card,.head,.single";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));el.dataset.rv="1";rio.observe(el)});
+
+/* 누르면 물 위에 파문 */
+const rips=document.createElement("div");rips.className="ripples";rips.setAttribute("aria-hidden","true");document.body.appendChild(rips);
+function ripple(x,y){if(calm||RM)return;const r=document.createElement("span");r.className="rp";r.style.transform=`translate(${x}px,${y}px)`;r.innerHTML="<i></i><i></i><i></i>";rips.appendChild(r);setTimeout(()=>r.remove(),1900)}
+addEventListener("pointerdown",e=>{if(e.target.closest("input,canvas"))return;ripple(e.clientX,e.clientY)});
+
+/* ---------- 능력치 ---------- */
+const S=[["추가 체력",50],["공격력",1],["방어력",90],["민첩성",38],["정확성",1],["정신력",90]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx,ly]=pt(i,122),an=Math.abs(lx)<5?"middle":lx>0?"start":"end";
+  const t=el("text",{x:lx,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,Math.max(v,2)).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,Math.max(v,2));rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=Math.max(+b.dataset.w,1.5)+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 공(空) ---------- */
+const DMG=40;
+let speed="fast",turn=0,hp={},hurtTurn=0,healed=false,lastMsg="";
+const U=[["芳","란 팡","본인",350,1],["A","아군 A","예시",120],["B","아군 B","예시",120]];
+function act(){return speed==="fast"?[1,2]:[2,3]}
+const isAct=t=>act().includes(t);
+function reset(){turn=0;hurtTurn=0;healed=false;U.forEach(([,n,,h])=>hp[n]=h);draw();sm(speed==="fast"?"적보다 빠르다. 시전한 그 턴(1턴)부터 2턴 동안 효과가 이어진다.":"적보다 느리다. 시전한 다음 턴(2턴)부터 2턴 동안 효과가 이어진다.")}
+function draw(){
+  const a=act();
+  $("#turns").innerHTML=[1,2,3,4,5].map(t=>{const c=[isAct(t)?"act":"",t===a[1]+1?"bonus":"",t===turn?"now":""].join(" ");return `<li class="${c}"><b>${t}턴</b>${isAct(t)?"공(空)":t===a[1]+1?"되돌리기":t===1&&speed==="slow"?"시전":"&ndash;"}</li>`}).join("");
+  $("#field").innerHTML=U.map(([ic,n,s,max,me])=>`<div class="unit${me?" me":""}${me&&isAct(turn)?" shield":""}" data-n="${n}"><span class="dmg"></span><i>${ic}</i><span>${n}</span><small>${s}</small><span class="hpv">${hp[n]}</span>${me&&isAct(turn)?'<span class="badge">공격·방어 불가</span>':""}</div>`).join("");
+  $("#spCast").disabled=turn>0;$("#spHit").disabled=turn===0||turn>5;$("#spAoe").disabled=turn===0||turn>5;$("#spNext").disabled=turn===0||turn>=5;
+  $("#spYY").disabled=!(hurtTurn&&turn===act()[1]+1&&!healed);
+  $$("[data-sp]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.sp===speed))}
+function pop(n,txt,heal){const u=$(`.unit[data-n="${n}"]`);if(!u)return;const d=u.querySelector(".dmg");d.textContent=txt;d.classList.toggle("heal",!!heal);if(!calm){d.classList.remove("show");void d.offsetWidth;d.classList.add("show")};if(!heal)fx(u,"shake")}
+function sm(t,on){const p=$("#spMsg");p.innerHTML=t;p.classList.toggle("on",!!on)}
+$$("[data-sp]").forEach(b=>b.onclick=()=>{speed=b.dataset.sp;reset()});
+$("#spCast").onclick=()=>{turn=1;draw();sm(isAct(1)?"공(空) 시전. 적보다 빨라서 <b>지금 이 턴부터</b> 란 팡이 공격을 끌어들인다.":"공(空) 시전. 적보다 느려서 이번 턴은 그대로, <b>다음 턴부터</b> 효과가 시작된다.",1)};
+$("#spNext").onclick=()=>{turn++;draw();const a=act();
+  if(isAct(turn))sm(`${turn}턴. 공(空)이 이어지는 중. 란 팡은 공격도 방어도 하지 않고 버틴다.`,1);
+  else if(turn===a[1]+1)sm(hurtTurn?"공(空)이 끝났다. 지난 턴에 피해를 받았으니, 지금 <b>음과 양</b>으로 적을 치면 체력 30을 되찾는다.":"공(空)이 끝났다. 효과 중에 피해를 받지 않아 되돌리기는 없다.",1);
+  else sm(`${turn}턴. 공(空)의 효과는 끝났다.`)};
+$("#spHit").onclick=()=>{const a=isAct(turn);
+  if(a){const toMe=Math.random()<.9;if(toMe){hp["란 팡"]-=DMG/2;hurtTurn=turn;draw();pop("란 팡","-"+DMG/2);sm(`적의 공격이 란 팡에게 끌려왔다(90%). 피해 ${DMG} → 절반인 <b>${DMG/2}</b>.`,1)}
+    else{const t=Math.random()<.5?"아군 A":"아군 B";hp[t]-=DMG;draw();pop(t,"-"+DMG);sm(`10%의 확률로 공격이 원래 대상인 ${t}에게 갔다. 피해 ${DMG}.`)}}
+  else{const t=Math.random()<.5?"아군 A":"아군 B";hp[t]-=DMG;draw();pop(t,"-"+DMG);sm(`공(空)이 걸려 있지 않은 턴이라 공격이 그대로 ${t}에게 갔다. 피해 ${DMG}.`)}};
+$("#spAoe").onclick=()=>{const a=isAct(turn);
+  if(a){const take=DMG*3/2;hp["란 팡"]-=take;hurtTurn=turn;draw();pop("란 팡","-"+take);sm(`광역 공격. 아군 A와 B의 몫까지 란 팡이 모두 대신 받는다. ${DMG}&times;3 = ${DMG*3}, 절반인 <b>${take}</b>.`,1)}
+  else{U.forEach(([,n])=>hp[n]-=DMG);draw();U.forEach(([,n])=>pop(n,"-"+DMG));sm(`공(空)이 없는 턴의 광역 공격. 모두가 ${DMG}씩 받았다.`)}};
+$("#spYY").onclick=()=>{healed=true;hp["란 팡"]=Math.min(350,hp["란 팡"]+30);draw();pop("란 팡","+30",1);sm("음과 양(필중)으로 적을 맞혔다. 받아 낸 흐름을 되돌려 <b>체력 30 회복</b>. 이 회복은 한 번뿐이다.",1)};
+$("#spReset").onclick=reset;
+reset();
+
+/* ---------- 만상 ---------- */
+const pond=$("#pond")||$(".pond"),cv=$("#cv"),cx=cv.getContext("2d");
+let W=0,H=0,amp=.08,on=true,run=false,vis=false,last=performance.now();
+function size(){const r=pond.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);W=r.width;H=r.height;cv.width=Math.round(W*d);cv.height=Math.round(H*d);cx.setTransform(d,0,0,d,0,0);draw2(performance.now())}
+new ResizeObserver(size).observe(pond);
+function draw2(now){
+  const t=now/1000;cx.clearRect(0,0,W,H);
+  for(let L=0;L<4;L++){const base=H*(.35+L*.15),a=amp*H*(.5-L*.08);
+    cx.beginPath();for(let x=0;x<=W;x+=6){const y=base+Math.sin(x/W*Math.PI*(3+L)+t*(1.2+L*.3+amp*4))*a+Math.sin(x/W*Math.PI*11-t*2.3)*a*.35*Math.min(1,amp*3);x?cx.lineTo(x,y):cx.moveTo(x,y)}
+    cx.strokeStyle=L%2?"rgba(140,193,82,.6)":"rgba(159,202,178,.75)";cx.lineWidth=1.6;cx.stroke()}
+  const lv=Math.min(1,amp/.9);$("#pondLbl").textContent=lv<.2?"MIND // 잔잔함":lv<.55?"MIND // 출렁임":"MIND // 요동침";
+  const good=Math.round(100-lv*70);$$("#meters .meter").forEach((m,i)=>{const v=Math.max(10,good-i*3);m.querySelector("i").style.width=v+"%";m.querySelector("b").textContent=v})}
+function loop(now){const dt=Math.min(.05,(now-last)/1000);last=now;const floor=on?.06:.12;amp+=(floor-amp)*(1-Math.exp(-dt*(on?3.2:.35)));draw2(now);if(vis&&!calm)requestAnimationFrame(loop);else run=false}
+function start(){if(calm){draw2(performance.now());return}if(!run){run=true;last=performance.now();requestAnimationFrame(loop)}}
+new IntersectionObserver(es=>es.forEach(e=>{vis=e.isIntersecting;if(vis)start()})).observe(pond);
+function tm(t,o){const p=$("#tMsg");p.textContent=t;p.classList.toggle("on",!!o)}
+const EV={noise:[.55,"정신 사나운 소란"],rude:[.75,"예의 없는 말"],battle:[1,"급박한 전투"]};
+$$("[data-ev]").forEach(b=>b.onclick=()=>{const [k,n]=EV[b.dataset.ev];amp=Math.max(amp,k);
+  if(calm){amp=on?.1:k;draw2(performance.now())}else start();
+  tm(on?`${n}에 마음이 잠깐 출렁였지만, 만상으로 금세 가라앉힌다. 능률도 태도도 정확성도 곧 제자리.`:`${n}에 마음이 크게 요동친다. 만상이 꺼져 있으니 한참이 지나야 가라앉고, 그동안 능률과 정확성이 떨어진다.`,on)});
+$("#calmTg").onclick=()=>{on=!on;$("#calmTg").setAttribute("aria-pressed",on);$("#calmTg span").firstChild.textContent=on?"만상 켜짐":"만상 꺼짐";if(calm)draw2(performance.now());else start();
+  tm(on?"만상을 켰다. 어떤 소란이 와도 물결이 금세 잔잔해진다.":"만상을 껐다. 이제 보통 사람처럼 소란에 오래 흔들린다.")};
+
+/* 삑삑 인형 */
+$("#squeak").onclick=()=>{fx($("#doll"),"go");const r=$("#doll").getBoundingClientRect();ripple(r.left+r.width/2,r.top+r.height/2);$("#squeak").textContent=$("#squeak").textContent==="삑!"?"삑삑!":"삑!"};
+})();
+</script>
+
+</body>
+</html>
