@@ -460,7 +460,7 @@ $("#q").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase();rende
 function card(c){const f=F[c.faction]||{name:c.faction,en:c.faction,color:"#fff"};
   const spec=[["Rank",c.rank],["Sex",c.sex],["Age",c.age!=null?c.age+"세":""],["Height",c.height],["Attr",c.attribute],["Talent",c.talent]].filter(s=>s[1]);
   return `<a class="card br" href="${esc(c.page)}#${fx?"full":"calm"}" style="--fc:${esc(f.color)}">
-    <span class="mono card__top"><span>FILE <b>No.${esc(c.no)}</b></span><span>${esc(f.en)}</span></span>
+    <span class="mono card__top"><span>FILE <b>No.???</b></span><span>${esc(f.en)}</span></span>
     <div class="card__img"><img class="card__pic" src="${esc(c.image)}" alt="${esc(c.nameKo)} 그림" loading="lazy" style="--pos:${esc(c.imagePosition||"50% 0%")}">${c.credit?`<span class="card__cr">${esc(c.credit)}</span>`:""}${f.emblem?`<img class="card__em" src="${esc(f.emblem)}" alt="">`:`<span class="card__em card__hq" aria-hidden="true">GHD</span>`}</div>
     <div class="card__body">
       <p class="mono card__fac">${esc(f.en)} &middot; ${esc(f.name)}</p>
