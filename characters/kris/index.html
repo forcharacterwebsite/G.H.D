@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>단단한 맹세, 크리스 엘</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="비르투스 대원 크리스 엘 프로필">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Gothic+A1:wght@500;800;900&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: 비르투스. 기사의 맹세문처럼 조항(§)으로 나눈 페이지. 강철빛 밤색 바탕에 비르투스 적색, 칼날의 은색, 머리칼의 남청색, 회중시계의 금색 */
+:root{
+  --bg:#0c0e13;--panel:#14171f;--panel2:#1b2029;--line:rgba(230,233,240,.12);--line2:rgba(230,233,240,.28);
+  --fg:#eceef3;--dim:#959baa;--vir:#de433c;--vir2:#b3261f;--steel:#bcc4d1;--blue:#6b8be0;--gold:#cfae5f;
+  --f-lat:"Cinzel","Trajan Pro","Times New Roman",serif;
+  --f-disp:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutL:max(20px,env(safe-area-inset-left,0px));--gutR:max(20px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.8;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;
+  background-image:linear-gradient(115deg,transparent 0 46%,rgba(188,196,209,.035) 46% 47%,transparent 47%),radial-gradient(ellipse at 80% -10%,rgba(179,38,31,.16),transparent 50%)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.dim{color:var(--dim)}
+.in{max-width:1200px;margin:0 auto;padding-left:var(--gutL);padding-right:var(--gutR)}
+h1,h2,h3{text-wrap:balance}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(12,14,19,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;gap:14px;height:60px}
+.nav__name{flex:none;display:flex;align-items:center;gap:10px;font-family:var(--f-lat);font-weight:800;font-size:19px;letter-spacing:.06em;text-decoration:none;white-space:nowrap}
+.nav__name img{width:24px;height:24px}
+.nav__idx{flex:1 1 0;display:flex;justify-content:flex-end;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav__idx::-webkit-scrollbar{display:none}
+.nav__idx a{font-family:var(--f-lat);font-weight:600;font-size:14px;text-decoration:none;padding:4px 7px;color:var(--dim);border-bottom:2px solid transparent;white-space:nowrap}
+.nav__idx a:hover,.nav__idx a.on{color:var(--fg);border-color:var(--vir)}
+.nav__fx,.nav__home{flex:none;text-decoration:none;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;border:1px solid var(--line2);padding:6px 9px;background:none;cursor:pointer;line-height:1.4}
+.nav__home:hover,.nav__fx:hover{background:var(--fg);color:var(--bg)}
+.np{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none;overflow:hidden}
+.np i{display:block;height:100%;width:0;max-width:100%;background:linear-gradient(90deg,var(--steel),#fff 80%,var(--vir))}
+@media (max-width:640px){.nav__name span{display:none}}
+@media (max-width:480px){.nav__name{font-size:16px}.nav .in{gap:8px}.nav__fx{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.blade{position:absolute;left:-10%;top:58%;width:130%;height:2px;background:linear-gradient(90deg,transparent,rgba(188,196,209,.5) 30%,#fff 50%,rgba(188,196,209,.5) 70%,transparent);transform:rotate(-14deg);transform-origin:50% 50%;pointer-events:none;box-shadow:0 0 18px rgba(255,255,255,.25)}
+.blade.go{animation:blade 1.1s cubic-bezier(.2,.8,.2,1) both .2s}
+@keyframes blade{0%{clip-path:inset(0 100% 0 0)}100%{clip-path:inset(0 0 0 0)}}
+.hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center;padding-block:clamp(40px,6vw,84px)}
+.tag{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--dim);margin:0}
+.tag b{color:var(--vir);font-weight:500}
+.motto{display:inline-flex;align-items:center;gap:10px;margin:22px 0 0;font-family:var(--f-disp);font-weight:800;font-size:17px;color:var(--gold)}
+.motto::before,.motto::after{content:"";width:26px;height:1px;background:var(--gold)}
+.name{font-family:var(--f-lat);font-weight:800;font-size:clamp(76px,12vw,156px);line-height:.9;margin:12px 0 0;white-space:nowrap;letter-spacing:.02em}
+.name .ch{display:inline-block}
+.name .l{color:var(--vir)}
+.ko{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin:14px 0 0}
+.ko b{font-family:var(--f-disp);font-weight:900;font-size:clamp(28px,3.4vw,40px)}
+.ko span{font-family:var(--f-lat);font-weight:600;font-size:clamp(14px,1.6vw,18px);letter-spacing:.18em;color:var(--steel)}
+.quote{font-family:var(--f-disp);font-weight:800;font-size:clamp(21px,2.6vw,30px);line-height:1.5;margin:24px 0 0;max-width:22em}
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:28px 0 0;max-width:600px;border:1px solid var(--line);background:var(--panel)}
+.dims div{padding:10px 12px;border-right:1px solid var(--line);min-width:0}
+.dims div:last-child{border-right:0}
+.dims dt{color:var(--dim);font-size:11px}
+.dims dd{margin:2px 0 0;font-family:var(--f-disp);font-weight:900;font-size:clamp(22px,2.6vw,28px);line-height:1.2}
+@media (max-width:520px){.dims{grid-template-columns:repeat(2,minmax(0,1fr))}.dims div:nth-child(2){border-right:0}.dims div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.crest{position:relative;justify-self:center;width:100%;max-width:400px;margin:0;padding:12px 12px 10px;background:linear-gradient(180deg,#f4f2ee,#e6e3dd);color:#171a21;clip-path:polygon(0 0,100% 0,100% 88%,50% 100%,0 88%);filter:drop-shadow(0 24px 40px rgba(0,0,0,.5))}
+.crest::before{content:"";position:absolute;inset:5px;border:1px solid rgba(23,26,33,.25);clip-path:polygon(0 0,100% 0,100% 88%,50% 100%,0 88%);pointer-events:none}
+.crest img{width:100%}
+.crest figcaption{text-align:center;font-family:var(--f-lat);font-weight:800;font-size:13px;letter-spacing:.24em;padding:6px 0 7%}
+.crest__wrap{position:relative;justify-self:center;width:100%;max-width:400px}
+.crest__wrap::after{content:"";position:absolute;inset:-14px -14px auto auto;width:60px;height:60px;border-top:3px solid var(--vir);border-right:3px solid var(--vir);pointer-events:none}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr}.crest,.crest__wrap{max-width:320px}}
+
+/* sections */
+.sec{padding-block:clamp(60px,8vw,100px);border-bottom:1px solid var(--line)}
+.head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 18px;align-items:end;margin-bottom:clamp(26px,4vw,40px)}
+.head__no{grid-row:span 2;position:relative;display:grid;place-items:center;width:clamp(58px,7vw,78px);height:clamp(66px,8vw,88px);background:var(--panel2);border:1px solid var(--line2);clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%);font-family:var(--f-lat);font-weight:800;font-size:clamp(20px,2.6vw,28px);line-height:1;padding-bottom:10px;color:var(--steel);transition:background .4s,color .4s}
+.head__no small{display:block;font-size:.6em;text-align:center;opacity:.7}
+.sec.live .head__no{background:var(--vir2);color:#fff}
+.head__en{font-family:var(--f-lat);font-weight:600;font-size:15px;letter-spacing:.2em;color:var(--steel);text-transform:uppercase}
+.head h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(32px,4.8vw,56px);line-height:1.1;margin:0;min-width:0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:clamp(18px,2.4vw,26px);min-width:0}
+.idx{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--vir);text-transform:uppercase;margin:0 0 8px}
+.note{margin:12px 0 0;color:var(--dim);font-size:14px}
+
+/* §1 */
+.ident{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,40px)}
+.card{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;background:#f2f0ec;color:#171a21;padding:18px;align-self:start;border-top:6px solid var(--vir2)}
+.card img{width:110px;height:110px;object-fit:cover}
+.card__n{font-family:var(--f-lat);font-weight:800;font-size:30px;line-height:1;margin:0}
+.card__e{font-family:var(--f-disp);font-weight:800;font-size:16px;margin:4px 0 0;color:#3c4f8c}
+.card dl{margin:10px 0 0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em}
+.card dt{opacity:.55}.card dd{margin:0;font-weight:500}
+.watch{position:absolute;right:14px;bottom:14px;width:52px;height:52px}
+.watch circle{fill:#f8f6f1;stroke:#9a7b31;stroke-width:3}
+.watch line{stroke:#171a21;stroke-linecap:round}
+.watch .sec-hand{stroke:var(--vir2);transform-origin:26px 28px;animation:tick 60s steps(60) infinite}
+@keyframes tick{to{transform:rotate(360deg)}}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.table th{font-family:var(--f-mono);font-size:12px;color:var(--vir);font-weight:500;width:3.4em}
+.table td:nth-child(2){font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);width:9em}
+.table td:last-child{font-weight:500}
+@media (max-width:860px){.ident{grid-template-columns:1fr}}
+@media (max-width:520px){.table td:nth-child(2){width:auto}.table th{width:2.8em}.card{grid-template-columns:84px minmax(0,1fr)}.card img{width:84px;height:84px}.card__n{font-size:24px}}
+
+/* §2 */
+.look{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(20px,3vw,40px);align-items:start}
+.pic{margin:0;background:#f2f0ec;padding:8px}
+.pic figcaption{display:flex;justify-content:space-between;padding-top:6px;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;color:#171a21}
+.look__pics{display:grid;gap:12px}
+.desc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.desc li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:center;padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.desc i{width:32px;height:32px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);clip-path:polygon(0 0,100% 0,100% 72%,50% 100%,0 72%)}
+.desc b{display:block;font-size:16px;font-weight:500;line-height:1.45}
+.desc span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--dim)}
+.desc li.wide{grid-column:1/-1}
+@media (max-width:860px){.look{grid-template-columns:1fr}.look__pics{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}}
+@media (max-width:520px){.desc{grid-template-columns:1fr}}
+
+/* §3 */
+.keys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.key{padding:clamp(22px,3vw,32px) 16px;background:var(--panel);border:1px solid var(--line);text-align:center}
+.key b{display:block;font-family:var(--f-disp);font-weight:900;font-size:clamp(24px,3vw,34px);line-height:1.25}
+.key span{font-family:var(--f-lat);font-weight:600;letter-spacing:.14em;font-size:12px;color:var(--steel);text-transform:uppercase}
+.key:nth-child(n+3){border-bottom:3px solid var(--vir2)}
+@media (max-width:760px){.keys{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* §4 */
+.lhs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lhs__l{font-family:var(--f-lat);font-weight:800;font-size:90px;line-height:.85;margin:0 0 14px;color:var(--steel)}
+.lhs .panel:nth-child(2) .lhs__l{color:var(--vir)}
+.lhs .panel:nth-child(3) .lhs__l{color:transparent;-webkit-text-stroke:1.5px var(--dim)}
+.lhs ul{list-style:none;margin:0;padding:0}
+.lhs li{padding:10px 0;border-top:1px solid var(--line);font-weight:700;font-size:19px}
+.lhs li:first-child{border-top:0}
+@media (max-width:860px){.lhs{grid-template-columns:1fr}.lhs__l{font-size:68px}}
+
+/* §5 */
+.hp{border:1px solid var(--line);padding:22px;margin-bottom:30px;background:var(--panel)}
+.hp__top{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}
+.hp__name{font-weight:700;font-size:22px;margin:0}
+.hp__num{font-family:var(--f-lat);font-weight:800;font-size:clamp(56px,8vw,96px);line-height:.9;margin:0;font-variant-numeric:tabular-nums}
+.hp__bar{height:12px;margin-top:16px;background:rgba(230,233,240,.06)}
+.hp__bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--steel),var(--vir));transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.hp.on .hp__bar i{width:100%}
+.stats{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.radar{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible}
+.radar__grid polygon{fill:none;stroke:var(--line)}
+.radar__grid line{stroke:var(--line)}
+.radar__shape{fill:rgba(222,67,60,.24);stroke:var(--vir);stroke-width:2;transition:all 1.2s cubic-bezier(.2,.8,.2,1)}
+.radar__dot{fill:var(--steel)}
+.radar text{fill:var(--fg);font-family:var(--f-mono);font-size:9px;letter-spacing:.06em}
+.radar text.v{fill:var(--gold);font-size:10px;font-weight:500}
+.bars{list-style:none;margin:0;padding:0}
+.bars li{display:grid;grid-template-columns:2.6em 5.5em minmax(0,1fr) 2.6em;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12px}
+.bars li span:first-child{color:var(--vir)}
+.bars li span:nth-child(2){font-family:var(--f-body);font-size:15px;font-weight:700}
+.bar{height:8px;background:rgba(230,233,240,.06)}
+.bar i{display:block;height:100%;background:var(--steel);width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars li.top .bar i{background:var(--vir)}
+.bars li.low .bar i{background:var(--dim)}
+.bars b{text-align:right;font-family:var(--f-lat);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.stats{grid-template-columns:1fr}}
+
+/* §6 */
+.tech{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tk{display:flex;flex-direction:column;gap:6px;transition:border-color .3s,box-shadow .3s}
+.tk:hover{border-color:var(--steel);box-shadow:inset 3px 0 0 var(--vir)}
+.tk__type{margin:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--dim)}
+.tk h3{margin:0;font-family:var(--f-disp);font-weight:900;font-size:26px;line-height:1.25}
+.tk p:last-child{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips em{font-style:normal;font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--line2)}
+.tk--def{border-top:3px solid var(--blue)}
+@media (max-width:760px){.tech{grid-template-columns:1fr}}
+
+/* §7 §8 */
+.sk__top{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(16px,3vw,40px);align-items:end;margin-bottom:22px}
+.ab__name{font-family:var(--f-disp);font-weight:900;font-size:clamp(48px,7vw,92px);line-height:1;margin:0}
+.ab__en{font-family:var(--f-lat);font-weight:600;letter-spacing:.18em;font-size:clamp(15px,1.7vw,19px);margin:6px 0 0;color:var(--steel);text-transform:uppercase}
+.ab__type{display:inline-block;margin-top:12px;padding:3px 10px;border:1px solid var(--vir);color:var(--vir)}
+.sk__sum{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.75}
+.sk__sum b{color:var(--gold)}
+.flow{list-style:none;margin:0 0 14px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.flow li{padding:14px 16px;background:var(--panel);border:1px solid var(--line);font-size:15px;color:var(--dim);line-height:1.55}
+.flow li b{display:block;font-family:var(--f-lat);font-weight:800;font-size:30px;line-height:1.1;color:var(--gold)}
+.flow li.minus b{color:var(--vir)}
+.flow li span{display:block;color:var(--fg);font-weight:700;margin:2px 0}
+.demo{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px;align-items:start}
+.me{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;padding:14px;background:var(--bg);border:1px solid var(--line);margin-bottom:10px;transition:opacity .4s,border-color .4s}
+.me img{grid-row:span 2;width:54px;height:54px;object-fit:cover;border:1px solid var(--line2)}
+.me__top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.me__top b{font-family:var(--f-lat);font-weight:800;font-size:26px;font-variant-numeric:tabular-nums}
+.me__top span{font-size:14px;font-weight:700}
+.meter{position:relative;height:12px;background:rgba(230,233,240,.08)}
+.meter i{display:block;height:100%;background:var(--steel);transition:width .5s,background .5s}
+.meter::after{content:"";position:absolute;left:25%;top:-4px;bottom:-4px;width:2px;background:var(--gold)}
+.me.low .meter i{background:var(--vir)}
+.me.low{border-color:var(--vir)}
+.me.down{opacity:.4}
+.me.down .me__top span::after{content:" · 전투불능";color:var(--vir)}
+.legend{grid-column:2;font-family:var(--f-mono);font-size:10px;color:var(--gold)}
+.foes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.foe{position:relative;text-align:center;padding:10px 6px;border:1px solid var(--line);background:var(--bg);transition:border-color .3s}
+.foe i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 4px;border:1px solid var(--line2);font-style:normal;font-family:var(--f-disp);font-weight:900;background:var(--panel2)}
+.foe span{display:block;font-size:13px}
+.foe small{display:block;font-family:var(--f-mono);font-size:10px;color:var(--dim)}
+.foe.last{border-color:var(--vir)}
+.foe.last small{color:var(--vir)}
+.foe .pop{position:absolute;left:50%;top:2px;transform:translateX(-50%);font-family:var(--f-lat);font-weight:800;font-size:22px;color:var(--vir);opacity:0;pointer-events:none;white-space:nowrap}
+.foe .pop.show{animation:pop 1.1s ease-out}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,10px) scale(.6)}20%{opacity:1;transform:translate(-50%,0) scale(1.2)}100%{opacity:0;transform:translate(-50%,-26px)}}
+.status{min-height:2.8em;margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--line2);background:var(--bg);font-size:15px}
+.status.on{border-color:var(--gold)}
+.status.bad{border-color:var(--vir)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 16px;border:1px solid var(--line2);background:var(--panel2);cursor:pointer;font-weight:700;font-size:15px;line-height:1.2}
+.btn:hover:not(:disabled){border-color:var(--fg)}
+.btn--main{background:var(--vir2);border-color:var(--vir2);color:#fff}
+.btn--gold{background:var(--gold);border-color:var(--gold);color:#1a1405}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.how{display:grid;gap:8px}
+.how div{padding:14px 16px;background:var(--panel);border:1px solid var(--line)}
+.how b{display:block;font-size:17px;margin-bottom:2px}
+.how b i{font-style:normal;font-family:var(--f-lat);font-weight:800;color:var(--vir);margin-right:8px}
+.how p{margin:0;color:var(--dim);font-size:14px}
+.orig{margin-top:12px;border:1px solid var(--line)}
+.orig summary{cursor:pointer;padding:10px 14px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--dim)}
+.orig p{margin:0;padding:0 14px 14px;color:var(--dim);font-size:14px}
+.gauge{display:grid;gap:12px;padding:16px;background:var(--bg);border:1px solid var(--line)}
+.gauge__row{display:grid;grid-template-columns:5.5em minmax(0,1fr) 3.4em;gap:12px;align-items:center;font-size:14px}
+.gauge__row .meter::after{display:none}
+.gauge__row b{font-family:var(--f-lat);font-weight:800;font-size:18px;text-align:right;font-variant-numeric:tabular-nums}
+#mor i{background:linear-gradient(90deg,var(--gold),#ffe08a)}
+#str i{background:linear-gradient(90deg,#7a2a26,var(--vir))}
+.hpctl{display:grid;grid-template-columns:auto minmax(0,1fr) 3.4em;gap:12px;align-items:center;margin-bottom:12px;font-size:15px}
+.hpctl input{width:100%;accent-color:var(--vir)}
+.hpctl output{font-family:var(--f-lat);font-weight:800;font-size:20px;text-align:right}
+.warn{display:none;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--vir);background:rgba(179,38,31,.12);color:#ffb3ad;font-size:14px}
+.warn.show{display:flex}
+.warn.show::before{content:"!";display:grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:var(--vir);color:#fff;font-weight:900}
+.heart{display:flex;align-items:center;gap:14px;font-family:var(--f-disp);font-weight:900;font-size:22px}
+.heart i{flex:none;width:34px;height:34px;background:var(--vir);clip-path:polygon(50% 100%,0 40%,0 15%,25% 0,50% 15%,75% 0,100% 15%,100% 40%);transform:scale(var(--s,1));transition:transform .2s}
+.heart.beat i{animation:beat var(--bt,1s) ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}30%{transform:scale(var(--s,1.2))}}
+@media (max-width:900px){.sk__top,.demo{grid-template-columns:1fr}}
+@media (max-width:760px){.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.flow{grid-template-columns:1fr}}
+
+/* §9 */
+.traits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.traits h3{margin:0 0 6px;font-family:var(--f-disp);font-weight:900;font-size:20px}
+.traits p:last-child{margin:0;color:var(--dim)}
+@media (max-width:860px){.traits{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.traits{grid-template-columns:1fr}}
+
+/* §10 */
+.inv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.inv__n{font-family:var(--f-disp);font-weight:900;font-size:24px;margin:0}
+@media (max-width:640px){.inv{grid-template-columns:1fr}}
+
+/* §11 §12 */
+.link{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--vir2);max-width:920px}
+.link__top{padding:18px;border-right:1px solid var(--line)}
+.link__nm{font-family:var(--f-lat);font-weight:800;font-size:30px;line-height:1.1;margin:0}
+.link__ko{margin:2px 0 0;font-weight:700}
+.link__tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.link__tags span{font-family:var(--f-mono);font-size:11px;padding:2px 8px;border:1px solid var(--vir);color:var(--vir)}
+.twins{display:flex;align-items:center;gap:10px;margin-top:14px;font-family:var(--f-lat);font-weight:800;letter-spacing:.14em;font-size:13px}
+.twins i{flex:1;height:1px;background:linear-gradient(90deg,var(--steel),var(--vir))}
+.link__go{display:inline-block;margin-top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--gold)}
+.link__body{padding:18px}
+.link__body p{margin:0;color:var(--dim)}
+@media (max-width:760px){.link{grid-template-columns:1fr}.link__top{border-right:0;border-bottom:1px solid var(--line)}}
+.single{max-width:560px;padding:clamp(22px,3vw,34px) clamp(20px,3vw,30px);background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--vir);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.single__big{margin:0;font-family:var(--f-lat);font-weight:800;font-size:clamp(56px,8vw,96px);line-height:.9;color:var(--vir)}
+.single__txt{margin:0;color:var(--dim)}
+
+.outro{position:relative;padding-block:clamp(64px,9vw,120px);text-align:center;overflow:hidden}
+.outro__m{font-family:var(--f-lat);font-weight:800;font-size:clamp(36px,6vw,80px);line-height:1;margin:0;letter-spacing:.06em;color:var(--steel)}
+.outro__q{font-family:var(--f-disp);font-weight:900;font-size:clamp(21px,2.7vw,32px);line-height:1.5;margin:18px auto 0;max-width:22em}
+.outro__o{margin:24px auto 0;color:var(--dim)}
+.foot{border-top:1px solid var(--line);background:var(--panel);padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+.foot .in{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;color:var(--dim)}
+.foot a{text-decoration:none}.foot a:hover{color:var(--fg)}
+
+/* FX */
+.sparks{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:90}
+.sp{position:absolute;left:0;top:0;width:var(--l);height:2px;margin-top:-1px;background:linear-gradient(90deg,#fff,var(--gold),transparent);transform-origin:0 50%;transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(.2);animation:sp .45s ease-out forwards}
+@keyframes sp{0%{opacity:1;transform:translate(var(--x),var(--y)) rotate(var(--r)) scaleX(.2)}100%{opacity:0;transform:translate(var(--x1),var(--y1)) rotate(var(--r)) scaleX(1)}}
+.flash{position:absolute;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:radial-gradient(circle,#fff,rgba(207,174,95,.6) 40%,transparent 70%);transform:translate(var(--x),var(--y));animation:fl .3s ease-out forwards}
+@keyframes fl{0%{opacity:1;scale:.5}100%{opacity:0;scale:2.4}}
+.rise{animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes rise{0%{opacity:0;transform:translateY(22px)}100%{opacity:1;transform:none}}
+.ch.stamp{animation:stamp .55s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--k)*90ms + .1s)}
+@keyframes stamp{0%{opacity:0;transform:translateY(-30%) scale(1.4)}100%{opacity:1;transform:none}}
+.shake{animation:shake .45s}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(2px)}}
+.name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num,.link__nm{overflow-wrap:normal;word-break:normal}
+body.calm .rise,body.calm .ch.stamp,body.calm .watch .sec-hand,body.calm .heart.beat i{animation:none}
+@media (prefers-reduced-motion:reduce){.rise,.ch.stamp,.watch .sec-hand,.sp,.flash,.foe .pop.show,.blade.go,.heart.beat i{animation:none}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="in">
+    <a class="nav__name" href="#top"><img src="../../assets/factions/virtus.png" alt="" width="24" height="24">KRIS L.<span class="mono dim" style="font-size:11px">&nbsp;/ Virtus</span></a>
+    <nav class="nav__idx" aria-label="조항">
+      <a href="#s01" title="신원">&sect;1</a><a href="#s02" title="외관">&sect;2</a><a href="#s03" title="성격">&sect;3</a><a href="#s04" title="L/H/S">&sect;4</a><a href="#s05" title="능력치">&sect;5</a><a href="#s06" title="기술">&sect;6</a><a href="#s07" title="특수 능력">&sect;7</a><a href="#s08" title="발현 능력">&sect;8</a><a href="#s09" title="특징">&sect;9</a><a href="#s10" title="소지품">&sect;10</a><a href="#s11" title="선관">&sect;11</a><a href="#s12" title="지향 커플링">&sect;12</a>
+    </nav>
+    <button class="nav__fx" id="fxBtn" type="button" aria-pressed="true">FX</button>
+    <a class="nav__home" href="../../index.html" title="G.H.D 본부로">&larr; G.H.D</a>
+  </div>
+  <div class="np" aria-hidden="true"><i id="np"></i></div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <span class="blade" id="blade" aria-hidden="true"></span>
+  <div class="in hero__grid">
+    <div>
+      <p class="mono tag"><span>FILE No.???</span><span>Virtus // <b>Agent</b></span></p>
+      <p class="motto">[ 단단한 마음가짐 ]</p>
+      <h1 class="name" aria-label="Kris L.">Kris <span class="l">L.</span></h1>
+      <p class="ko"><b>크리스 엘</b><span>Kris London</span></p>
+      <blockquote class="quote">&ldquo;이것은 내가 가져야 하는 숙명.&rdquo;</blockquote>
+      <dl class="dims mono">
+        <div><dt>Sex</dt><dd>여성</dd></div>
+        <div><dt>Age</dt><dd>29</dd></div>
+        <div><dt>Height</dt><dd>175cm</dd></div>
+        <div><dt>Weight</dt><dd>70kg</dd></div>
+      </dl>
+    </div>
+    <div class="crest__wrap">
+      <figure class="crest">
+        <img src="assets/kris.jpg" alt="크리스 엘 그림. 남청색 단발에 노란 브릿지, 푸른 눈의 무표정한 여성이 오른손으로 커다란 바스타드 소드를 땅에 세워 짚고, 왼손은 허리에 얹고 서 있다. 가슴에 비르투스 문양이 있다" width="919" height="1280">
+        <figcaption>KRIS LONDON</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s01">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>1</span><span class="head__en">Identity</span><h2>신원</h2></header>
+    <div class="ident">
+      <div class="card">
+        <img src="assets/face.jpg" alt="크리스 엘 얼굴" width="110" height="110">
+        <div>
+          <p class="card__n">KRIS L.</p>
+          <p class="card__e">크리스 엘</p>
+          <dl><dt>DIV</dt><dd>VIRTUS</dd><dt>RANK</dt><dd>대원 / AGENT</dd><dt>SEX</dt><dd>F</dd><dt>AGE</dt><dd>29</dd><dt>NAT</dt><dd>UNITED KINGDOM</dd></dl>
+        </div>
+        <svg class="watch" viewBox="0 0 52 56" aria-hidden="true"><rect x="23" y="0" width="6" height="6" rx="2" fill="#9a7b31"/><circle cx="26" cy="30" r="22" transform="translate(0 -2)"/><line x1="26" y1="28" x2="26" y2="16" stroke-width="2.4"/><line x1="26" y1="28" x2="34" y2="28" stroke-width="2.4"/><line class="sec-hand" x1="26" y1="28" x2="26" y2="12" stroke-width="1.2"/></svg>
+      </div>
+      <div style="overflow-x:auto;min-width:0">
+        <table class="table"><tbody>
+          <tr><th>1.1</th><td>Name</td><td>크리스 엘 / Kris L.</td></tr>
+          <tr><th>1.2</th><td>Full name</td><td>크리스 런던 / Kris London</td></tr>
+          <tr><th>1.3</th><td>Sex</td><td>여성</td></tr>
+          <tr><th>1.4</th><td>Age</td><td>29세</td></tr>
+          <tr><th>1.5</th><td>Height / Weight</td><td>175cm / 70kg</td></tr>
+          <tr><th>1.6</th><td>Nationality</td><td>영국</td></tr>
+          <tr><th>1.7</th><td>Faction</td><td>비르투스 &middot; 대원</td></tr>
+          <tr><th>1.8</th><td>Attribute</td><td>참격</td></tr>
+          <tr><th>1.9</th><td>Special</td><td>회심의 일격</td></tr>
+          <tr><th>1.10</th><td>Talent</td><td>굳센 마음</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s02">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>2</span><span class="head__en">Appearance</span><h2>외관</h2></header>
+    <div class="look">
+      <div class="look__pics">
+        <figure class="pic"><img src="assets/face.jpg" alt="크리스 엘 얼굴 그림. 남청색 머리에 노란 브릿지, 반쯤 감긴 푸른 눈" width="480" height="480"><figcaption><span>FACE</span><span>KRIS L.</span></figcaption></figure>
+        <figure class="pic"><img src="assets/card.jpg" alt="크리스 엘 상반신 그림. 바스타드 소드를 세워 쥐고 있다" width="560" height="700"><figcaption><span>WITH SWORD</span><span>KRIS L.</span></figcaption></figure>
+      </div>
+      <ul class="desc">
+        <li><i style="--c:#2c3a72"></i><div><span>2.1 HAIR</span><b>남청색 단발, 노란 브릿지 (그림)</b></div></li>
+        <li><i style="--c:#8fb7e8"></i><div><span>2.2 EYES</span><b>반쯤 내리뜬 푸른 눈 (그림)</b></div></li>
+        <li><i style="--c:#1b1d22"></i><div><span>2.3 UNIFORM</span><b>리폼 없는 기본 대원복 바지</b></div></li>
+        <li><i style="--c:#0d0e10"></i><div><span>2.4 BOOTS</span><b>검정 롱워커</b></div></li>
+        <li class="wide"><i style="--c:#9da5b4"></i><div><span>2.5 SWORD</span><b>등 뒤로 메는 검집과 커다란 바스타드 소드</b></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s03">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>3</span><span class="head__en">Personality</span><h2>성격</h2></header>
+    <div class="keys">
+      <div class="key"><b>책임감 넘치는</b><span>responsible</span></div>
+      <div class="key"><b>정의로운</b><span>righteous</span></div>
+      <div class="key"><b>강박적인</b><span>obsessive</span></div>
+      <div class="key"><b>무모한</b><span>reckless</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s04">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>4</span><span class="head__en">Like / Hate / Scare</span><h2>L / H / S</h2></header>
+    <div class="lhs">
+      <div class="panel"><p class="lhs__l">L</p><ul><li>평화로움</li><li>고요</li><li>책임</li></ul></div>
+      <div class="panel"><p class="lhs__l">H</p><ul><li>상처</li><li>강요</li><li>고통</li></ul></div>
+      <div class="panel"><p class="lhs__l">S</p><ul><li>&ndash;</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s05">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>5</span><span class="head__en">Stats</span><h2>능력치</h2></header>
+    <div class="hp" id="hp" role="img" aria-label="체력 200">
+      <div class="hp__top"><div><p class="idx">5.0 &mdash; HP</p><p class="hp__name">체력</p></div><p class="hp__num">200</p></div>
+      <div class="hp__bar" aria-hidden="true"><i></i></div>
+    </div>
+    <div class="stats">
+      <svg class="radar" id="radar" viewBox="-150 -140 300 280" role="img" aria-label="능력치 오각 그래프: 공격력 70, 방어력 10, 민첩성 80, 정확성 80, 정신력 80">
+        <g class="radar__grid"></g><polygon class="radar__shape" points="0,0 0,0 0,0 0,0 0,0"></polygon><g class="radar__dots"></g><g class="radar__labels"></g>
+      </svg>
+      <ul class="bars" id="bars">
+        <li><span>5.1</span><span>공격력</span><span class="bar"><i data-w="70"></i></span><b>70</b></li>
+        <li class="low"><span>5.2</span><span>방어력</span><span class="bar"><i data-w="10"></i></span><b>10</b></li>
+        <li class="top"><span>5.3</span><span>민첩성</span><span class="bar"><i data-w="80"></i></span><b>80</b></li>
+        <li class="top"><span>5.4</span><span>정확성</span><span class="bar"><i data-w="80"></i></span><b>80</b></li>
+        <li class="top"><span>5.5</span><span>정신력</span><span class="bar"><i data-w="80"></i></span><b>80</b></li>
+      </ul>
+    </div>
+    <p class="mono note">// 총합 320 = 70 + 10 + 80 + 80 + 80 &middot; 방어를 버리고 검과 정신에 실었다</p>
+  </div>
+</section>
+
+<section class="sec" id="s06">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>6</span><span class="head__en">Techniques</span><h2>기술</h2></header>
+    <div class="tech">
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>검격</h3><div class="chips"><em>참격</em><em>광역</em></div><p>모든 적에게 거대하고 강력한 검격을 날린다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>재정비</h3><div class="chips"><em>참격</em><em>보복</em></div><p>피해를 입은 뒤, 마음을 가다듬고 집중해서 다시 한번. 정확하게 검을 휘두른다.</p></div>
+      <div class="panel tk"><p class="tk__type">ATK &middot; 공격 기술</p><h3>집념</h3><div class="chips"><em>특수</em></div><p>자신이 피해를 입힌 적에게 타깃팅을 건다.</p></div>
+      <div class="panel tk tk--def"><p class="tk__type">DEF &middot; 방어 기술 [회피]</p><h3>패링</h3><div class="chips"><em>유연</em></div><p>생각보다 큰 검은 유용한 방패가 되기도 한다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s07">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>7</span><span class="head__en">Special &mdash; 특수 능력</span><h2>회심의 일격</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">회심의 일격</p>
+        <p class="ab__en">Decisive Strike</p>
+        <span class="mono ab__type">참격</span>
+      </div>
+      <p class="sk__sum">쓰러지기 직전, <b>체력 50 이하</b>일 때만 휘두를 수 있는 마지막 한 수. <b>마지막으로 나를 친 적</b>에게 공격력의 <b>3.5배</b>를 돌려준다. 실패하면 그대로 쓰러진다.</p>
+    </div>
+    <ol class="flow">
+      <li><b>HP &le; 50</b><span>조건</span>체력이 50 이하일 때만 쓸 수 있다.</li>
+      <li><b>&times;3.5</b><span>마지막 공격자에게</span>마지막으로 피해를 준 적 1인에게 공격력의 3.5배 참격. 크리스의 공격력 70이면 245.</li>
+      <li><b>민첩 &minus;10</b><span>발을 묶는다</span>그 적의 민첩성을 10 깎는다.</li>
+      <li class="minus"><b>실패</b><span>전투불능</span>판정에 실패하면 남은 체력과 관계없이 전투불능.</li>
+    </ol>
+    <div class="demo">
+      <div class="panel" id="spPanel">
+        <p class="idx">7.1 &mdash; 버티다가, 마지막 한 수</p>
+        <div class="me" id="me">
+          <img src="assets/face.jpg" alt="" width="54" height="54">
+          <div class="me__top"><span>크리스</span><b id="hpV">200</b></div>
+          <div class="meter"><i id="hpBar" style="width:100%"></i></div>
+          <span class="legend">금색 선 = 체력 50</span>
+        </div>
+        <div class="foes" id="foes"></div>
+        <p class="status" id="spMsg" aria-live="polite">적의 공격을 눌러 체력을 깎아 보자. 50 이하가 되면 회심의 일격을 쓸 수 있다.</p>
+        <div class="ctrl">
+          <button class="btn" id="spHit" type="button">적의 공격 (&minus;40)</button>
+          <button class="btn btn--main" id="spOk" type="button" disabled>회심의 일격 &middot; 판정 성공</button>
+          <button class="btn" id="spNo" type="button" disabled>판정 실패</button>
+          <button class="btn" id="spReset" type="button">처음으로</button>
+        </div>
+        <p class="note">적이 주는 피해 40과 적의 민첩성 60은 예시다. 판정 결과는 버튼으로 골라 본다.</p>
+      </div>
+      <div class="how">
+        <div><b><i>I</i>언제?</b><p>체력이 50 이하로 떨어졌을 때만.</p></div>
+        <div><b><i>II</i>누구에게?</b><p>마지막으로 크리스에게 피해를 준 적 한 명.</p></div>
+        <div><b><i>III</i>얼마나?</b><p>공격력 &times; 3.5. 그리고 그 적의 민첩성 &minus;10.</p></div>
+        <div><b><i>IV</i>실패하면?</b><p>체력이 남아 있어도 바로 전투불능.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>본인의 체력이 50 이하일 때만 사용할 수 있다. 마지막으로 본인에게 피해를 입힌 적 1인에게 공격력의 x3.5 참격피해를 입히고, 적의 민첩성을 10 감소시킨다. 특수능력 판정에 실패시, 남은 체력에 관계없이 전투불능 상태가 된다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s08">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>8</span><span class="head__en">Talent &mdash; 발현 능력</span><h2>굳센 마음</h2></header>
+    <div class="sk__top">
+      <div>
+        <p class="ab__name">굳센 마음</p>
+        <p class="ab__en">Unbroken Will</p>
+        <span class="mono ab__type">발현 능력</span>
+      </div>
+      <p class="sk__sum">몸이 다치면 깨어나는 능력. <b>다칠수록 사기가 오른다</b>. &ldquo;나는 쓰러지면 안 된다&rdquo;는 무모하고 강박적인 의지에서 나왔다. 대신 몸이 과부하에 걸려 <b>출혈이나 쇼크</b>가 올 수 있다.</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <p class="idx">8.1 &mdash; 체력을 깎아 보자</p>
+        <div class="hpctl"><label for="hpS">크리스의 체력</label><input type="range" id="hpS" min="0" max="200" step="5" value="200"><output id="hpSV" for="hpS">200</output></div>
+        <div class="gauge">
+          <div class="heart" id="heart"><i></i><span id="heartT">발현 전</span></div>
+          <div class="gauge__row"><span>사기</span><span class="meter" id="mor"><i style="width:0"></i></span><b id="morV">0</b></div>
+          <div class="gauge__row"><span>몸의 부담</span><span class="meter" id="str"><i style="width:0"></i></span><b id="strV">0</b></div>
+          <div class="warn" id="warn">출혈·쇼크 위험. 몸이 의지를 따라가지 못하고 있다.</div>
+        </div>
+        <p class="status" id="tMsg" aria-live="polite">다치지 않은 상태에서는 발현되지 않는다. 막대를 왼쪽으로 밀어 보자.</p>
+      </div>
+      <div class="how">
+        <div><b><i>I</i>다쳐야 깨어난다</b><p>신체나 체력이 손상되었을 때 발현된다.</p></div>
+        <div><b><i>II</i>다칠수록 강해진다</b><p>역설적이게도 손상이 심할수록 사기가 오른다.</p></div>
+        <div><b><i>III</i>그 대가</b><p>몸이 과부하에 걸려 출혈이나 쇼크가 날 수 있다.</p></div>
+      </div>
+    </div>
+    <details class="orig"><summary>신청서 원문 보기</summary><p>신체 또는 체력이 손상되었을 때 발현되는 능력. 어느 역경에도 굴하지 않고 본인은 쓰러지면 안된다는 무모한 강박적인 의지에서 비롯됐다. 역설적이게도 손상이 심할수록 본인의 사기가 증가한다. 다만 신체의 과부화로 인해 출혈 또는 쇼크가 날 수 있다.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="s09">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>9</span><span class="head__en">Traits</span><h2>특징</h2></header>
+    <div class="traits">
+      <div class="panel"><p class="idx">9.1</p><h3>혈육 놀리기</h3><p>혈육을 놀리는 걸 좋아한다.</p></div>
+      <div class="panel"><p class="idx">9.2</p><h3>다나까체</h3><p>&ldquo;~습니다&rdquo;, &ldquo;~습니까&rdquo;로 끝나는 말투.</p></div>
+      <div class="panel"><p class="idx">9.3</p><h3>영국 국적</h3><p>풀네임은 크리스 런던.</p></div>
+      <div class="panel"><p class="idx">9.4</p><h3>등 뒤의 검집</h3><p>바스타드 소드를 등 뒤 검집에 멘다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s10">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>10</span><span class="head__en">Inventory</span><h2>소지품</h2></header>
+    <div class="inv">
+      <div class="panel"><p class="idx">10.1</p><p class="inv__n">손수건</p><p class="mono dim" style="margin:0">handkerchief</p></div>
+      <div class="panel"><p class="idx">10.2</p><p class="inv__n">회중시계</p><p class="mono dim" style="margin:0">pocket watch</p></div>
+      <div class="panel"><p class="idx">10.3</p><p class="inv__n">바스타드 소드</p><p class="mono dim" style="margin:0">bastard sword</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="s11">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>11</span><span class="head__en">Links</span><h2>선관</h2></header>
+    <article class="link">
+      <div class="link__top">
+        <p class="link__nm">Kross L.</p>
+        <p class="link__ko">크로스 엘</p>
+        <div class="link__tags"><span>가족관</span><span>쌍둥이 남매</span></div>
+        <div class="twins" aria-hidden="true"><span>KRIS</span><i></i><span>KROSS</span></div>
+        <a class="link__go" id="krossLink" href="../kross/index.html">크로스 페이지 &rarr;</a>
+      </div>
+      <div class="link__body">
+        <p>자신의 쌍둥이 남매. 하나 남은 가족과 친하게 지내고 싶고, 자신의 쓸모를 증명하고 싶어 한다. 크로스 앞에선 표정이 조금 유해지는 것 같기도.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="s12">
+  <div class="in">
+    <header class="head"><span class="head__no"><small>&sect;</small>12</span><span class="head__en">Coupling</span><h2>지향 커플링</h2></header>
+    <div class="single"><p class="single__big">SL</p><p class="single__txt">지향 커플링</p></div>
+  </div>
+</section>
+
+<section class="outro">
+  <div class="in">
+    <p class="outro__m">I shall not yield</p>
+    <p class="outro__q">[ 미련해 보일지라도 절대 굴하지 않겠다. ]</p>
+    <p class="outro__o">오너 한마디 &mdash; 잘 부탁드립니다🥹</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot"><div class="in mono"><a href="../../index.html">&larr; G.H.D 본부</a><span>KRIS LONDON &middot; Virtus Agent</span></div></footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let pref=null;try{pref=localStorage.getItem("kross-gate")}catch(e){}
+const hh=/^#(full|calm)$/.exec(location.hash);if(hh){pref=hh[1];try{localStorage.setItem("kross-gate",pref)}catch(e){}}
+let calm=RM||pref==="calm";
+const fxBtn=$("#fxBtn");
+function applyCalm(){document.body.classList.toggle("calm",calm);fxBtn.setAttribute("aria-pressed",!calm);fxBtn.textContent=calm?"FX OFF":"FX ON"}
+applyCalm();
+fxBtn.onclick=()=>{calm=!calm;try{localStorage.setItem("kross-gate",calm?"calm":"full")}catch(e){}applyCalm();talent()};
+function fx(elm,cls){if(calm)return;elm.classList.remove(cls);void elm.offsetWidth;elm.classList.add(cls)}
+
+const links=$$(".nav__idx a");
+const io=new IntersectionObserver(es=>es.forEach(e=>{e.target.classList.toggle("live",e.isIntersecting);if(e.isIntersecting)links.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-45% 0px -50% 0px"});
+$$("section.sec").forEach(s=>io.observe(s));
+const np=$("#np");const prog=()=>{const d=document.documentElement,m=d.scrollHeight-innerHeight;np.style.width=(m>0?scrollY/m*100:0)+"%"};
+addEventListener("scroll",prog,{passive:true});addEventListener("resize",prog);prog();
+
+const FIT=".name,.head h2,.ab__name,.card__n,.outro__m,.dims dd,.hp__num,.link__nm";
+function fit(){$$(FIT).forEach(e=>{e.style.fontSize="";let fs=parseFloat(getComputedStyle(e).fontSize),n=0;while(e.scrollWidth>e.clientWidth+1&&fs>9&&n<80){fs-=1;e.style.fontSize=fs+"px";n++}})}
+fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);let fitT;addEventListener("resize",()=>{clearTimeout(fitT);fitT=setTimeout(fit,120)});
+
+/* 표지: 칼날 한 줄, 이름이 찍히듯 */
+if(!calm){$("#blade").classList.add("go");let k=0;const n=$(".name");[n,...n.querySelectorAll("span")].forEach(el=>[...el.childNodes].forEach(c=>{if(c.nodeType===3&&c.textContent.length){const f=document.createDocumentFragment();[...c.textContent].forEach(ch=>{const s=document.createElement("span");s.className="ch stamp";s.style.setProperty("--k",k++);s.textContent=ch===" "?" ":ch;s.setAttribute("aria-hidden","true");f.appendChild(s)});c.replaceWith(f)}}))}
+
+const RV=".panel,.flow li,.how>div,.key,.desc li,.card,.head,.single,.link,.pic";
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){if(!calm&&e.target.dataset.below)e.target.classList.add("rise");rio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+$$(RV).forEach(el=>{if(el.closest(".hero"))return;if(el.getBoundingClientRect().top>innerHeight)el.dataset.below="1";const sib=[...el.parentElement.children].filter(c=>c.matches(RV));el.style.setProperty("--i",Math.min(6,sib.indexOf(el)));rio.observe(el)});
+
+/* 누르면 칼끼리 부딪친 불꽃 */
+const sparks=document.createElement("div");sparks.className="sparks";sparks.setAttribute("aria-hidden","true");document.body.appendChild(sparks);
+function spark(x,y,n=9){if(calm||RM)return;const f=document.createElement("span");f.className="flash";f.style.cssText=`--x:${x}px;--y:${y}px`;sparks.appendChild(f);setTimeout(()=>f.remove(),350);
+  for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,d=24+Math.random()*40,s=document.createElement("span");s.className="sp";s.style.cssText=`--x:${x}px;--y:${y}px;--x1:${x+Math.cos(a)*d}px;--y1:${y+Math.sin(a)*d}px;--r:${a}rad;--l:${8+Math.random()*14}px`;sparks.appendChild(s);setTimeout(()=>s.remove(),500)}}
+addEventListener("pointerdown",e=>{if(e.target.closest("input"))return;spark(e.clientX,e.clientY)});
+
+/* ---------- 능력치 ---------- */
+const S=[["공격력",70],["방어력",10],["민첩성",80],["정확성",80],["정신력",80]];
+const R=100,N=S.length,ang=i=>-Math.PI/2+i*Math.PI*2/N,pt=(i,v)=>[Math.cos(ang(i))*R*v/100,Math.sin(ang(i))*R*v/100],NS="http://www.w3.org/2000/svg";
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const q in a)e.setAttribute(q,a[q]);return e};
+const rg=$("#radar .radar__grid"),rl=$("#radar .radar__labels"),rd=$("#radar .radar__dots");
+[25,50,75,100].forEach(v=>rg.appendChild(el("polygon",{points:S.map((_,i)=>pt(i,v).join(",")).join(" ")})));
+S.forEach(([n,v],i)=>{const [x,y]=pt(i,100);rg.appendChild(el("line",{x1:0,y1:0,x2:x,y2:y}));const [lx,ly]=pt(i,122),an=Math.abs(lx)<5?"middle":lx>0?"start":"end";
+  const t=el("text",{x:lx,y:ly-3,"text-anchor":an});t.textContent=n;rl.appendChild(t);const t2=el("text",{x:lx,y:ly+9,"text-anchor":an,class:"v"});t2.textContent=v;rl.appendChild(t2)});
+let sd=false;function runStats(){if(sd)return;sd=true;$("#hp").classList.add("on");$("#radar .radar__shape").setAttribute("points",S.map(([,v],i)=>pt(i,v).join(",")).join(" "));
+  S.forEach(([,v],i)=>{const [x,y]=pt(i,v);rd.appendChild(el("circle",{cx:x,cy:y,r:3,class:"radar__dot"}))});$$("#bars i").forEach(b=>b.style.width=b.dataset.w+"%")}
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runStats();o.disconnect()}}),{threshold:.2}).observe($("#s05"));setTimeout(runStats,2500);
+
+/* ---------- 회심의 일격 ---------- */
+const ATK=70,HIT=40,F=[["가","적군 가"],["나","적군 나"],["다","적군 다"]];
+let hp=200,last=null,agi={},dmg={},down=false,used=false;
+function drawSp(){
+  $("#hpV").textContent=hp;$("#hpBar").style.width=hp/2+"%";$("#me").classList.toggle("low",hp<=50&&!down);$("#me").classList.toggle("down",down);
+  $("#foes").innerHTML=F.map(([ic,n])=>`<div class="foe${n===last?" last":""}" data-n="${n}"><span class="pop"></span><i>${ic}</i><span>${n}</span><small>${n===last?"마지막 공격자":"민첩 "+agi[n]}</small>${dmg[n]?`<small>받은 피해 ${dmg[n]} &middot; 민첩 ${agi[n]}</small>`:""}</div>`).join("");
+  const can=hp<=50&&hp>0&&!down&&!used&&last;$("#spOk").disabled=!can;$("#spNo").disabled=!can;$("#spHit").disabled=down||hp<=0||used}
+function sm(t,c){const p=$("#spMsg");p.innerHTML=t;p.className="status"+(c?" "+c:"")}
+function reset(){hp=200;last=null;down=false;used=false;F.forEach(([,n])=>{agi[n]=60;dmg[n]=0});drawSp();sm("적의 공격을 눌러 체력을 깎아 보자. 50 이하가 되면 회심의 일격을 쓸 수 있다.")}
+$("#spHit").onclick=()=>{last=F[Math.random()*3|0][1];hp=Math.max(0,hp-HIT);drawSp();fx($("#me"),"shake");
+  if(hp===0){down=true;drawSp();sm("체력이 0이 되어 쓰러졌다. 처음으로를 눌러 다시 해 보자.","bad");return}
+  sm(hp<=50?`${last}의 공격. 체력 <b>${hp}</b>. 50 이하가 되었다. 이제 ${last}에게 회심의 일격을 쓸 수 있다.`:`${last}의 공격. 체력 ${hp}. 아직 50보다 많아 회심의 일격은 쓸 수 없다.`,hp<=50?"on":"")};
+$("#spOk").onclick=()=>{used=true;const v=ATK*3.5;dmg[last]=v;agi[last]-=10;drawSp();const f=$(`.foe[data-n="${last}"]`),p=f.querySelector(".pop");p.textContent="-"+v;
+  if(!calm){p.classList.remove("show");void p.offsetWidth;p.classList.add("show");fx(f,"shake");const r=f.getBoundingClientRect();spark(r.left+r.width/2,r.top+r.height/2,16)}
+  sm(`회심의 일격. ${last}에게 공격력 ${ATK} &times; 3.5 = <b>${v}</b>. 민첩성도 60 → <b>${agi[last]}</b>.`,"on")};
+$("#spNo").onclick=()=>{used=true;down=true;drawSp();fx($("#me"),"shake");sm(`판정 실패. 체력이 ${hp} 남아 있지만 <b>그대로 전투불능</b>이 되었다.`,"bad")};
+$("#spReset").onclick=reset;
+reset();
+
+/* ---------- 굳센 마음 ---------- */
+function talent(){const h=+$("#hpS").value,lost=200-h,mor=Math.round(lost/2),str=Math.round(Math.max(0,lost-60)/1.4);
+  $("#hpSV").textContent=h;$("#mor i").style.width=mor+"%";$("#morV").textContent=mor;$("#str i").style.width=Math.min(100,str)+"%";$("#strV").textContent=Math.min(100,str);
+  const heart=$("#heart");heart.classList.toggle("beat",lost>0&&!calm);heart.style.setProperty("--s",1+lost/400);heart.style.setProperty("--bt",(1.1-lost/250)+"s");
+  $("#heartT").textContent=lost===0?"발현 전":mor<35?"버틴다":mor<70?"사기 상승":"굴하지 않는다";
+  $("#warn").classList.toggle("show",h<=70);
+  const p=$("#tMsg");p.classList.toggle("on",lost>0);
+  p.textContent=lost===0?"다치지 않은 상태에서는 발현되지 않는다. 막대를 왼쪽으로 밀어 보자.":h<=70?`체력 ${h}. 사기는 최고조에 가깝지만, 몸이 버티지 못해 출혈이나 쇼크가 올 수 있다.`:`체력 ${h}. 다친 만큼 사기가 오른다. 아직은 몸이 따라온다.`}
+$("#hpS").oninput=talent;talent();
+})();
+</script>
+
+</body>
+</html>
